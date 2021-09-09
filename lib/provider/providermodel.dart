@@ -8,6 +8,7 @@ import 'package:collection/collection.dart';
 class ProviderModel with ChangeNotifier {
   InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
   bool available = true;
+  // ignore: cancel_subscriptions
   late StreamSubscription subscription;
   final String myProductID = 'monthly_sub30';
  
@@ -56,11 +57,13 @@ class ProviderModel with ChangeNotifier {
   void verifyPurchase() {
     PurchaseDetails purchase = hasPurchased(myProductID);
  
+    // ignore: unnecessary_null_comparison
     if (purchase != null && purchase.status == PurchaseStatus.purchased) {
  
       if (purchase.pendingCompletePurchase) {
         _iap.completePurchase(purchase);
         
+// ignore: unnecessary_null_comparison
 if (purchase != null && purchase.status == PurchaseStatus.purchased) {
           isPurchased = true;
         }
