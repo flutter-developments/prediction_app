@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/model/drawer_list_model.dart';
+import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/user_guide/user_guide1.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/images.dart';
@@ -8,44 +9,44 @@ import 'package:prediction_app/utils/routes.dart';
 
 List<DrawerListModel> drawerContent = [
   DrawerListModel(
-    icon: Images.bow,
-    screen: UserGuide(),
-    title: 'EVE & Co Products',
+    icon: Images.home,
+    screen: MainScreen(),
+    title: 'Home',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.prediction,
     screen: UserGuide(),
-    title: 'Eve TV Channel',
+    title: 'My Predictions',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.exchnage,
     screen: UserGuide(),
-    title: 'Fitness',
+    title: 'Exchange History',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.settings,
     screen: UserGuide(),
-    title: 'Period Tracker',
+    title: 'Settings',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.withdraw,
     screen: UserGuide(),
-    title: 'Shop by Filter',
+    title: 'Withdrawal',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.userGuide,
     screen: UserGuide(),
-    title: 'Contact Us',
+    title: 'User Guide',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.premium,
     screen: UserGuide(),
-    title: 'My Orders',
+    title: 'Upgrade to Premium',
   ),
   DrawerListModel(
-    icon: Images.bow,
+    icon: Images.signOut,
     screen: UserGuide(),
-    title: 'FAQs',
+    title: 'Sign out',
   ),
 ];
 
@@ -55,7 +56,7 @@ class DrawerFull extends PreferredSize {
             preferredSize: Size.fromHeight(0),
             child: Theme(
               data: ThemeData(
-                canvasColor: AppColors.primery_color,
+                canvasColor: AppColors.bar_color,
               ),
               child: Drawer(
                 child: SafeArea(
@@ -65,63 +66,54 @@ class DrawerFull extends PreferredSize {
                         color: Colors.black.withOpacity(.25),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(10.0),
                         child: Column(
-                          //mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
 
                           children: [
-                            InkWell(
+                            GestureDetector(
                               onTap: () => Navigator.pop(context),
+                              child: Image.asset("assets/images/Group 42.png"),
+                            ),
+                            Text(''),
+                            Center(
                               child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.white),
+                                height: size.height * .1,
+                                width: size.width * .7,
+                                decoration: new BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: new LinearGradient(
+                                    begin: Alignment.centerLeft,
+                                    end: Alignment.centerRight,
+                                    colors: [
+                                      AppColors.gradiantColor1,
+                                      AppColors.gradiantColor2,
+                                    ],
+                                  ),
                                 ),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.clear,
-                                    color: Colors.white,
-                                    size: 30,
+                                child: ListTile(
+                                  leading: ClipOval(
+                                    child: Image.asset("assets/images/pic 2.png"),
+                                  ),
+                                  title: Text(
+                                    "User ABCD",
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  subtitle: Text(
+                                    "123,4548.32",
+                                    style: TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ),
                             ),
-                            Text(''),
-                            Container(
-                              height: size.height * .1,
-                              width: size.width * .7,
-                              decoration: new BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                gradient: new LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  end: Alignment.centerRight,
-                                  colors: [
-                                    AppColors.gradiantColor1,
-                                    AppColors.gradiantColor2,
-                                  ],
-                                ),
-                              ),
-                              child: ListTile(
-                                leading: Image.asset("assets/images/pic 2.png"),
-                                title: Text("Tedsfdsf"),
-                                subtitle: Text("sdfgsfe"),
-                              ),
-                            ),
-                            Divider(
-                              color: Colors.white,
+                           
+                            SizedBox(
+                              height: 20,
                             ),
                             Expanded(
                               flex: 5,
-                              child: ListView.separated(
+                              child: ListView.builder(
                                 shrinkWrap: true,
-                                separatorBuilder: (context, index) {
-                                  return Divider(
-                                    color: Colors.white,
-                                  );
-                                },
                                 itemCount: drawerContent.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return SizedBox(
@@ -137,8 +129,7 @@ class DrawerFull extends PreferredSize {
                                       title: Text(
                                         drawerContent[index].title,
                                         style: TextStyle(
-                                          // fontSize: 12,
-                                          fontWeight: FontWeight.w100,
+                                          fontWeight: FontWeight.w300,
                                           color: Colors.white,
                                         ),
                                       ),

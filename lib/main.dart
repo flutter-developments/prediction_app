@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'provider/providermodel.dart';
+import 'ui/predection/premium.dart';
 import 'ui/user_guide/user_guide1.dart';
 
 void main() {
@@ -34,6 +35,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return UserGuide();
+    return PremiumUpgrade();
   }
 }

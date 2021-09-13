@@ -7,7 +7,7 @@ import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
 
 // ignore: non_constant_identifier_names
-Container buildApp_bar(Size size, BuildContext context) {
+Container buildApp_bar(Size size, BuildContext context, VoidCallback onTap) {
   return Container(
     height: size.height * .136,
     width: size.width,
@@ -30,13 +30,16 @@ Container buildApp_bar(Size size, BuildContext context) {
         children: [
           Column(
             children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(50)),
-                // child: Image.asset("assets/images/pic 2.png"),
+              GestureDetector(
+                onTap: onTap,
+                              child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(50)),
+                  // child: Image.asset("assets/images/pic 2.png"),
+                ),
               ),
               SizedBox(
                 height: size.height * .01,
@@ -102,6 +105,8 @@ Container buildApp_bar(Size size, BuildContext context) {
       ),
     )),
   );
+
+
 }
 
 // ignore: non_constant_identifier_names
@@ -111,13 +116,13 @@ Container buildApp_only_title_bar(
     height: size.height * .095,
     width: size.width,
     decoration: BoxDecoration(
-      boxShadow: <BoxShadow>[
-        BoxShadow(
-          color: Colors.black,
-          offset: Offset(7.0, 7.0),
-          blurRadius: 40.0,
-        ),
-      ],
+      // boxShadow: <BoxShadow>[
+      //   BoxShadow(
+      //     color: Colors.black,
+      //     offset: Offset(7.0, 7.0),
+      //     blurRadius: 40.0,
+      //   ),
+      // ],
       color: AppColors.bar_color,
       // borderRadius: BorderRadius.only(
       //     bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
