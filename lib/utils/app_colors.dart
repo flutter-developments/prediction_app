@@ -25,6 +25,8 @@ class AppColors {
   static const Color halfWhite = const Color(0xFFF3F3F3);
   static const Color ChatOneSideCOlor = const Color(0xFFF3F6FA);
   static const Color blueTextColor = const Color(0X169DFF);
+    static const Color gradiantColor1 = const Color(0xFFD87FE2);
+  static const Color gradiantColor2 = const Color(0XFF8987F2);
 
   static LinearGradient background = LinearGradient(
     begin: Alignment.topLeft,

@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
+import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/ui/user_guide/user_guide2.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
@@ -16,6 +17,7 @@ class _UserGuideState extends State<UserGuide> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      
       body: Container(
           color: AppColors.background_color,
           child: Column(

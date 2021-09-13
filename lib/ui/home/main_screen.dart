@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
+import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,6 +14,8 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      drawer: DrawerFull(context, MediaQuery.of(context).size),
+      appBar: AppBar(title: Text("title"),),
       body: Container(
           child: Column(
         children: [
