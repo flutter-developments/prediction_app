@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
 
 class Notifications extends StatefulWidget {
   @override
@@ -15,9 +18,10 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       body: Container(
           color: AppColors.background_color,
-          child: Column(
+          child: ListView(
             children: [
-              buildApp_only_title_bar(size, context, "Notifications"),
+              buildApp_only_title_bar(
+                  size, context, "Notifications", AppColors.background_color1),
               build_notifications(size),
             ],
           )),
@@ -27,7 +31,7 @@ class _NotificationsState extends State<Notifications> {
   // ignore: non_constant_identifier_names
   build_notifications(Size size) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
       child: Container(
         height: size.height * .87,
         width: size.width,
@@ -35,12 +39,12 @@ class _NotificationsState extends State<Notifications> {
             itemCount: 8,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(top: 2.0, bottom: 2),
+                padding: EdgeInsets.only(top: 30.h),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColors.primery_color),
-                  height: size.height * .164,
+                      color: AppColors.background_color),
+                  height: size.height * .190,
                   width: size.width * .491,
                   child: Row(
                     children: [
@@ -51,12 +55,15 @@ class _NotificationsState extends State<Notifications> {
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(10),
                                   topLeft: Radius.circular(10)),
-                              color: AppColors.bar_color),
+                              color: AppColors.background_color1),
                           child: Image.asset(
                             "assets/images/notification.png",
                             scale: 1,
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 30.h,
                       ),
                       Expanded(
                         flex: 2,
@@ -65,7 +72,7 @@ class _NotificationsState extends State<Notifications> {
                             borderRadius: BorderRadius.only(
                                 bottomRight: Radius.circular(10),
                                 topRight: Radius.circular(10)),
-                            color: Color(0xFF242A3E),
+                            color: AppColors.exchange_card__color,
                           ),
                           padding: EdgeInsets.only(left: 10),
                           child: Column(
@@ -76,22 +83,20 @@ class _NotificationsState extends State<Notifications> {
                                 "Notification $index",
                                 style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 18,
+                                    fontSize: 18.sp,
                                     fontWeight: FontWeight.w600),
                               ),
-                              Text(
-                                "10:32 - Aug 12, 2021",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w400),
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 8.w),
+                                child: Text(
+                                  "10:32 - Aug 12, 2021",
+                                  style: GoogleFonts.openSans(
+                                      textStyle: subtitleStyle1),
+                                ),
                               ),
                               Text(
                                 "Description",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w600),
+                                style: smallwhiteStyle,
                               ),
                             ],
                           ),

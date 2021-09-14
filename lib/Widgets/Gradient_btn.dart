@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:outline_gradient_button/outline_gradient_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/utils/app_colors.dart';
 
 class UnicornOutlineButton extends StatelessWidget {
   final _GradientPainter _painter;
@@ -83,4 +86,81 @@ class _GradientPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => oldDelegate != this;
+}
+
+class GradientButton extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+
+  const GradientButton({required this.title, required this.onPressed});
+  @override
+  Widget build(BuildContext context) {
+    return OutlineGradientButton(
+      onTap: onPressed,
+      child: SizedBox(
+        width: 101.w,
+        height: 39.h,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(title,
+                style: TextStyle(fontSize: 12, color: AppColors.whiteColor)),
+          ],
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0XFFD87FE2),
+          Color(0XFF8A87F2).withOpacity(0.3),
+        ],
+        begin: Alignment(-1, -1),
+        end: Alignment(2, 2),
+      ),
+      strokeWidth: 2,
+      radius: Radius.circular(22),
+    );
+  }
+}
+
+class RaisedGradientButton extends StatelessWidget {
+  final Widget child;
+  final Gradient gradient;
+  final double width;
+  final double height;
+  final VoidCallback onPressed;
+
+  const RaisedGradientButton({
+    required this.child,
+    required this.gradient,
+    this.width = double.infinity,
+    this.height = 50.0,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      height: 50.0,
+      decoration: BoxDecoration(
+          gradient: gradient,
+          // boxShadow: [
+          //   BoxShadow(
+          //     //color: Colors.grey[500],
+          //     offset: Offset(0.0, 1.5),
+          //     blurRadius: 1.5,
+          //   ),
+          // ],
+          borderRadius: BorderRadius.circular(22)),
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+            onTap: onPressed,
+            child: Center(
+              child: child,
+            )),
+      ),
+    );
+  }
 }

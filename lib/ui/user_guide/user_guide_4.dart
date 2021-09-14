@@ -4,17 +4,18 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/guide_container.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
-import 'package:prediction_app/ui/home/main_screen_2.dart';
+import 'package:prediction_app/ui/user_guide/user_guide1.dart';
+import 'package:prediction_app/ui/user_guide/user_guide2.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class UserGuide3 extends StatefulWidget {
+class UserGuide4 extends StatefulWidget {
   @override
-  _UserGuide3State createState() => _UserGuide3State();
+  _UserGuide4State createState() => _UserGuide4State();
 }
 
-class _UserGuide3State extends State<UserGuide3> {
+class _UserGuide4State extends State<UserGuide4> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -23,17 +24,16 @@ class _UserGuide3State extends State<UserGuide3> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              buildApp_only_title_bar(
-                  size, context, "How To Play", AppColors.background_color),
+              buildApp_only_title_bar(size, context, "How To Play",AppColors.background_color),
               //build_userGuide(size),
               GuideContainer(
                   title:
-                      "Enter your Credits to make different\npredictions and choose between different\noptions",
+                      "Select any sport category  to view the live\nchampionships ",
                   onPressed: () {
-                    AppRoutes.push(context, MainScreen());
+                    AppRoutes.push(context, UserGuide());
                   },
-                  buttonText: "Play",
-                  link: "assets/images/Match Screen 1.png")
+                  buttonText: "Next",
+                  link: "assets/images/how_to_play_3.png")
             ],
           )),
     );

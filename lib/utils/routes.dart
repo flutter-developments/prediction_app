@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AppRoutes {
   static Future<T?> push<T extends Object>(
@@ -11,9 +12,8 @@ class AppRoutes {
   }
 
   static void replace(BuildContext context, Widget page) {
-    Navigator.of(context).pushReplacement(
-      new MaterialPageRoute(builder: (context) => page),
-    );
+    Navigator.push(context,
+        PageTransition(type: PageTransitionType.leftToRight, child: page));
   }
 
   static void popUntilHome(BuildContext context) {

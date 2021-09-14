@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ExchangeHistory extends StatefulWidget {
   @override
@@ -15,9 +18,10 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
     return Scaffold(
       body: Container(
           color: AppColors.background_color,
-          child: Column(
+          child: ListView(
             children: [
-              buildApp_only_title_bar(size, context, "Exchange History"),
+              buildApp_only_title_bar(size, context, "Exchange History",
+                  AppColors.background_color1),
               build_playstore(size),
             ],
           )),
@@ -27,7 +31,7 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
   // ignore: non_constant_identifier_names
   build_playstore(Size size) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
       child: Container(
         height: size.height * .87,
         width: size.width,
@@ -35,12 +39,14 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
             itemCount: 8,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.only(top: 2.0, bottom: 2),
+                padding: EdgeInsets.only(
+                  top: 20.0.h,
+                ),
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: AppColors.primery_color),
-                  height: size.height * .164,
+                      color: AppColors.background_color1),
+                  height: size.height * .168,
                   width: size.width * .491,
                   child: Row(
                     children: [
@@ -51,7 +57,7 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
                               borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(10),
                                   topLeft: Radius.circular(10)),
-                              color: AppColors.bar_color),
+                              color: AppColors.background_color1),
                           child: Image.asset(
                             "assets/images/playstore.png",
                             scale: 1.5,
@@ -73,53 +79,60 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Notification $index",
+                                "Google Play Exchange",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w600),
                               ),
+                              SizedBox(
+                                height: 10.h,
+                              ),
                               Text(
                                 "10:32 - Aug 12, 2021",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400),
+                                style: GoogleFonts.openSans(
+                                    textStyle: subtitleStyle1),
                               ),
+                              SizedBox(height: 20.h),
                               Row(
                                 children: [
                                   Text(
                                     "Credits Used",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
+                                    style: subtitleStyle,
+                                  ),
+                                  SizedBox(
+                                    width: 8.w,
                                   ),
                                   Text(
                                     "- 48.32",
-                                    style: TextStyle(
-                                        color: Colors.yellow,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
+                                    style: GoogleFonts.openSans(
+                                        textStyle: goldensubtitleStyle1),
+                                  ),
+                                  SizedBox(
+                                    width: 5.w,
+                                  ),
+                                  Text(
+                                    "€",
+                                    style: GoogleFonts.openSans(
+                                        textStyle: goldensubtitleStyle1),
                                   ),
                                 ],
+                              ),
+                              SizedBox(
+                                height: 7.h,
                               ),
                               Row(
                                 children: [
                                   Text(
                                     "Withdrawal",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
+                                    style: subtitleStyle,
                                   ),
-                                  Text(
-                                    "- \$ 20",
-                                    style: TextStyle(
-                                        color: Colors.yellow,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600),
+                                  SizedBox(
+                                    width: 8.w,
                                   ),
+                                  Text("  - \u0024 20",
+                                      style: GoogleFonts.openSans(
+                                          textStyle: goldensubtitleStyle1)),
                                 ],
                               ),
                             ],

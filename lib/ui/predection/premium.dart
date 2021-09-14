@@ -19,7 +19,7 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
           //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              buildApp_only_title_bar(size, context, "Upgrade"),
+           //   buildApp_only_title_bar(size, context, "Upgrade"),
              // SizedBox(height: 20),
               Text(
                 "Upgrade To",
