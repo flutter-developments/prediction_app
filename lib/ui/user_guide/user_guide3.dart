@@ -4,6 +4,7 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/guide_container.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
+import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

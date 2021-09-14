@@ -6,12 +6,12 @@ import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 
-class MainScreen extends StatefulWidget {
+class MainScreen2 extends StatefulWidget {
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainScreen2State createState() => _MainScreen2State();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainScreen2State extends State<MainScreen2> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -51,47 +51,35 @@ class _MainScreenState extends State<MainScreen> {
                   child: Stack(
                     fit: StackFit.expand,
                     children: [
-                      Image.asset(sports[index].image, fit: BoxFit.cover),
+                      Image.asset(notifications[index].image,
+                          fit: BoxFit.cover),
                       ClipRRect(
                         // Clip it cleanly.
                         child: BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                           child: Container(
-                            color: Colors.black.withOpacity(0.5),
+                            color: Colors.black.withOpacity(0.1),
                             alignment: Alignment.center,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 Text(
-                                  sports[index].title,
+                                  notifications[index].title,
                                   style: TextStyle(
                                       fontSize: 20,
-                                      fontWeight: FontWeight.bold,
+                                      fontWeight: FontWeight.w700,
                                       color: Colors.white),
                                 ),
                                 SizedBox(
                                   height: 30.h,
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      sports[index].games,
-                                      style: GoogleFonts.openSans(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white),
-                                    ),
-                                    SizedBox(width: 5.w),
-                                    Text(
-                                      "Live Championships",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white),
-                                    ),
-                                  ],
+                                Text(
+                                  notifications[index].time.toString(),
+                                  style: GoogleFonts.openSans(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
                                 ),
                               ],
                             ),

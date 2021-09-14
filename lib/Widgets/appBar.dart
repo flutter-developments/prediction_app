@@ -10,7 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // ignore: non_constant_identifier_names
 Container buildApp_bar(Size size, BuildContext context) {
   return Container(
-    height: size.height * .160,
+    height: size.height * .170,
     width: size.width,
     decoration: BoxDecoration(
         boxShadow: <BoxShadow>[
@@ -33,6 +33,7 @@ Container buildApp_bar(Size size, BuildContext context) {
           Column(
             children: [
               CircleAvatar(
+                radius: 28,
                 child: Image.asset(
                   "assets/images/pic 2.png",
                   fit: BoxFit.cover,
@@ -58,22 +59,40 @@ Container buildApp_bar(Size size, BuildContext context) {
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,
-                        fontWeight: FontWeight.w900),
+                        fontWeight: FontWeight.w700),
                   ),
                   SizedBox(
                     width: size.width * .01,
                   ),
-                  Image.asset(
-                    "assets/images/dollar logo.png",
-                    height: 20,
-                  )
                 ],
               ),
               Row(
                 children: [
-                  Image.asset("assets/images/add_credit.png"),
+                  Container(
+                    height: 40.h,
+                    width: 40.h,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0XFFD87FE2),
+                          Color(0xff8987F2),
+                          Color(0XFFD87FE2)
+                        ],
+                        begin: Alignment(-1, -1),
+                        end: Alignment(2, 2),
+                      ),
+                    ),
+                    // child: IconButton(
+                    //   icon: Icon(
+                    //     Icons.add,
+                    //     color: Colors.white,
+                    //   ),
+                    //   onPressed: () {},
+                    // ),
+                  ),
                   SizedBox(
-                    width: size.width * .01,
+                    width: 8.w,
                   ),
                   Text(
                     "Get Credit",
@@ -94,12 +113,17 @@ Container buildApp_bar(Size size, BuildContext context) {
                     AppRoutes.push(context, Notifications());
                   },
                   child: Image.asset("assets/images/appbar_notification.png")),
+              SizedBox(height: 10.h),
               GestureDetector(
                   onTap: () {
                     AppRoutes.push(context, ExchangeHistory());
                   },
                   child: InkWell(
-                    child: Image.asset("assets/images/doller_appbar.png"),
+                    child: CircleAvatar(
+                      radius: 13,
+                      backgroundColor: Color(0xffBBA608),
+                      child: Image.asset("assets/images/dollar.png"),
+                    ),
                     onTap: () {},
                   ))
             ],
@@ -112,7 +136,7 @@ Container buildApp_bar(Size size, BuildContext context) {
 
 // ignore: non_constant_identifier_names
 Container buildApp_only_title_bar(
-    Size size, BuildContext context, String title,Color color) {
+    Size size, BuildContext context, String title, Color color) {
   return Container(
     height: size.height * .095,
     width: size.width,
@@ -124,7 +148,7 @@ Container buildApp_only_title_bar(
       //     blurRadius: 40.0,
       //   ),
       // ],
-      color:color,
+      color: color,
       // borderRadius: BorderRadius.only(
       //     bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
     ),
@@ -152,7 +176,8 @@ Container buildApp_only_title_bar(
             child: Text(title,
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 17,
+                    letterSpacing: 1,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600)),
           )
         ],
