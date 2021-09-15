@@ -3,68 +3,89 @@
 // import 'package:girafee/utils/styles.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
-// class TextFields {
-//   static Widget emailTextField(
-//     BuildContext context, {
-//     String? hintText,
-//     TextEditingController? controller,
-//     String? validaterMsg,
-//     double widthPercentage = 1.0,
-//     Function(String)? onChanged,
-//   }) {
-//     return TextFormField(
-//       controller: controller,
-//       decoration: InputDecoration(hintText: hintText),
-//       validator: (value) {
-//         Pattern pattern =
-//             r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-//         RegExp regex = new RegExp(pattern as String);
-//         return (!regex.hasMatch(value!)) ? validaterMsg : null;
-//       },
-//       onChanged: onChanged,
-//       keyboardType: TextInputType.emailAddress,
-//     );
-//   }
+import 'package:flutter/material.dart';
+import 'package:prediction_app/utils/app_colors.dart';
 
-//   static Widget phoneNoTextField(
-//     BuildContext context, {
-//     String? hintText,
-//     TextEditingController? controller,
-//     var fieldValue,
-//     String? validaterMsg,
-//   }) {
-//     return TextFormField(
-//       controller: controller,
-//       decoration: InputDecoration(hintText: hintText),
-//       validator: (value) {
-//         return (value!.isEmpty) ? validaterMsg : null;
-//       },
-//       keyboardType: TextInputType.phone,
-//     );
-//   }
+class TextFields {
+  static Widget emailTextField(
+    BuildContext context, {
+    String? hintText,
+    TextEditingController? controller,
+    String? validaterMsg,
+    double widthPercentage = 1.0,
+    Function(String)? onChanged,
+  }) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(hintText: hintText),
+      validator: (value) {
+        Pattern pattern =
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        RegExp regex = new RegExp(pattern as String);
+        return (!regex.hasMatch(value!)) ? validaterMsg : null;
+      },
+      onChanged: onChanged,
+      keyboardType: TextInputType.emailAddress,
+    );
+  }
 
-//   static Widget normalTextField(
-//     BuildContext context, {
-//     String? hintText,
-//     TextEditingController? controller,
-//     bool readOnly = false,
-//     String? emptyValidationMessage,
-//     TextInputType? inputType,
-//     int? maxLength,
-//   }) {
-//     return TextFormField(
-//       maxLength: maxLength,
-//       controller: controller,
-//       readOnly: readOnly,
-//       textCapitalization: TextCapitalization.sentences,
-//       decoration: InputDecoration(hintText: hintText),
-//       validator: (value) {
-//         return (value!.isEmpty) ? emptyValidationMessage : null;
-//       },
-//       keyboardType: inputType,
-//     );
-//   }
+  static Widget phoneNoTextField(
+    BuildContext context, {
+    String? hintText,
+    TextEditingController? controller,
+    var fieldValue,
+    String? validaterMsg,
+  }) {
+    return TextFormField(
+      controller: controller,
+      decoration: InputDecoration(hintText: hintText),
+      validator: (value) {
+        return (value!.isEmpty) ? validaterMsg : null;
+      },
+      keyboardType: TextInputType.phone,
+    );
+  }
 
+  static Widget normalTextField(
+    BuildContext context, {
+    required IconData icon,
+    String? hintText,
+    TextEditingController? controller,
+    bool readOnly = false,
+    String? emptyValidationMessage,
+    TextInputType? inputType,
+    int? maxLength,
+    required Color color,
+  }) {
+    return TextFormField(
+      decoration: InputDecoration(
+        // hintText: hintText,
+        labelText: hintText,
+        // labelStyle: TextStyle(
+        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+        labelStyle: TextStyle(
+            color: AppColors.textColor,
+            fontSize: 16,
+            fontWeight: FontWeight.w600),
+        filled: true,
+        fillColor: Color(0xFF50566C),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+        ),
+        prefixIcon: Icon(
+          icon,
+          color: Colors.grey,
+        ),
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+      ),
+    );
+  }
+}
 //   static Widget passwordTextField(
 //     BuildContext context, {
 //     String? hintText,

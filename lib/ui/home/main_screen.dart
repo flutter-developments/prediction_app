@@ -1,10 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'exchange_history.dart';
 import 'notification.dart';
 
@@ -60,23 +61,21 @@ class _MainScreenState extends State<MainScreen> {
               children: [
                 GestureDetector(
                   onTap: () => _key.currentState!.openDrawer(),
-                  child: Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        color: AppColors.white,
-                        borderRadius: BorderRadius.circular(50)),
-                    // child: Image.asset("assets/images/pic 2.png"),
+                  child: ClipOval(
+                    child: Image.asset(
+                      "assets/images/pic 2.png",
+                      scale: 1.4,
+                    ),
                   ),
                 ),
-                SizedBox(
-                  height: size.height * .01,
-                ),
-                Icon(
-                  Icons.arrow_back,
-                  size: 18,
-                  color: Colors.white,
-                )
+                // SizedBox(
+                //   height: size.height * .01,
+                // ),
+                // Icon(
+                //   Icons.arrow_back,
+                //   size: 18,
+                //   color: Colors.white,
+                // )
               ],
             ),
             Column(
@@ -94,12 +93,12 @@ class _MainScreenState extends State<MainScreen> {
                     SizedBox(
                       width: size.width * .01,
                     ),
-                    Image.asset("assets/images/doller.png")
+                    Image.asset("assets/images/Group.png")
                   ],
                 ),
                 Row(
                   children: [
-                    Image.asset("assets/images/Ellipse 2.png"),
+                    Image.asset("assets/images/Group 20.png"),
                     SizedBox(
                       width: size.width * .01,
                     ),
@@ -127,7 +126,7 @@ class _MainScreenState extends State<MainScreen> {
                     onTap: () {
                       AppRoutes.push(context, ExchangeHistory());
                     },
-                    child: Image.asset("assets/images/doller_appbar.png"))
+                    child: Image.asset("assets/images/Group 24.png"))
               ],
             )
           ],
@@ -139,54 +138,68 @@ class _MainScreenState extends State<MainScreen> {
   // ignore: non_constant_identifier_names
   Container buildSuper_leauge(Size size) {
     return Container(
+      // color: AppColors.primery_color,
       height: size.height * .85,
       width: size.width,
       child: ListView.builder(
           itemCount: notifications.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(top: 2.0, bottom: 2),
+              padding: EdgeInsets.symmetric(vertical: 10.h),
               child: Card(
                 child: Container(
-                  height: size.height * .25,
+                  height: size.height * .30,
                   width: size.width * .491,
                   child: Stack(
+                    fit: StackFit.expand,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(notifications[index].image),
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: ClipRect(
+                      Image.asset(sports[index].image, fit: BoxFit.cover),
+                      ClipRRect(
+                        // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                           child: Container(
                             color: Colors.black.withOpacity(0.5),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  sports[index].title,
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white),
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      sports[index].games,
+                                      style: GoogleFonts.openSans(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white),
+                                    ),
+                                    SizedBox(width: 5.w),
+                                    Text(
+                                      "Live Championships",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                      Positioned(
-                        top: 50.0,
-                        right: 69.0,
-                        left: 69.0,
-                        child: Text(
-                          notifications[index].title,
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
-                      ),
-                      Positioned(
-                        top: 90.0,
-                        right: 69.0,
-                        left: 69.0,
-                        child: Text(
-                          notifications[index].time.toString(),
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, color: Colors.white),
-                        ),
-                      )
                     ],
                   ),
                 ),

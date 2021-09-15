@@ -6,7 +6,7 @@ class Images {
   static const String withdraw = 'assets/images/withdrew.png';
   static const String userGuide = 'assets/images/userguide.png';
   static const String premium = 'assets/images/premium.png';
-  static const String signOut = 'assets/images/signout.png';
+  static const String signOut = 'assets/images/logout.png';
   static const String locationOn = 'assets/icons/location-on.png';
   static const String payment = 'assets/icons/payment.png';
   static const String signout = 'assets/icons/signout.png';
