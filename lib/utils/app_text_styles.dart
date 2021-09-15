@@ -21,7 +21,7 @@ Widget WavyText(String text, Color color, double size, FontWeight fontWeight) {
 
 Widget ScaleText(String text, Color color, double size, FontWeight fontWeight) {
   return DefaultTextStyle(
-    style: GoogleFonts.raleway(
+    style: TextStyle(
         fontSize: size, fontWeight: fontWeight, color: color),
     child: AnimatedTextKit(
       repeatForever: true,

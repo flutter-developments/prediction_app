@@ -4,7 +4,7 @@ class AppColors {
   static const Color primery_color = const Color(0xff343E53);
   static const Color whiteTextColor = Colors.white;
   static const Color bar_color = const Color(0xFF1A1F2A);
-  static const Color background_color = const Color(0xFF31374b);
+  static const Color background_color = const Color(0xFF343E53);
   static const Color background_color1 = const Color(0xff1A1F2A);
   static const Color golden_color = const Color(0xffC8B100);
   static const Color exchange_card__color = const Color(0xff242A3E);

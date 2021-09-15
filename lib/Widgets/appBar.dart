@@ -152,7 +152,7 @@ Container buildApp_only_title_bar(
           IconButton(
             icon: Icon(
               Icons.arrow_back,
-              size: 18.sp,
+              size: 25.sp,
               color: Colors.white,
             ),
             onPressed: () {
@@ -160,21 +160,21 @@ Container buildApp_only_title_bar(
             },
           ),
           SizedBox(
-            width: 75.w,
+            width: 50.w,
           ),
           Text(title,
               style: GoogleFonts.raleway(
                   color: Colors.white,
                   letterSpacing: 1,
                   fontSize: 30.sp,
-                  fontWeight: FontWeight.bold))
+                  fontWeight: FontWeight.w900))
         ],
       ),
     )),
   );
 }
 
-AppBar appBarWithLogoutAndSwitchRole(context, scaffoldKey) {
+AppBar appBarWithText(context, scaffoldKey) {
   return AppBar(
     elevation: 0.0,
     backgroundColor: Colors.white,

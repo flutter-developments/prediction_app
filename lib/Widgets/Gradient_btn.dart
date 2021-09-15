@@ -99,7 +99,7 @@ class GradientButton extends StatelessWidget {
       onTap: onPressed,
       child: SizedBox(
         width: 99.w,
-        height: 39.h,
+        height: 27.h,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
