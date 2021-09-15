@@ -1,22 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 //Custom TextStyles here
-final largeFontStyle = TextStyle(
-    fontSize: 18.sp,
-    letterSpacing: 1,
-    fontWeight: FontWeight.w400,
-    color: AppColors.whiteColor);
+Widget WavyText(String text, Color color, double size, FontWeight fontWeight) {
+  return DefaultTextStyle(
+    style: GoogleFonts.raleway(
+        fontSize: size, letterSpacing: 1, fontWeight: fontWeight, color: color),
+    child: AnimatedTextKit(
+      animatedTexts: [
+        WavyAnimatedText(text),
+      ],
+      isRepeatingAnimation: false,
+    ),
+  );
+}
 
-final subtitleStyle = TextStyle(
+Widget ScaleText(String text, Color color, double size, FontWeight fontWeight) {
+  return DefaultTextStyle(
+    style: GoogleFonts.raleway(
+        fontSize: size, fontWeight: fontWeight, color: color),
+    child: AnimatedTextKit(
+      repeatForever: true,
+      animatedTexts: [
+        TyperAnimatedText(text),
+      ],
+      isRepeatingAnimation: true,
+    ),
+  );
+}
+
+final subtitleStyle = GoogleFonts.raleway(
     fontSize: 18.sp, fontWeight: FontWeight.w500, color: AppColors.whiteColor);
 
-final subtitleStyle1 = TextStyle(
-    letterSpacing: 1,
-    fontSize: 15.sp,
-    fontWeight: FontWeight.w500,
-    color: AppColors.greyColor);
+final mediumwhiteStyle = GoogleFonts.raleway(
+    fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColors.whiteColor);
+
+final subtitleStyle1 = GoogleFonts.raleway(
+    fontSize: 15.sp, fontWeight: FontWeight.w500, color: AppColors.greyColor);
 
 final largetextwhiteStyle = TextStyle(
     fontSize: 45.sp, fontWeight: FontWeight.bold, color: AppColors.white);

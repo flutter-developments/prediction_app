@@ -5,6 +5,7 @@ import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
 
 class MainScreen2 extends StatefulWidget {
   @override
@@ -64,13 +65,13 @@ class _MainScreen2State extends State<MainScreen2> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Text(
-                                  notifications[index].title,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
-                                ),
+                                ScaleText(notifications[index].title,
+                                    Colors.white, 23.sp, FontWeight.bold),
+                                //   style: TextStyle(
+                                //       fontSize: 20,
+                                //       fontWeight: FontWeight.w700,
+                                //       color: Colors.white),
+                                // ),
                                 SizedBox(
                                   height: 30.h,
                                 ),

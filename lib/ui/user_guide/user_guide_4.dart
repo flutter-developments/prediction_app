@@ -24,7 +24,8 @@ class _UserGuide4State extends State<UserGuide4> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              buildApp_only_title_bar(size, context, "How To Play",AppColors.background_color),
+              buildApp_only_title_bar(
+                  size, context, "How To Play", AppColors.background_color),
               //build_userGuide(size),
               GuideContainer(
                   title:
