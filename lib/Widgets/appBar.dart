@@ -33,10 +33,11 @@ Container buildApp_bar(Size size, BuildContext context) {
           Column(
             children: [
               CircleAvatar(
-                radius: 28,
+                //backgroundImage: Image.asset("assets/image/pic 2.png"),
+                radius: 20,
                 child: Image.asset(
                   "assets/images/pic 2.png",
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
               SizedBox(
@@ -141,27 +142,17 @@ Container buildApp_only_title_bar(
     height: size.height * .095,
     width: size.width,
     decoration: BoxDecoration(
-      // boxShadow: <BoxShadow>[
-      //   BoxShadow(
-      //     color: Colors.black,
-      //     offset: Offset(7.0, 7.0),
-      //     blurRadius: 40.0,
-      //   ),
-      // ],
       color: color,
-      // borderRadius: BorderRadius.only(
-      //     bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
     ),
     child: Container(
         child: Padding(
       padding: EdgeInsets.all(8.0),
       child: Row(
-        //mainAxisAlignment: MainAxisAlignment.start,
         children: [
           IconButton(
             icon: Icon(
               Icons.arrow_back,
-              size: 18,
+              size: 18.sp,
               color: Colors.white,
             ),
             onPressed: () {
@@ -171,15 +162,12 @@ Container buildApp_only_title_bar(
           SizedBox(
             width: 75.w,
           ),
-          Align(
-            alignment: Alignment.center,
-            child: Text(title,
-                style: TextStyle(
-                    color: Colors.white,
-                    letterSpacing: 1,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600)),
-          )
+          Text(title,
+              style: GoogleFonts.raleway(
+                  color: Colors.white,
+                  letterSpacing: 1,
+                  fontSize: 30.sp,
+                  fontWeight: FontWeight.bold))
         ],
       ),
     )),

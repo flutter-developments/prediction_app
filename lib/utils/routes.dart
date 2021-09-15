@@ -6,14 +6,20 @@ class AppRoutes {
     BuildContext context,
     Widget page,
   ) async {
-    return await Navigator.of(context).push(
-      new MaterialPageRoute(builder: (context) => page),
-    );
+    return await Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.leftToRightWithFade, child: page));
   }
 
-  static void replace(BuildContext context, Widget page) {
-    Navigator.push(context,
-        PageTransition(type: PageTransitionType.leftToRight, child: page));
+  static void replace(
+    BuildContext context,
+    Widget page,
+  ) {
+    Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.leftToRightWithFade, child: page));
   }
 
   static void popUntilHome(BuildContext context) {

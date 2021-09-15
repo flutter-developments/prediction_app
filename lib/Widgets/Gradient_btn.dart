@@ -98,7 +98,7 @@ class GradientButton extends StatelessWidget {
     return OutlineGradientButton(
       onTap: onPressed,
       child: SizedBox(
-        width: 101.w,
+        width: 99.w,
         height: 39.h,
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -142,7 +142,7 @@ class RaisedGradientButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
-      height: 50.0,
+      height: 50.0.h,
       decoration: BoxDecoration(
           gradient: gradient,
           // boxShadow: [

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/utils/app_colors.dart';
@@ -43,11 +44,11 @@ class GuideContainer extends StatelessWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.center,
-                style: largeFontStyle,
+                style: subtitleStyle,
               ),
             ),
             SizedBox(
-              height: 15.h,
+              height: 21.h,
             ),
             GradientButton(title: buttonText, onPressed: onPressed),
             SizedBox(

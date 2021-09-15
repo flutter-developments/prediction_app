@@ -40,27 +40,34 @@ List<Sports> sports = [
   Sports(
       title: "Football",
       games: "3",
-      image: "assets/images/football.png"),
+      image: "assets/images/football.png",
+      onPressed:(){}),
+      
   Sports(
       title: "Golf",
       games: "4",
-      image: "assets/images/golf.png"),
+      image: "assets/images/golf.png",
+      onPressed:(){}),
   Sports(
       title: "Basketball",
       games: "3",
-      image: "assets/images/basketball.png"),
+      image: "assets/images/basketball.png",
+      onPressed:(){}),
   Sports(
       title: "Football",
       games: "3",
-      image: "assets/images/football.png"),
+      image: "assets/images/football.png",
+      onPressed:(){}),
   Sports(
       title: "Golf",
       games: "3",
-      image: "assets/images/golf.png"),
+      image: "assets/images/golf.png",
+      onPressed:(){}),
   Sports(
       title: "Basketball",
       games: "3",
-      image: "assets/images/basketball.png"),
+      image: "assets/images/basketball.png",
+      onPressed:(){}),
   
 ];
 

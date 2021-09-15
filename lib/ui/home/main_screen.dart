@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'exchange_history.dart';
@@ -165,15 +166,10 @@ class _MainScreenState extends State<MainScreen> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                Text(
-                                  sports[index].title,
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                ),
+                                ScaleText(sports[index].title, Colors.white,
+                                    23.sp, FontWeight.bold),
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 20.h,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -181,16 +177,16 @@ class _MainScreenState extends State<MainScreen> {
                                     Text(
                                       sports[index].games,
                                       style: GoogleFonts.openSans(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w500,
                                           color: Colors.white),
                                     ),
-                                    SizedBox(width: 5.w),
+                                    SizedBox(width: 3.w),
                                     Text(
                                       "Live Championships",
                                       style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w400,
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w500,
                                           color: Colors.white),
                                     ),
                                   ],
