@@ -43,7 +43,10 @@ class _AuthState extends State<Auth> {
                           TextFields.normalTextField(context,
                               color: Colors.white,
                               hintText: "Email Address",
-                              icon: Icons.email),
+                              icon: Icons.email
+                            //  width:
+                              
+                              ),
                           Center(
                             child: Text(
                               "Sign Up",
