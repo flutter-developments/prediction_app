@@ -10,8 +10,14 @@ class Auth extends StatefulWidget {
 }
 
 class _AuthState extends State<Auth> {
+  // ignore: unused_field
+  TextEditingController _emailController = TextEditingController();
+  // ignore: unused_field
+  TextEditingController _passwordController = TextEditingController();
+  // ignore: unused_field
+  TextEditingController _conformPasswordController = TextEditingController();
+
   bool isSignup = true;
-  bool isLogin = false;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -27,7 +33,7 @@ class _AuthState extends State<Auth> {
                   color: AppColors.bar_color, child: buildTransection(size)),
               isSignup == true
                   ? Container(
-                      height: size.height * .2,
+                      height: size.height * .5,
                       width: size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -36,17 +42,25 @@ class _AuthState extends State<Auth> {
                           color: AppColors.bar_color),
                       child: Column(
                         children: [
-                          // TextFields.normalTextField(context,
-                          //     color: Colors.white,
-                          //     hintText: "Email Address",
-                          //     icon: Icons.person),
-                          TextFields.normalTextField(context,
-                              color: Colors.white,
+                          SizedBox(height: size.height * .03),
+                          TextFields.emailTextField(context,
+                              controller: _emailController,
+                              validaterMsg: "Please fill email address",
                               hintText: "Email Address",
-                              icon: Icons.email
-                            //  width:
-                              
-                              ),
+                              icon: Icons.email),
+                          SizedBox(height: size.height * .03),
+                          TextFields.passwordTextField(context,
+                              controller: _passwordController,
+                              validaterMsg: "Please fill password",
+                              labelText: "Password",
+                              icon: Icons.vpn_key),
+                          SizedBox(height: size.height * .03),
+                          TextFields.passwordTextField(context,
+                              controller: _conformPasswordController,
+                              validaterMsg: "Please fill password",
+                              labelText: "Conform password",
+                              icon: Icons.vpn_key),
+                          SizedBox(height: size.height * .03),
                           Center(
                             child: Text(
                               "Sign Up",
@@ -57,18 +71,35 @@ class _AuthState extends State<Auth> {
                       ),
                     )
                   : Container(
-                      height: size.height * .2,
+                      height: size.height * .5,
                       width: size.width,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(10.0),
                           ),
                           color: AppColors.bar_color),
-                      child: Center(
-                        child: Text(
-                          "SignIn",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                      child: Column(
+                        children: [
+                          SizedBox(height: size.height * .1),
+                          TextFields.emailTextField(context,
+                              controller: _emailController,
+                              validaterMsg: "Please fill email address",
+                              hintText: "Email Address",
+                              icon: Icons.email),
+                          SizedBox(height: size.height * .03),
+                          TextFields.passwordTextField(context,
+                              controller: _passwordController,
+                              validaterMsg: "Please fill password",
+                              labelText: "Password",
+                              icon: Icons.vpn_key),
+                          SizedBox(height: size.height * .03),
+                          Center(
+                            child: Text(
+                              "Sign in",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
                       ),
                     )
             ],
