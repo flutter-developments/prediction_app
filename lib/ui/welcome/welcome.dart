@@ -28,8 +28,13 @@ class _WelcomeState extends State<Welcome> {
               Padding(
                 padding: EdgeInsets.only(top: 50.h, bottom: 35.w),
                 child: Center(
-                    child: WavyText("Welcome User!", AppColors.white, 40.sp,
-                        FontWeight.w900)),
+                    child: Text(
+                  "Welcome User!",
+                  style: TextStyle(
+                      color: AppColors.white,
+                      fontSize: 40.sp,
+                      fontWeight: FontWeight.w900),
+                )),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,

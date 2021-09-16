@@ -4,6 +4,7 @@
 // import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 
 class TextFields {
@@ -48,7 +49,7 @@ class TextFields {
 
   static Widget normalTextField(
     BuildContext context, {
-    required IconData icon,
+    IconData? icon,
     String? hintText,
     TextEditingController? controller,
     bool readOnly = false,
@@ -63,26 +64,25 @@ class TextFields {
         labelText: hintText,
         // labelStyle: TextStyle(
         //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
-        labelStyle: TextStyle(
+        labelStyle: GoogleFonts.raleway(
             color: AppColors.textColor,
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: FontWeight.w600),
         filled: true,
         fillColor: Color(0xFF50566C),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+          borderRadius: BorderRadius.all(
+            Radius.circular(15.0),
+          ),
+          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.all(Radius.circular(15.0)),
           //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
         ),
-        prefixIcon: Icon(
-          icon,
-          color: Colors.grey,
-        ),
+
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-      ),
+       prefixIcon: Icon(icon,color:AppColors.textColor,)),
     );
   }
 }
