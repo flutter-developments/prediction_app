@@ -94,7 +94,10 @@ class _UserGuide2State extends State<UserGuide2> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              buildApp_only_title_bar(size, context, "How To Play",AppColors.background_color),
+              appBarWithText(size, context, "How To Play", AppColors.background_color,
+                    () {
+                  Navigator.of(context).pop();
+                }),
               GuideContainer(
                   title:
                       "Select any upcoming game to make\nyour predictions",

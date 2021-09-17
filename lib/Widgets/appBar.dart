@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/ui/home/exchange_history.dart';
+import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
@@ -117,7 +118,7 @@ Container buildApp_bar(Size size, BuildContext context) {
               SizedBox(height: 10.h),
               GestureDetector(
                   onTap: () {
-                    AppRoutes.push(context, ExchangeHistory());
+                    AppRoutes.push(context, ExchangeScreen1());
                   },
                   child: InkWell(
                     child: CircleAvatar(
@@ -136,70 +137,60 @@ Container buildApp_bar(Size size, BuildContext context) {
 }
 
 // ignore: non_constant_identifier_names
-Container buildApp_only_title_bar(
-    Size size, BuildContext context, String title, Color color) {
-  return Container(
-    height: size.height * .095,
-    width: size.width,
-    decoration: BoxDecoration(
-      color: color,
-    ),
-    child: Container(
-        child: Padding(
-      padding: EdgeInsets.all(8.0),
-      child: Row(
-        children: [
-          IconButton(
-            icon: Icon(
-              Icons.arrow_back,
-              size: 25.sp,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              AppRoutes.pop(context);
-            },
-          ),
-          SizedBox(
-            width: 50.w,
-          ),
-          Text(title,
-              style: GoogleFonts.raleway(
-                  color: Colors.white,
-                  letterSpacing: 1,
-                  fontSize: 30.sp,
-                  fontWeight: FontWeight.w900))
-        ],
-      ),
-    )),
-  );
-}
+// Container buildApp_only_title_bar(
+//     Size size, BuildContext context, String title, Color color) {
+//   return Container(
+//     height: size.height * .095,
+//     width: size.width,
+//     decoration: BoxDecoration(
+//       color: color,
+//     ),
+//     child: Container(
+//         child: Padding(
+//       padding: EdgeInsets.all(8.0),
+//       child: Row(
+//         children: [
+//           IconButton(
+//             icon: Icon(
+//               Icons.arrow_back,
+//               size: 25.sp,
+//               color: Colors.white,
+//             ),
+//             onPressed: () {
+//               AppRoutes.pop(context);
+//             },
+//           ),
+//           SizedBox(
+//             width: 50.w,
+//           ),
+//           Text(title,
+//               style: GoogleFonts.raleway(
+//                   color: Colors.white,
+//                   letterSpacing: 1,
+//                   fontSize: 30.sp,
+//                   fontWeight: FontWeight.w900))
+//         ],
+//       ),
+//     )),
+//   );
+// }
 
-AppBar appBarWithText(context, scaffoldKey) {
+AppBar appBarWithText(Size size, BuildContext context, String title,
+    Color color, VoidCallback onPressed) {
   return AppBar(
-    elevation: 0.0,
-    backgroundColor: Colors.white,
-    leading: InkWell(
-      onTap: () {
-        scaffoldKey.currentState.openDrawer();
-      },
-      child: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(blurRadius: 10, spreadRadius: 5, color: Colors.black12)
-          ],
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(50),
-            topRight: Radius.circular(50),
-          ),
-        ),
-        child: Image.asset(
-          'assets/appIcons/menu.png',
-          width: 50,
-          height: 50,
-        ),
+    title: Text(
+      title,
+      style: GoogleFonts.raleway(
+        fontSize: 20.sp,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
       ),
     ),
+    centerTitle: true,
+    elevation: 0.0,
+    backgroundColor: color,
+    leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: onPressed),
+    
   );
 }
 

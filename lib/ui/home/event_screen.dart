@@ -6,6 +6,7 @@ import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/custom_appbar.dart';
 import 'package:prediction_app/ui/home/notification.dart';
+import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:prediction_app/utils/routes.dart';
 
 import 'exchange_history.dart';
+import 'exchange_screen1.dart';
 
 class EventScreen extends StatefulWidget {
   @override
@@ -41,6 +43,7 @@ class _EventScreenState extends State<EventScreen> {
               height: 30.h,
             ),
             buildGames(size),
+            SizedBox(height: 30.h,)
           ],
         )),
       ),
@@ -144,7 +147,7 @@ class _EventScreenState extends State<EventScreen> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, ExchangeHistory());
+                        AppRoutes.push(context, ExchangeScreen1());
                       },
                       child: Image.asset("assets/images/Group 24.png"))
                 ],
@@ -173,7 +176,8 @@ class _EventScreenState extends State<EventScreen> {
                         child: Padding(
                   padding: EdgeInsets.only(
                       left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
-                  child: Card(
+                  child:
+                   Card(
                     child: Container(
                       height: size.height * .28,
                       width: size.width * .485,
@@ -245,7 +249,9 @@ class _EventScreenState extends State<EventScreen> {
                                         Color(0XFFD28D27),
                                       ],
                                     ),
-                                    onPressed: () {}),
+                                    onPressed: () {
+                                      AppRoutes.push(context, PredictionScreen());
+                                    }),
                                 Text(
                                   "Barcalona",
                                   style: mediumwhiteStyle,
@@ -262,12 +268,16 @@ class _EventScreenState extends State<EventScreen> {
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffB6B6B6)),
-                          )
+                          ),
+                          
                         ],
                       ),
                     ),
                     color: AppColors.background_color1,
                   ),
+               
+               
+               
                 ))));
           }),
     );

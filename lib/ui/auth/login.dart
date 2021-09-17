@@ -2,16 +2,18 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
-import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
-import 'package:prediction_app/ui/payment/payment.dart';
+import 'package:prediction_app/ui/user_guide/user_guide_4.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
 
 class Auth extends StatefulWidget {
+  final bool isSignup;
+
+  const Auth({Key? key, required this.isSignup}) : super(key: key);
   @override
   _AuthState createState() => _AuthState();
 }
@@ -25,6 +27,11 @@ class _AuthState extends State<Auth> {
   TextEditingController _conformPasswordController = TextEditingController();
 
   bool isSignup = true;
+  void initState() {
+    super.initState();
+    isSignup = widget.isSignup;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -42,11 +49,11 @@ class _AuthState extends State<Auth> {
                   child: Container(
                     height: 190.h,
                     width: size.width * 0.36,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(10.0),
-                        ),
-                        color: AppColors.background_color1),
+                    // decoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.only(
+                    //       bottomLeft: Radius.circular(10.0),
+                    //     ),
+                    //     color: AppColors.background_color1),
                     child: Image.asset(
                       "assets/images/logo.png",
                       fit: BoxFit.cover,
@@ -131,6 +138,11 @@ class _AuthState extends State<Auth> {
                                       width: 5.w,
                                     ),
                                     GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            isSignup = false;
+                                          });
+                                        },
                                         child: Text("Sign In",
                                             style: GoogleFonts.raleway(
                                                 fontSize: 15.sp,
@@ -158,7 +170,9 @@ class _AuthState extends State<Auth> {
                                 Color(0XFF8787F2),
                               ],
                             ),
-                            onPressed: () {}),
+                            onPressed: () {
+                              AppRoutes.push(context, UserGuide4());
+                            }),
                         SizedBox(
                           height: 40.h,
                         )
@@ -229,6 +243,11 @@ class _AuthState extends State<Auth> {
                                       width: 5.w,
                                     ),
                                     GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            isSignup = true;
+                                          });
+                                        },
                                         child: Text("Sign Up",
                                             style: GoogleFonts.raleway(
                                                 fontSize: 15.sp,
@@ -257,8 +276,7 @@ class _AuthState extends State<Auth> {
                               ],
                             ),
                             onPressed: () {
-
-                              AppRoutes.push(context, MainScreen());
+                              AppRoutes.push(context, UserGuide4());
                             }),
                         SizedBox(
                           height: 40.h,

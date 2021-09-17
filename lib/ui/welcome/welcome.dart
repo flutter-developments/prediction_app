@@ -84,7 +84,9 @@ class _WelcomeState extends State<Welcome> {
                       alignment: Alignment.bottomRight,
                       child: GradientButton(
                         title: "Skip",
-                        onPressed: () {},
+                        onPressed: () {
+                          AppRoutes.push(context, MainScreen());
+                        },
                       ),
                     ),
                   )

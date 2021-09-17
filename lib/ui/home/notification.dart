@@ -19,108 +19,119 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+            height: size.height,
             color: AppColors.background_color,
-            child: ListView(
-              children: [
-                buildApp_only_title_bar(size, context, "Notifications",
-                    AppColors.background_color1),
-                build_notifications(size),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  appBarWithText(size, context, "Notifications",
+                      AppColors.background_color1, () {
+                    Navigator.of(context).pop();
+                  }),
+                  build_notifications(size, context),
+                  SizedBox(
+                    height: 30,
+                  )
+                ],
+              ),
             )),
       ),
     );
   }
 
-  build_notifications(Size size) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
-      child: Container(
-        height: size.height * .97,
-        width: size.width,
-        child: ListView.builder(
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              return AnimationConfiguration.staggeredList(
-                position: index,
-                duration: const Duration(milliseconds: 1000),
-                child: SlideAnimation(
-                  verticalOffset: 50.0,
-                  child: FadeInAnimation(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: 20.0.h,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColors.background_color1),
-                        height: 170.h,
-                        width: size.width * .491,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                decoration: BoxDecoration(
+  // ignore: non_constant_identifier_names
+  Widget build_notifications(Size size, BuildContext context) => Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 15.w,
+        ),
+        child: Container(
+          height: size.height * 0.97,
+          width: size.width,
+          child: ListView.builder(
+              shrinkWrap: false,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return AnimationConfiguration.staggeredList(
+                  position: index,
+                  duration: const Duration(milliseconds: 1000),
+                  child: SlideAnimation(
+                    verticalOffset: 50.0,
+                    child: FadeInAnimation(
+                      child: Padding(
+                        padding: EdgeInsets.only(
+                          top: 20.0.h,
+                        ),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColors.background_color1),
+                          height: 170.h,
+                          width: size.width * .491,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(10),
+                                          topLeft: Radius.circular(10)),
+                                      color: AppColors.background_color1),
+                                  child: Image.asset(
+                                    "assets/images/notification.png",
+                                    scale: 1.5,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Container(
+                                  decoration: BoxDecoration(
                                     borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(10),
-                                        topLeft: Radius.circular(10)),
-                                    color: AppColors.background_color1),
-                                child: Image.asset(
-                                  "assets/images/notification.png",
-                                  scale: 1.5,
+                                        bottomRight: Radius.circular(10),
+                                        topRight: Radius.circular(10)),
+                                    color: Color(0xFF242A3E),
+                                  ),
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      // WavyText("Notification $index",
+                                      //     Colors.white, 18.sp, FontWeight.w600),
+                                      Text(
+                                        "Notification $index",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18.sp,
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      SizedBox(
+                                        height: 10.h,
+                                      ),
+                                      Text(
+                                        "10:32 - Aug 12, 2021",
+                                        style: GoogleFonts.openSans(
+                                            textStyle: subtitleStyle1),
+                                      ),
+                                      SizedBox(height: 20.h),
+                                      Text(
+                                        "Description",
+                                        style: smallwhiteStyle,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(10),
-                                      topRight: Radius.circular(10)),
-                                  color: Color(0xFF242A3E),
-                                ),
-                                padding: EdgeInsets.only(left: 10),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    // WavyText("Notification $index",
-                                    //     Colors.white, 18.sp, FontWeight.w600),
-                                    Text(
-                                      "Notification $index",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18.sp,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                    SizedBox(
-                                      height: 10.h,
-                                    ),
-                                    Text(
-                                      "10:32 - Aug 12, 2021",
-                                      style: GoogleFonts.openSans(
-                                          textStyle: subtitleStyle1),
-                                    ),
-                                    SizedBox(height: 20.h),
-                                    Text(
-                                      "Description",
-                                      style: smallwhiteStyle,
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }),
-      ),
-    );
-  }
+                );
+              }),
+        ),
+      );
 }

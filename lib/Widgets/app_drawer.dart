@@ -1,10 +1,14 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/model/drawer_list_model.dart';
+import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/ui/home/prediction_screen.dart';
+import 'package:prediction_app/ui/home/premium_upgrade.dart';
+import 'package:prediction_app/ui/home/withdraw_email.dart';
 import 'package:prediction_app/ui/user_guide/user_guide1.dart';
+import 'package:prediction_app/ui/user_guide/user_guide_4.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/images.dart';
 import 'package:prediction_app/utils/routes.dart';
@@ -22,7 +26,7 @@ List<DrawerListModel> drawerContent = [
   ),
   DrawerListModel(
     icon: Images.exchnage,
-    screen: UserGuide(),
+    screen: ExchangeHistory(),
     title: 'Exchange History',
   ),
   DrawerListModel(
@@ -32,17 +36,17 @@ List<DrawerListModel> drawerContent = [
   ),
   DrawerListModel(
     icon: Images.withdraw,
-    screen: UserGuide(),
+    screen: WithDrawEmail(),
     title: 'Withdrawal',
   ),
   DrawerListModel(
     icon: Images.userGuide,
-    screen: UserGuide(),
+    screen: UserGuide4(),
     title: 'User Guide',
   ),
   DrawerListModel(
     icon: Images.premium,
-    screen: UserGuide(),
+    screen: PremiumUpgrade(),
     title: 'Upgrade to Premium',
   ),
   DrawerListModel(
@@ -71,7 +75,6 @@ class DrawerFull extends PreferredSize {
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-
                           children: [
                             GestureDetector(
                               onTap: () => Navigator.pop(context),
@@ -95,7 +98,8 @@ class DrawerFull extends PreferredSize {
                                 ),
                                 child: ListTile(
                                   leading: ClipOval(
-                                    child: Image.asset("assets/images/pic 2.png"),
+                                    child:
+                                        Image.asset("assets/images/pic 2.png"),
                                   ),
                                   title: Text(
                                     "User ABCD",
@@ -108,7 +112,6 @@ class DrawerFull extends PreferredSize {
                                 ),
                               ),
                             ),
-                           
                             SizedBox(
                               height: 20,
                             ),

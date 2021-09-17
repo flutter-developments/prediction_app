@@ -8,6 +8,7 @@ import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/custom_appbar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/ui/home/notification.dart';
+import 'package:prediction_app/ui/home/open_prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,6 +18,7 @@ import 'package:prediction_app/utils/routes.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 import 'exchange_history.dart';
+import 'exchange_screen1.dart';
 
 class PredictionScreen extends StatefulWidget {
   @override
@@ -25,6 +27,12 @@ class PredictionScreen extends StatefulWidget {
 
 class _PredictionScreenState extends State<PredictionScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  var _strokeOrangeWidth = 3.0;
+  // ignore: non_constant_identifier_names
+  var _stroke_purpel_Width = 3.0;
+  List goals = [30.0, 3.0, 3.0, 3.0];
+  // ignore: unused_field
+  List _readCard = [30.0, 3.0, 3.0, 3.0];
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,23 +44,45 @@ class _PredictionScreenState extends State<PredictionScreen> {
         body: Container(
             child: ListView(
           children: [
-             buildappbarContainer(size, context),
+            buildappbarContainer(size, context),
             SizedBox(
               height: 30.h,
             ),
-              buildscreen(size),
+            buildscreen(size),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
+              child: buildTeam(size),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 120.w, vertical: 20.h),
+              child: RaisedGradientButton(
+                  width: 120,
+                  height: 30,
+                  child: Text(
+                    "Set Prediction",
+                    style: mediumwhiteStyle,
+                  ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0XFFDD7EE0).withOpacity(0.9),
+                      Color(0XFF8787F2),
+                    ],
+                  ),
+                  onPressed: () {
+                    AppRoutes.push(context, OpenPredictionScreen());
+                  }),
+            ),
           ],
         )),
       ),
     );
   }
 
-
   Container buildscreen(
     Size size,
   ) {
     return Container(
-      height: size.height * .85,
+      height: size.height * .65,
       width: size.width,
       color: AppColors.primery_color,
       child: Column(
@@ -150,7 +180,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   startAngle: 180.0,
                   radius: 80.0,
                   animation: true,
-                  animationDuration: 1200,
+                  animationDuration: 1100,
                   lineWidth: 5.0,
                   percent: 0.32,
                   center: new Text(
@@ -318,7 +348,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, ExchangeHistory());
+                        AppRoutes.push(context, ExchangeScreen1());
                       },
                       child: Image.asset("assets/images/Group 24.png"))
                 ],
@@ -330,95 +360,342 @@ class _PredictionScreenState extends State<PredictionScreen> {
     );
   }
 
-// }
-//     UnicornOutlineButton(
-//               strokeWidth: 2,
-//               radius: 24,
-//               gradient: LinearGradient(
-//                 colors: [AppColors.gradiantColor1, AppColors.gradiantColor2],
-//                 begin: Alignment.centerLeft,
-//                 end: Alignment.centerRight,
-//               ),
-//               child: Row(
-//                 children: [
-//                   Container(
-//                       constraints:
-//                           BoxConstraints(minWidth: 210.w, minHeight: 50),
-//                       decoration: BoxDecoration(
-//                         color: Colors.white,
-//                         borderRadius: BorderRadius.only(
-//                           topLeft: Radius.circular(25.0),
-//                           bottomLeft: Radius.circular(25.0),
-//                         ),
-//                       ),
-//                       child: Center(
-//                           child: Text('OMG', style: TextStyle(fontSize: 16)))),
-//                   Container(
-//                       constraints:
-//                           BoxConstraints(minWidth: 200.w, minHeight: 50),
-//                       decoration: BoxDecoration(
-//                         color: Colors.pink,
-//                         borderRadius: BorderRadius.only(
-//                           topRight: Radius.circular(20.0),
-//                           bottomRight: Radius.circular(20.0),
-//                         ),
-//                       ),
-//                       child: Center(
-//                           child: Text('OMG', style: TextStyle(fontSize: 16)))),
-//                   // Text('OMG', style: TextStyle(fontSize: 16)),
-//                 ],
-//               ),
-//               onPressed: () {},
-//             ),
+  Column buildTeam(Size size) {
+    return Column(
+      children: [
+        Card(
+          child: Container(
+            height: size.height * .18,
+            width: size.width,
+            decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    spreadRadius: 5,
+                    offset: Offset(5, 5),
+                    blurRadius: 2.0,
+                    color: AppColors.background_color1,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.background_color1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
+                  child: Text(
+                    "Which Team Will Win",
+                    style: titlegreyStyle,
+                  ),
+                ),
+                //league pictures row
+                SizedBox(height: 30.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    buildOutlineGradientButton(),
+                    buildPurpelOutlineGradiant(),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          color: AppColors.background_color1,
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Card(
+          child: Container(
+            height: size.height * .23,
+            width: size.width,
+            decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    spreadRadius: 5,
+                    offset: Offset(5, 5),
+                    blurRadius: 2.0,
+                    color: AppColors.background_color1,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.background_color1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
+                  child: Text(
+                    "Who will score 2 Goals?",
+                    style: titlegreyStyle,
+                  ),
+                ),
+                //league pictures row
+                SizedBox(height: 30.h),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildOutline(),
+                        buildPurpel(),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildOutline1(),
+                        buildPurpel1(),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          color: AppColors.background_color1,
+        ),
+        SizedBox(
+          height: 30,
+        ),
+        Card(
+          child: Container(
+            height: size.height * .23,
+            width: size.width,
+            decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  BoxShadow(
+                    spreadRadius: 5,
+                    offset: Offset(5, 5),
+                    blurRadius: 2.0,
+                    color: AppColors.background_color1,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+                color: AppColors.background_color1),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
+                  child: Text(
+                    "Who will get a Red Card?",
+                    style: titlegreyStyle,
+                  ),
+                ),
+                //league pictures row
+                SizedBox(height: 30.h),
+                Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildOutline(),
+                        buildPurpel(),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        buildOutline1(),
+                        buildPurpel1(),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          color: AppColors.background_color1,
+        ),
+      ],
+    );
+  }
+
   OutlineGradientButton buildOutlineGradientButton() {
     return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          _strokeOrangeWidth = 30.0;
+          _stroke_purpel_Width = 3.0;
+        });
+      },
       child: Container(
-        constraints: BoxConstraints(maxWidth: 300, maxHeight: 50),
-        height: 50,
-        // alignment: Alignment.center,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.gradiantColor1, AppColors.gradiantColor2],
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
+        width: 110,
+        height: 25,
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
+          child: Center(
+            child: Text(
+              'R. Madrid (1.3)',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              constraints: BoxConstraints(maxWidth: 150, maxHeight: 50),
-              height: 50,
-              // alignment: Alignment.center,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [AppColors.gradiantColor1, AppColors.gradiantColor2],
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                ),
-              ),
-              child: Center(
-                child: Text('Enter further widgets here'),
-              ),
-            ),
-            Container(
-              constraints: BoxConstraints(maxWidth: 150, maxHeight: 50),
-              height: 50,
-              // alignment: Alignment.center,
-              decoration: BoxDecoration(color: AppColors.primery_color),
-              child: Center(
-                child: Text('Enter further widgets here'),
-              ),
-            ),
-          ],
         ),
       ),
       gradient: LinearGradient(
-        colors: [AppColors.gradiantColor1, AppColors.gradiantColor2],
-        begin: Alignment.centerLeft,
-        end: Alignment.centerRight,
+        colors: [
+          Color(0xffBB306A),
+          Color(0XFFD28D27),
+        ],
       ),
-      strokeWidth: 10.5,
-      radius: Radius.circular(10),
+      strokeWidth: _strokeOrangeWidth,
+      radius: Radius.circular(30),
+    );
+  }
+
+  OutlineGradientButton buildPurpelOutlineGradiant() {
+    return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          _strokeOrangeWidth = 3.0;
+          _stroke_purpel_Width = 30.0;
+        });
+      },
+      child: Container(
+        width: 110,
+        height: 25,
+        child: Container(
+          child: Center(
+            child: Text(
+              'Barca (0.87)',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0xff0AA46C),
+          Color(0XFF3BA2DC),
+        ],
+      ),
+      strokeWidth: _stroke_purpel_Width,
+      radius: Radius.circular(30),
+    );
+  }
+
+  OutlineGradientButton buildOutline1() {
+    return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          goals = [30.0, 3.0, 3.0, 3.0];
+        });
+      },
+      child: Container(
+        width: 110,
+        height: 25,
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
+          child: Center(
+            child: Text(
+              'Ronaldo(1.3)',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0xffBB306A),
+          Color(0XFFD28D27),
+        ],
+      ),
+      strokeWidth: goals[0],
+      radius: Radius.circular(30),
+    );
+  }
+
+  OutlineGradientButton buildPurpel1() {
+    return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          goals = [3.0, 30.0, 3.0, 3.0];
+        });
+      },
+      child: Container(
+        width: 110,
+        height: 25,
+        child: Container(
+          child: Center(
+            child: Text(
+              'Messi (0.87)',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0xff0AA46C),
+          Color(0XFF3BA2DC),
+        ],
+      ),
+      strokeWidth: goals[1],
+      radius: Radius.circular(30),
+    );
+  }
+
+  OutlineGradientButton buildOutline() {
+    return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          goals = [3.0, 3.0, 30.0, 3.0];
+        });
+      },
+      child: Container(
+        width: 110,
+        height: 25,
+        child: Container(
+          constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
+          child: Center(
+            child: Text(
+              'Ronaldo(1.3)',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0xffBB306A),
+          Color(0XFFD28D27),
+        ],
+      ),
+      strokeWidth: goals[2],
+      radius: Radius.circular(30),
+    );
+  }
+
+  OutlineGradientButton buildPurpel() {
+    return OutlineGradientButton(
+      onTap: () {
+        setState(() {
+          goals = [3.0, 3.0, 3.0, 30.0];
+        });
+      },
+      child: Container(
+        width: 110,
+        height: 25,
+        child: Container(
+          child: Center(
+            child: Text(
+              'Messi (0.87)',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+      ),
+      gradient: LinearGradient(
+        colors: [
+          Color(0xff0AA46C),
+          Color(0XFF3BA2DC),
+        ],
+      ),
+      strokeWidth: goals[3],
+      radius: Radius.circular(30),
     );
   }
 }

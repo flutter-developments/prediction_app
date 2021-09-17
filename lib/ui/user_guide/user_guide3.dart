@@ -22,8 +22,10 @@ class _UserGuide3State extends State<UserGuide3> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              buildApp_only_title_bar(
-                  size, context, "How To Play", AppColors.background_color),
+              appBarWithText(size, context, "How To Play", AppColors.background_color,
+                    () {
+                  Navigator.of(context).pop();
+                }),
               //build_userGuide(size),
               GuideContainer(
                   title:
