@@ -4,6 +4,7 @@
 // import 'package:google_fonts/google_fonts.dart';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 
 class TextFields {
@@ -55,52 +56,83 @@ class TextFields {
     );
   }
 
+ static Widget normalTextField(
+    BuildContext context, {
+    IconData? icon,
+    String? hintText,
+    TextEditingController? controller,
+    bool readOnly = false,
+    String? emptyValidationMessage,
+    TextInputType? inputType,
+    int? maxLength,
+    required Color color,
+  }) {
+    return TextFormField(
+      decoration: InputDecoration(
+        // hintText: hintText,
+        labelText: hintText,
+        // labelStyle: TextStyle(
+        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+        labelStyle: GoogleFonts.raleway(
+            color: AppColors.textColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w600),
+        filled: true,
+        fillColor: Color(0xFF50566C),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15.0),
+          ),
+          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+        ),
+
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+       prefixIcon: Icon(icon,color:AppColors.textColor,)),
+    );
+  }
 
 
 
   static Widget passwordTextField(
     BuildContext context, {
-    required String validaterMsg,
-    required IconData icon,
-    required TextEditingController controller,
-    String? labelText,
+    IconData? icon,
+    String? hintText,
+    TextEditingController? controller,
     bool readOnly = false,
     String? emptyValidationMessage,
     TextInputType? inputType,
     
    
   }) {
-    return Container(
-      width: MediaQuery.of(context).size.width * .9,
-      child: TextFormField(
-        controller:controller ,
-        validator: (value) {
-        return (value!.isEmpty) ? validaterMsg : null;
-      },
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(color: AppColors.textColor),
-        decoration: InputDecoration(
-          labelText: labelText,
-          labelStyle: TextStyle(
-              color: AppColors.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.w400),
-          filled: true,
-          fillColor: Color(0xFF50566C),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-            borderSide: BorderSide(color: Color(0xFF50566C), width: 2),
+    return TextFormField(
+      decoration: InputDecoration(
+        // hintText: hintText,
+        labelText: hintText,
+        // labelStyle: TextStyle(
+        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+        labelStyle: GoogleFonts.raleway(
+            color: AppColors.textColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w600),
+        filled: true,
+        fillColor: Color(0xFF50566C),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15.0),
           ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          ),
-          prefixIcon: Icon(
-            icon,
-            color: Colors.grey,
-          ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
         ),
-      ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+          //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+        ),
+
+        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+       prefixIcon: Icon(icon,color:AppColors.textColor,)),
     );
   }
 }

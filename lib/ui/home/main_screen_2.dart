@@ -24,32 +24,39 @@ class _MainScreen2State extends State<MainScreen2> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      key: _key,
-      drawer: DrawerFull(context, MediaQuery.of(context).size),
-      // appBar: AppBar(
-      //   title: Text("title"),
-      // ),
-      body: Container(
-          child: Column(
-        children: [
-          buildContainer(size, context),
-          buildSuper_leauge(size),
-        ],
-      )),
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: AppColors.background_color,
+        key: _key,
+        drawer: DrawerFull(context, MediaQuery.of(context).size),
+        // appBar: AppBar(
+        //   title: Text("title"),
+        // ),
+        body: Container(
+            child: ListView(
+          children: [
+            buildContainer(size, context),
+            SizedBox(
+              height: 30.h,
+            ),
+            buildSuper_leauge(size),
+          ],
+        )),
+      ),
     );
   }
 
   Container buildContainer(Size size, BuildContext context) {
     return Container(
-      height: size.height * .136,
+      height: size.height * .150,
       width: size.width,
       decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: Colors.black,
+              spreadRadius: 10,
               offset: Offset(7.0, 7.0),
-              blurRadius: 40.0,
+              blurRadius: 10.0,
+              color: AppColors.background_color1,
             ),
           ],
           color: AppColors.primery_color,
@@ -58,7 +65,7 @@ class _MainScreen2State extends State<MainScreen2> {
               bottomRight: Radius.circular(10))),
       child: Container(
           child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -73,19 +80,18 @@ class _MainScreen2State extends State<MainScreen2> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: size.height * .01,
-                ),
                 GestureDetector(
-                  onTap: () {
-                    AppRoutes.push(context, HomeScreen());
-                  },
-                  child: Icon(
-                    Icons.arrow_back,
-                    size: 18,
-                    color: Colors.white,
-                  ),
-                )
+                    onTap: () {
+                      AppRoutes.push(context, HomeScreen());
+                    },
+                    child: IconButton(
+                      icon: Icon(Icons.arrow_back),
+                      color: Colors.white,
+                      iconSize: 20.sp,
+                      onPressed: () {
+                        AppRoutes.pop(context);
+                      },
+                    ))
               ],
             ),
             Column(
@@ -144,7 +150,7 @@ class _MainScreen2State extends State<MainScreen2> {
       )),
     );
   }
-
+//main body card
   // ignore: non_constant_identifier_names
   Container buildSuper_leauge(Size size) {
     return Container(

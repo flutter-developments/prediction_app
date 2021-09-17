@@ -86,15 +86,15 @@ class _NotificationsState extends State<Notifications> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    WavyText("Notification $index",
-                                        Colors.white, 18.sp, FontWeight.w600),
-                                    // Text(
-                                    //   "Notification $index",
-                                    //   style: TextStyle(
-                                    //       color: Colors.white,
-                                    //       fontSize: 18.sp,
-                                    //       fontWeight: FontWeight.w600),
-                                    // ),
+                                    // WavyText("Notification $index",
+                                    //     Colors.white, 18.sp, FontWeight.w600),
+                                    Text(
+                                      "Notification $index",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
                                     SizedBox(
                                       height: 10.h,
                                     ),

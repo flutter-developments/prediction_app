@@ -1,8 +1,15 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
+import 'package:prediction_app/ui/home/main_screen.dart';
+import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
+import 'package:prediction_app/utils/routes.dart';
 
 class Auth extends StatefulWidget {
   @override
@@ -26,81 +33,237 @@ class _AuthState extends State<Auth> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              buildApp_only_title_bar(
-                  size, context, "Notifications", AppColors.background_color),
               SizedBox(height: 10),
+              Container(
+                height: size.height * .30,
+                width: size.width,
+                decoration: BoxDecoration(color: AppColors.primery_color),
+                child: Center(
+                  child: Container(
+                    height: 190.h,
+                    width: size.width * 0.36,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10.0),
+                        ),
+                        color: AppColors.background_color1),
+                    child: Image.asset(
+                      "assets/images/logo.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
               Container(
                   color: AppColors.bar_color, child: buildTransection(size)),
               isSignup == true
-                  ? Container(
-                      height: size.height * .5,
-                      width: size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(10.0),
+                  ? Column(
+                      children: [
+                        Container(
+                          height: size.height * .65,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                              ),
+                              color: AppColors.bar_color),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 35.w),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 80.h,
+                                ),
+                                TextFields.normalTextField(context,
+                                    color: Colors.white,
+                                    hintText: "Email Address",
+                                    icon: Icons.email),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                TextFields.normalTextField(context,
+                                    color: Colors.white,
+                                    hintText: "Password",
+                                    icon: Icons.vpn_key),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                TextFields.normalTextField(context,
+                                    color: Colors.white,
+                                    hintText: "Confirm Password",
+                                    icon: Icons.vpn_key),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Text(
+                                  "OR Sign Up With",
+                                  style: GoogleFonts.raleway(
+                                      fontSize: 15.sp,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColors.whiteColor),
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    GestureDetector(
+                                        child: Image.asset(
+                                            "assets/images/google.png")),
+                                    GestureDetector(
+                                        child:
+                                            Image.asset("assets/images/fb.png"))
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Already have an account ?",
+                                      style: smallwhiteStyle,
+                                    ),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    GestureDetector(
+                                        child: Text("Sign In",
+                                            style: GoogleFonts.raleway(
+                                                fontSize: 15.sp,
+                                                color: AppColors.gradiantColor1,
+                                                fontWeight: FontWeight.w700))),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          color: AppColors.bar_color),
-                      child: Column(
-                        children: [
-                          SizedBox(height: size.height * .03),
-                          TextFields.emailTextField(context,
-                              controller: _emailController,
-                              validaterMsg: "Please fill email address",
-                              hintText: "Email Address",
-                              icon: Icons.email),
-                          SizedBox(height: size.height * .03),
-                          TextFields.passwordTextField(context,
-                              controller: _passwordController,
-                              validaterMsg: "Please fill password",
-                              labelText: "Password",
-                              icon: Icons.vpn_key),
-                          SizedBox(height: size.height * .03),
-                          TextFields.passwordTextField(context,
-                              controller: _conformPasswordController,
-                              validaterMsg: "Please fill password",
-                              labelText: "Conform password",
-                              icon: Icons.vpn_key),
-                          SizedBox(height: size.height * .03),
-                          Center(
+                        ),
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        RaisedGradientButton(
+                            width: 120,
+                            height: 30,
                             child: Text(
                               "Sign Up",
-                              style: TextStyle(color: Colors.white),
+                              style: mediumwhiteStyle,
                             ),
-                          ),
-                        ],
-                      ),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0XFFDD7EE0).withOpacity(0.9),
+                                Color(0XFF8787F2),
+                              ],
+                            ),
+                            onPressed: () {}),
+                        SizedBox(
+                          height: 40.h,
+                        )
+                      ],
                     )
-                  : Container(
-                      height: size.height * .5,
-                      width: size.width,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(10.0),
-                          ),
-                          color: AppColors.bar_color),
-                      child: Column(
-                        children: [
-                          SizedBox(height: size.height * .1),
-                          TextFields.emailTextField(context,
-                              controller: _emailController,
-                              validaterMsg: "Please fill email address",
-                              hintText: "Email Address",
-                              icon: Icons.email),
-                          SizedBox(height: size.height * .03),
-                          TextFields.passwordTextField(context,
-                              controller: _passwordController,
-                              validaterMsg: "Please fill password",
-                              labelText: "Password",
-                              icon: Icons.vpn_key),
-                          SizedBox(height: size.height * .03),
-                          Center(
-                            child: Text(
-                              "Sign in",
-                              style: TextStyle(color: Colors.white),
+                  : Column(
+                      children: [
+                        Container(
+                          height: size.height * .55,
+                          width: size.width,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(10.0),
+                              ),
+                              color: AppColors.bar_color),
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 35.w),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 80.h,
+                                ),
+                                TextFields.normalTextField(context,
+                                    color: Colors.white,
+                                    hintText: "Email Address",
+                                    icon: Icons.email),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                TextFields.normalTextField(context,
+                                    color: Colors.white,
+                                    hintText: "Password",
+                                    icon: Icons.vpn_key),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Text("OR Sign In With",
+                                    style: GoogleFonts.raleway(
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColors.whiteColor)),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  children: [
+                                    GestureDetector(
+                                        child: Image.asset(
+                                            "assets/images/google.png")),
+                                    GestureDetector(
+                                        child:
+                                            Image.asset("assets/images/fb.png"))
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "Don't have an account ?",
+                                      style: smallwhiteStyle,
+                                    ),
+                                    SizedBox(
+                                      width: 5.w,
+                                    ),
+                                    GestureDetector(
+                                        child: Text("Sign Up",
+                                            style: GoogleFonts.raleway(
+                                                fontSize: 15.sp,
+                                                color: AppColors.gradiantColor1,
+                                                fontWeight: FontWeight.w700))),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                        SizedBox(
+                          height: 60.h,
+                        ),
+                        RaisedGradientButton(
+                            width: 120,
+                            height: 30,
+                            child: Text(
+                              "Sign In",
+                              style: mediumwhiteStyle,
+                            ),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0XFFDD7EE0).withOpacity(0.9),
+                                Color(0XFF8787F2),
+                              ],
+                            ),
+                            onPressed: () {
+
+                              AppRoutes.push(context, MainScreen());
+                            }),
+                        SizedBox(
+                          height: 40.h,
+                        )
+                      ],
                     )
             ],
           )),
@@ -143,7 +306,7 @@ class _AuthState extends State<Auth> {
                       : AppColors.background_color),
               child: Center(
                 child: Text(
-                  "SignUp",
+                  "Sign Up",
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -171,7 +334,7 @@ class _AuthState extends State<Auth> {
                       : AppColors.background_color),
               child: Center(
                 child: Text(
-                  "SignIn",
+                  "Sign In",
                   style: TextStyle(color: Colors.white),
                 ),
               ),

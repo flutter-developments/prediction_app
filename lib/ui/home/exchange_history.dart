@@ -87,15 +87,15 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    // Text(
-                                    //   "Google Play Exchange",
-                                    //   style: TextStyle(
-                                    //       color: Colors.white,
-                                    //       fontSize: 18.sp,
-                                    //       fontWeight: FontWeight.w600),
-                                    // ),
-                                    WavyText("Google Play Exchange",
-                                        Colors.white, 18.sp, FontWeight.w600),
+                                    Text(
+                                      "Google Play Exchange",
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 18.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    // WavyText("Google Play Exchange",
+                                    //     Colors.white, 18.sp, FontWeight.w600),
                                     SizedBox(
                                       height: 10.h,
                                     ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:prediction_app/model/drawer_list_model.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
+import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/user_guide/user_guide1.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/images.dart';
@@ -16,7 +17,7 @@ List<DrawerListModel> drawerContent = [
   ),
   DrawerListModel(
     icon: Images.prediction,
-    screen: UserGuide(),
+    screen: PredictionScreen(),
     title: 'My Predictions',
   ),
   DrawerListModel(

@@ -21,8 +21,7 @@ Widget WavyText(String text, Color color, double size, FontWeight fontWeight) {
 
 Widget ScaleText(String text, Color color, double size, FontWeight fontWeight) {
   return DefaultTextStyle(
-    style: GoogleFonts.raleway(
-        fontSize: size, fontWeight: fontWeight, color: color),
+    style: TextStyle(fontSize: size, fontWeight: fontWeight, color: color),
     child: AnimatedTextKit(
       repeatForever: true,
       animatedTexts: [
@@ -36,6 +35,9 @@ Widget ScaleText(String text, Color color, double size, FontWeight fontWeight) {
 final subtitleStyle = GoogleFonts.raleway(
     fontSize: 18.sp, fontWeight: FontWeight.w500, color: AppColors.whiteColor);
 
+final titlegreyStyle = GoogleFonts.raleway(
+    fontSize: 15.sp, fontWeight: FontWeight.w700, color: Color(0xffB6B6B6));
+
 final mediumwhiteStyle = GoogleFonts.raleway(
     fontSize: 18.sp, fontWeight: FontWeight.w600, color: AppColors.whiteColor);
 
@@ -44,9 +46,11 @@ final subtitleStyle1 = GoogleFonts.raleway(
 
 final largetextwhiteStyle = TextStyle(
     fontSize: 45.sp, fontWeight: FontWeight.bold, color: AppColors.white);
+final mediumextwhiteStyle = GoogleFonts.raleway(
+    fontSize: 23.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 
 final smallwhiteStyle = TextStyle(
-    letterSpacing: 1,
+   
     fontSize: 15.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteTextColor);

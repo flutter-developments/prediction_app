@@ -1,4 +1,3 @@
-import 'dart:js';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,12 +34,8 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 134.w),
                   child: RaisedGradientButton(
-                    child: WavyText(
-                        "Upgrade", Colors.white, 16.sp, FontWeight.w500),
-                    //Text(
-                    //   "Upgrade",
-                    //   style: subtitleStyle,
-                    // ),
+                    child: Text(
+                        "Upgrade",style:TextStyle( color:Colors.white, fontSize:16.sp, fontWeight:FontWeight.w500) ,),
                     onPressed: () {
                       AppRoutes.push(context, UserGuide4());
                     },
@@ -72,15 +67,17 @@ build_premium(Size size) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              "Upgrade to",
-              style: GoogleFonts.raleway(
-                  color: Colors.white,
-                  fontSize: 22.sp,
-                  fontWeight: FontWeight.w500),
-            ),
-          ),
+              padding: EdgeInsets.all(8.0),
+              child:
+                              Text(
+                "Upgrade to",
+                style: GoogleFonts.raleway(
+                    color: Colors.white,
+                    fontSize: 22.sp,
+                    fontWeight: FontWeight.w500),
+              ),
+              ),
+              //WavyText("Premium", Color(0xffD87FE2), 33.sp, FontWeight.w800),
           Text(
             "Premium",
             style: GoogleFonts.raleway(
