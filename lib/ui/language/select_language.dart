@@ -4,9 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
+import 'package:prediction_app/ui/auth/login.dart';
+import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
+import 'package:prediction_app/utils/routes.dart';
 
 class Language extends StatefulWidget {
   @override
@@ -116,8 +119,12 @@ class _LanguageState extends State<Language> {
                               Color(0XFF8787F2),
                             ],
                           ),
-                          onPressed: () {}),
-                          GradientButton(title: "Sign In", onPressed: (){})
+                          onPressed: () {
+                             AppRoutes.push(context, Auth());
+                          }),
+                          GradientButton(title: "Sign In", onPressed: (){
+                             AppRoutes.push(context, Auth());
+                          })
                     ],
                   ),
                   SizedBox(

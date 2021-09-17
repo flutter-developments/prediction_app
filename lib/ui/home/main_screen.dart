@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
+import 'package:prediction_app/ui/home/exchange_screen.dart';
+import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
@@ -141,7 +143,7 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, ExchangeHistory());
+                        AppRoutes.push(context, ExchangeScreen1());
                       },
                       child: Image.asset("assets/images/Group 24.png"))
                 ],

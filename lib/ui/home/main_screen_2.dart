@@ -5,6 +5,7 @@ import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/ui/home/event_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
@@ -167,50 +168,52 @@ class _MainScreen2State extends State<MainScreen2> {
           itemBuilder: (context, index) {
             return Padding(
               padding: EdgeInsets.symmetric(vertical: 10.h),
-              child: Card(
-                child: Container(
-                  height: size.height * .30,
-                  width: size.width * .491,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(notifications[index].image,
-                          fit: BoxFit.cover),
-                      ClipRRect(
-                        // Clip it cleanly.
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                          child: Container(
-                            color: Colors.black.withOpacity(0.1),
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(
-                                  notifications[index].title,
-                                  //     Colors.white, 23.sp, FontWeight.bold),
-                                  style: GoogleFonts.openSans(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
-                                ),
-                                SizedBox(
-                                  height: 30.h,
-                                ),
-                                Text(
-                                  notifications[index].time.toString(),
-                                  style: GoogleFonts.openSans(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.white),
-                                ),
-                              ],
+              child: InkWell(onTap: (){AppRoutes.push(context, EventScreen());},
+                child: Card(
+                  child: Container(
+                    height: size.height * .30,
+                    width: size.width * .491,
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        Image.asset(notifications[index].image,
+                            fit: BoxFit.cover),
+                        ClipRRect(
+                          // Clip it cleanly.
+                          child: BackdropFilter(
+                            filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                            child: Container(
+                              color: Colors.black.withOpacity(0.1),
+                              alignment: Alignment.center,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    notifications[index].title,
+                                    //     Colors.white, 23.sp, FontWeight.bold),
+                                    style: GoogleFonts.openSans(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                        color: Colors.white),
+                                  ),
+                                  SizedBox(
+                                    height: 30.h,
+                                  ),
+                                  Text(
+                                    notifications[index].time.toString(),
+                                    style: GoogleFonts.openSans(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

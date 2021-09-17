@@ -19,31 +19,36 @@ class _NotificationsState extends State<Notifications> {
     return Scaffold(
       body: SafeArea(
         child: Container(
+          height: size.height,
             color: AppColors.background_color,
-            child: ListView(
-              children: [
-                appBarWithText(
-                    size, context, "Notifications", AppColors.background_color1,
-                    () {
-                  Navigator.of(context).pop();
-                }),
-                build_notifications(size),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  appBarWithText(
+                      size, context, "Notifications", AppColors.background_color1,
+                      () {
+                    Navigator.of(context).pop();
+                  }),
+                  build_notifications(size,context),
+                  SizedBox(height: 30,)
+                ],
+              ),
             )),
       ),
     );
   }
 
-  build_notifications(Size size) {
-    return Padding(
+  // ignore: non_constant_identifier_names
+  Widget build_notifications(Size size,BuildContext context) => Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 15.w,
       ),
       child: Container(
-        height: size.height,
+        height: size.height*0.97,
         width: size.width,
         child: ListView.builder(
-            itemCount: 8,
+         shrinkWrap: false,
+            itemCount: 10,
             itemBuilder: (context, index) {
               return AnimationConfiguration.staggeredList(
                 position: index,
@@ -127,5 +132,4 @@ class _NotificationsState extends State<Notifications> {
             }),
       ),
     );
-  }
 }

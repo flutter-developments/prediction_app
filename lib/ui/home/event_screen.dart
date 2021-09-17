@@ -6,6 +6,7 @@ import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/custom_appbar.dart';
 import 'package:prediction_app/ui/home/notification.dart';
+import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,6 +42,7 @@ class _EventScreenState extends State<EventScreen> {
               height: 30.h,
             ),
             buildGames(size),
+            SizedBox(height: 30.h,)
           ],
         )),
       ),
@@ -245,7 +247,9 @@ class _EventScreenState extends State<EventScreen> {
                                         Color(0XFFD28D27),
                                       ],
                                     ),
-                                    onPressed: () {}),
+                                    onPressed: () {
+                                      AppRoutes.push(context, PredictionScreen());
+                                    }),
                                 Text(
                                   "Barcalona",
                                   style: mediumwhiteStyle,

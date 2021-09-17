@@ -25,13 +25,16 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
       body: SafeArea(
         child: Container(
             color: AppColors.background_color,
+            height: size.height,
             child: ListView(
               children: [
+
                 appBarWithText(size, context, "Withdraw", AppColors.bar_color,
                     () {
                   Navigator.of(context).pop();
                 }),
-                buildWithdrawArea(size, context)
+                buildWithdrawArea(size, context),
+                SizedBox(height: 30.h,),
               ],
             )),
       ),

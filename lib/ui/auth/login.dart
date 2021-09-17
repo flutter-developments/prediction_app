@@ -4,9 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
+import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
+import 'package:prediction_app/utils/routes.dart';
 
 class Auth extends StatefulWidget {
   @override
@@ -146,7 +148,9 @@ class _AuthState extends State<Auth> {
                                 Color(0XFF8787F2),
                               ],
                             ),
-                            onPressed: () {}),
+                            onPressed: () {
+                               AppRoutes.push(context, MainScreen());
+                            }),
                             SizedBox(height: 40.h,)
                       ],
                     )

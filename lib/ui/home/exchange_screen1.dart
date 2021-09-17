@@ -5,6 +5,7 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/notification.dart';
+import 'package:prediction_app/ui/home/withdraw_email.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,9 +36,13 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    buildColumn(size, "Google PlayStore", "\u0024 15.00 ", () {},
+                    buildColumn(size, "Google PlayStore", "\u0024 15.00 ", () {
+                      AppRoutes.push(context, WithDrawEmail());
+                    },
                       "assets/images/playstore.png"),
-                      buildColumn(size, "Apple App Store", "\u0024 15.00 ", () {},
+                      buildColumn(size, "Apple App Store", "\u0024 15.00 ", () {
+                         AppRoutes.push(context, WithDrawEmail());
+                      },
                       "assets/images/apple.png")
                   ],),
                 ),
@@ -46,9 +51,13 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    buildColumn(size, "PayPal", "\u0024 15.00 ", () {},
+                    buildColumn(size, "PayPal", "\u0024 15.00 ", () {
+                       AppRoutes.push(context, WithDrawEmail());
+                    },
                       "assets/images/paypal.png"),
-                      buildColumn(size, "MasterCard", "\u0024 15.00 ", () {},
+                      buildColumn(size, "MasterCard", "\u0024 15.00 ", () {
+                         AppRoutes.push(context, WithDrawEmail());
+                      },
                       "assets/images/master.png")
                   ],),
                 ),
@@ -108,7 +117,9 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                         Color(0XFF8787F2).withOpacity(0.9),
               ],
             ),
-            onPressed: () {}),
+            onPressed: () {
+              AppRoutes.push(context, WithDrawEmail());
+            }),
       ],
     );
   }
