@@ -98,8 +98,8 @@ class GradientButton extends StatelessWidget {
     return OutlineGradientButton(
       onTap: onPressed,
       child: SizedBox(
-        width: 99.w,
-        height: 27.h,
+        width: 115.w,
+        height: 33.h,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,

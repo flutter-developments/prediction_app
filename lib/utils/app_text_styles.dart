@@ -49,7 +49,7 @@ final largetextwhiteStyle = TextStyle(
 final mediumextwhiteStyle = GoogleFonts.raleway(
     fontSize: 23.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 
-final smallwhiteStyle = TextStyle(
+final smallwhiteStyle = GoogleFonts.raleway(
    
     fontSize: 15.sp,
     fontWeight: FontWeight.w500,

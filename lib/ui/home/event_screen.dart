@@ -262,7 +262,8 @@ class _EventScreenState extends State<EventScreen> {
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffB6B6B6)),
-                          )
+                          ),
+                          
                         ],
                       ),
                     ),

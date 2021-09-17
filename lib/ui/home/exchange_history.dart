@@ -22,8 +22,10 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
             color: AppColors.background_color,
             child: ListView(
               children: [
-                buildApp_only_title_bar(size, context, "Exchange History",
-                    AppColors.background_color1),
+                appBarWithText(
+                    size, context, "Exchange History", AppColors.bar_color, () {
+                  Navigator.of(context).pop();
+                }),
                 build_playstore(size),
               ],
             )),
@@ -34,9 +36,11 @@ class _ExchangeHistoryState extends State<ExchangeHistory> {
   // ignore: non_constant_identifier_names
   build_playstore(Size size) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: 15.w,
+      ),
       child: Container(
-        height: size.height * .97,
+        height: size.height,
         width: size.width,
         child: ListView.builder(
             itemCount: 8,

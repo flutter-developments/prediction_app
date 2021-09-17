@@ -35,7 +35,7 @@ class _MainScreen2State extends State<MainScreen2> {
         body: Container(
             child: ListView(
           children: [
-            buildContainer(size, context),
+            buildappbarContainer(size, context),            
             SizedBox(
               height: 30.h,
             ),
@@ -46,7 +46,7 @@ class _MainScreen2State extends State<MainScreen2> {
     );
   }
 
-  Container buildContainer(Size size, BuildContext context) {
+  Container buildappbarContainer(Size size, BuildContext context) {
     return Container(
       height: size.height * .150,
       width: size.width,
@@ -66,90 +66,95 @@ class _MainScreen2State extends State<MainScreen2> {
       child: Container(
           child: Padding(
         padding: EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              children: [
-                GestureDetector(
-                  onTap: () => _key.currentState!.openDrawer(),
-                  child: ClipOval(
-                    child: Image.asset(
-                      "assets/images/pic 2.png",
-                      scale: 1.4,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => _key.currentState!.openDrawer(),
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/pic 2.png",
+                        scale: 1.5,
+                      ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                    onTap: () {
-                      AppRoutes.push(context, HomeScreen());
-                    },
-                    child: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      iconSize: 20.sp,
-                      onPressed: () {
-                        AppRoutes.pop(context);
+                  Row(
+                    children: [
+                      Text(
+                        "1000",
+                        style: GoogleFonts.raleway(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: size.width * .02,
+                      ),
+                      Image.asset("assets/images/Group.png"),
+                    ],
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, Notifications());
                       },
-                    ))
-              ],
+                      child:
+                          Image.asset("assets/images/appbar_notification.png")),
+                ],
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "1000",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900),
-                    ),
-                    SizedBox(
-                      width: size.width * .01,
-                    ),
-                    Image.asset("assets/images/Group.png")
-                  ],
-                ),
-                Row(
-                  children: [
-                    Image.asset("assets/images/Group 20.png"),
-                    SizedBox(
-                      width: size.width * .01,
-                    ),
-                    Text(
-                      "Get Credit",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900),
-                    ),
-                  ],
-                )
-              ],
+            //second row
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, HomeScreen());
+                      },
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        iconSize: 20.sp,
+                        onPressed: () {
+                          AppRoutes.pop(context);
+                        },
+                      )),
+                  Row(
+                    children: [
+                      Image.asset("assets/images/Group 20.png"),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      Text(
+                        "Get Credit",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900),
+                      ),
+                    ],
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, ExchangeHistory());
+                      },
+                      child: Image.asset("assets/images/Group 24.png"))
+                ],
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      AppRoutes.push(context, Notifications());
-                    },
-                    child:
-                        Image.asset("assets/images/appbar_notification.png")),
-                GestureDetector(
-                    onTap: () {
-                      AppRoutes.push(context, ExchangeHistory());
-                    },
-                    child: Image.asset("assets/images/Group 24.png"))
-              ],
-            )
           ],
         ),
       )),
     );
   }
+}
+
 //main body card
   // ignore: non_constant_identifier_names
   Container buildSuper_leauge(Size size) {
@@ -182,13 +187,14 @@ class _MainScreen2State extends State<MainScreen2> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
-                                ScaleText(notifications[index].title,
-                                    Colors.white, 23.sp, FontWeight.bold),
-                                //   style: TextStyle(
-                                //       fontSize: 20,
-                                //       fontWeight: FontWeight.w700,
-                                //       color: Colors.white),
-                                // ),
+                                Text(
+                                  notifications[index].title,
+                                  //     Colors.white, 23.sp, FontWeight.bold),
+                                  style: GoogleFonts.openSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
                                 SizedBox(
                                   height: 30.h,
                                 ),
@@ -212,4 +218,4 @@ class _MainScreen2State extends State<MainScreen2> {
           }),
     );
   }
-}
+

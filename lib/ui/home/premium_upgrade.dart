@@ -28,14 +28,23 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
             color: AppColors.background_color,
             child: ListView(
               children: [
-                buildApp_only_title_bar(
-                    size, context, "Upgrade", AppColors.background_color),
+                // buildApp_only_title_bar(
+                //     size, context, "Upgrade", AppColors.background_color),
+                appBarWithText(size, context, "Upgrade", AppColors.bar_color,
+                    () {
+                  Navigator.of(context).pop();
+                }),
                 build_premium(size),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 134.w),
                   child: RaisedGradientButton(
                     child: Text(
-                        "Upgrade",style:TextStyle( color:Colors.white, fontSize:16.sp, fontWeight:FontWeight.w500) ,),
+                      "Upgrade",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500),
+                    ),
                     onPressed: () {
                       AppRoutes.push(context, UserGuide4());
                     },
@@ -67,17 +76,16 @@ build_premium(Size size) {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-              padding: EdgeInsets.all(8.0),
-              child:
-                              Text(
-                "Upgrade to",
-                style: GoogleFonts.raleway(
-                    color: Colors.white,
-                    fontSize: 22.sp,
-                    fontWeight: FontWeight.w500),
-              ),
-              ),
-              //WavyText("Premium", Color(0xffD87FE2), 33.sp, FontWeight.w800),
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              "Upgrade to",
+              style: GoogleFonts.raleway(
+                  color: Colors.white,
+                  fontSize: 22.sp,
+                  fontWeight: FontWeight.w500),
+            ),
+          ),
+          //WavyText("Premium", Color(0xffD87FE2), 33.sp, FontWeight.w800),
           Text(
             "Premium",
             style: GoogleFonts.raleway(

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
+import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
@@ -33,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
             // color: AppColors.textColor,
             child: ListView(
           children: [
-            buildContainer(size, context),
+            buildappbarContainer(size, context),
             SizedBox(
               height: 30.h,
             ),
@@ -44,17 +45,17 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Container buildContainer(Size size, BuildContext context) {
+  Container buildappbarContainer(Size size, BuildContext context) {
     return Container(
-      height: size.height * .136,
+      height: size.height * .150,
       width: size.width,
       decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(
-              color: AppColors.background_color1,
               spreadRadius: 10,
               offset: Offset(7.0, 7.0),
               blurRadius: 10.0,
+              color: AppColors.background_color1,
             ),
           ],
           color: AppColors.primery_color,
@@ -63,159 +64,169 @@ class _MainScreenState extends State<MainScreen> {
               bottomRight: Radius.circular(10))),
       child: Container(
           child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        padding: EdgeInsets.all(8.0),
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Column(
-              children: [
-                GestureDetector(
-                  onTap: () => _key.currentState!.openDrawer(),
-                  child: ClipOval(
-                    child: Image.asset(
-                      "assets/images/pic 2.png",
-                      scale: 1.4,
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => _key.currentState!.openDrawer(),
+                    child: ClipOval(
+                      child: Image.asset(
+                        "assets/images/pic 2.png",
+                        scale: 1.5,
+                      ),
                     ),
                   ),
-                ),
-                // SizedBox(
-                //   height: size.height * .01,
-                // ),
-                // Icon(
-                //   Icons.arrow_back,
-                //   size: 18,
-                //   color: Colors.white,
-                // )
-              ],
+                  Row(
+                    children: [
+                      Text(
+                        "1000",
+                        style: GoogleFonts.raleway(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        width: size.width * .02,
+                      ),
+                      Image.asset("assets/images/Group.png"),
+                    ],
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, Notifications());
+                      },
+                      child:
+                          Image.asset("assets/images/appbar_notification.png")),
+                ],
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Text(
-                      "1000",
-                      style: GoogleFonts.raleway(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.w900),
-                    ),
-                    SizedBox(
-                      width: size.width * .02,
-                    ),
-                    Image.asset("assets/images/Group.png")
-                  ],
-                ),
-                Row(
-                  children: [
-                    Image.asset("assets/images/Group 20.png"),
-                    SizedBox(
-                      width: size.width * .03,
-                    ),
-                    Text(
-                      "Get Credit",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w900),
-                    ),
-                  ],
-                )
-              ],
+            //second row
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, HomeScreen());
+                      },
+                      child: IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        color: Colors.white,
+                        iconSize: 20.sp,
+                        onPressed: () {
+                          AppRoutes.pop(context);
+                        },
+                      )),
+                  Row(
+                    children: [
+                      Image.asset("assets/images/Group 20.png"),
+                      SizedBox(
+                        width: size.width * .03,
+                      ),
+                      Text(
+                        "Get Credit",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w900),
+                      ),
+                    ],
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        AppRoutes.push(context, ExchangeHistory());
+                      },
+                      child: Image.asset("assets/images/Group 24.png"))
+                ],
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                    onTap: () {
-                      AppRoutes.push(context, Notifications());
-                    },
-                    child:
-                        Image.asset("assets/images/appbar_notification.png")),
-                GestureDetector(
-                    onTap: () {
-                      AppRoutes.push(context, ExchangeHistory());
-                    },
-                    child: Image.asset("assets/images/Group 24.png"))
-              ],
-            )
           ],
         ),
       )),
     );
   }
+}
 
-  // ignore: non_constant_identifier_names
-  Container buildSuper_leauge(Size size) {
-    return Container(
-      color: AppColors.primery_color,
-      height: size.height * .85,
-      width: size.width,
-      child: ListView.builder(
-          itemCount: notifications.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: EdgeInsets.symmetric(vertical: 10.h),
-              child: InkWell(
-                child: Card(
-                  child: Container(
-                    height: size.height * .30,
-                    width: size.width * .491,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Image.asset(sports[index].image, fit: BoxFit.cover),
-                        ClipRRect(
-                          // Clip it cleanly.
-                          child: BackdropFilter(
-                            filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                            child: Container(
-                              color: Colors.black.withOpacity(0.5),
-                              alignment: Alignment.center,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  ScaleText(sports[index].title, Colors.white,
-                                      23.sp, FontWeight.bold),
-                                  SizedBox(
-                                    height: 20.h,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Text(
-                                        sports[index].games,
-                                        style: GoogleFonts.openSans(
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                      SizedBox(width: 3.w),
-                                      Text(
-                                        "Live Championships",
-                                        style: TextStyle(
-                                            fontSize: 15.sp,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.white),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+// ignore: non_constant_identifier_names
+Container buildSuper_leauge(Size size) {
+  return Container(
+    color: AppColors.primery_color,
+    height: size.height * .85,
+    width: size.width,
+    child: ListView.builder(
+        itemCount: notifications.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.h),
+            child: InkWell(
+              child: Card(
+                child: Container(
+                  height: size.height * .30,
+                  width: size.width * .491,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      Image.asset(sports[index].image, fit: BoxFit.cover),
+                      ClipRRect(
+                        // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                          child: Container(
+                            color: Colors.black.withOpacity(0.5),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(sports[index].title,
+                                    style: GoogleFonts.openSans(
+                                        color: Colors.white,
+                                        fontSize: 23.sp,
+                                        fontWeight: FontWeight.w900)),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Text(
+                                      sports[index].games,
+                                      style: GoogleFonts.openSans(
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                    SizedBox(width: 3.w),
+                                    Text(
+                                      "Live Championships",
+                                      style: TextStyle(
+                                          fontSize: 15.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                onTap: () {
-                  AppRoutes.push(context, MainScreen2());
-                },
               ),
-            );
-          }),
-    );
-  }
+              onTap: () {
+                AppRoutes.push(context, MainScreen2());
+              },
+            ),
+          );
+        }),
+  );
 }

@@ -22,8 +22,11 @@ class _NotificationsState extends State<Notifications> {
             color: AppColors.background_color,
             child: ListView(
               children: [
-                buildApp_only_title_bar(size, context, "Notifications",
-                    AppColors.background_color1),
+                appBarWithText(
+                    size, context, "Notifications", AppColors.background_color1,
+                    () {
+                  Navigator.of(context).pop();
+                }),
                 build_notifications(size),
               ],
             )),
@@ -33,9 +36,11 @@ class _NotificationsState extends State<Notifications> {
 
   build_notifications(Size size) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 30.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: 15.w,
+      ),
       child: Container(
-        height: size.height * .97,
+        height: size.height,
         width: size.width,
         child: ListView.builder(
             itemCount: 8,
