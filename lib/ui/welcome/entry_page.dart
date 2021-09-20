@@ -16,33 +16,36 @@ class _HomeState extends State<Home> {
     super.initState();
 
     super.initState();
-    Timer(Duration(seconds: 4), () {
+    Timer(Duration(seconds: 2), () {
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (_) => Language()));
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppColors.background_color1,
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-        children: [
-          
-          Center(
-              child:Image.asset("assets/images/logo.png") ),
-          SizedBox(
-            height: 20.h,
-          ),
-          SpinKitFadingCube(
-            color:Colors.white,
-            size: 50.0.sp,
-          ),
-         
-        ],
-          ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+                child: Image.asset(
+              "assets/images/logo.png",
+              height: 200.h,
+              width: 220.w,
+            )),
+            SizedBox(
+              height: 30.h,
+            ),
+            Padding(
+              padding:  EdgeInsets.only(bottom: 50.h),
+              child: SpinKitFadingCube(
+                color:Colors.white,
+                size: 50.0.sp,
+              ),
+            ),
+          ],
         ));
   }
 }

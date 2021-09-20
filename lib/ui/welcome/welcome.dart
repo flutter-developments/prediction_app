@@ -63,17 +63,17 @@ class _WelcomeState extends State<Welcome> {
                   RaisedGradientButton(
                     child: Text(
                       "Read User Guide",
-                      style: subtitleStyle,
+                      style: smallwhiteStyle,
                     ),
                     onPressed: () {
                       AppRoutes.push(context, UserGuide4());
                     },
-                    height: 39.h,
+                    height: 50.h,
                     width: 201.w,
                     gradient: LinearGradient(
                       colors: [
                         Color(0XFFDD7EE0),
-                        Color(0XFF8787F2).withOpacity(0.3),
+                        Color(0XFF8787F2),
                       ],
                     ),
                   ),

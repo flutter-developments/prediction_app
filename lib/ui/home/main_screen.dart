@@ -26,11 +26,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: AppColors.primery_color,
         key: _key,
         drawer: DrawerFull(context, MediaQuery.of(context).size),
-        // appBar: AppBar(
-        //   title: Text("title"),
-        // ),
         body: Container(
-            // color: AppColors.textColor,
             child: ListView(
           children: [
             buildappbarContainer(size, context),
@@ -154,7 +150,7 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 // ignore: non_constant_identifier_names
-Container buildSuper_leauge(Size size) {
+Widget buildSuper_leauge(Size size) {
   return Container(
     color: AppColors.primery_color,
     height: size.height * .85,
@@ -162,69 +158,75 @@ Container buildSuper_leauge(Size size) {
     child: ListView.builder(
         itemCount: notifications.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h),
-            child: InkWell(
-              child: Card(
-                child: Container(
-                  height: size.height * .30,
-                  width: size.width * .491,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(sports[index].image, fit: BoxFit.cover),
-                      ClipRRect(
-                        // Clip it cleanly.
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                          child: Container(
+          return InkWell(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.w, horizontal: 15.w),
+              child: Container(
+                decoration: BoxDecoration(
+                    //color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                height: size.height * .27,
+                width: size.width * .491,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(sports[index].image,
+                            fit: BoxFit.cover)),
+                    ClipRRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Colors.black.withOpacity(0.5),
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(sports[index].title,
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(sports[index].title,
+                                  style: GoogleFonts.openSans(
+                                      color: Colors.white,
+                                      fontSize: 23.sp,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    sports[index].games,
                                     style: GoogleFonts.openSans(
-                                        color: Colors.white,
-                                        fontSize: 23.sp,
-                                        fontWeight: FontWeight.w900)),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      sports[index].games,
-                                      style: GoogleFonts.openSans(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                    SizedBox(width: 3.w),
-                                    Text(
-                                      "Live Championships",
-                                      style: TextStyle(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                  SizedBox(width: 3.w),
+                                  Text(
+                                    "Live Championships",
+                                    style: TextStyle(
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              onTap: () {
-                AppRoutes.push(context, MainScreen2());
-              },
             ),
+            onTap: () {
+              AppRoutes.push(context, MainScreen2());
+            },
           );
         }),
   );

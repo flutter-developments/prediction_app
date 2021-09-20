@@ -233,11 +233,11 @@ class _EventScreenState extends State<EventScreen> {
                                   style: mediumwhiteStyle,
                                 ),
                                 RaisedGradientButton(
-                                    width: 120,
-                                    height: 30,
+                                    width: 120.w,
+                                    height: 50.h,
                                     child: Text(
                                       "Predict Now",
-                                      style: mediumwhiteStyle,
+                                      style: smallwhiteStyle,
                                     ),
                                     gradient: LinearGradient(
                                       colors: [

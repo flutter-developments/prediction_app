@@ -35,7 +35,7 @@ class GuideContainer extends StatelessWidget {
                   top: 20.0.h, left: 15.w, right: 15.w, bottom: 30.h),
               child: Image.asset(
                 link,
-                scale: 1.1,
+                scale: 1,
               ),
             ),
             Padding(

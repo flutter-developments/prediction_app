@@ -1,11 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/ui/auth/login.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:gradient_text/gradient_text.dart';
 
 class Language extends StatefulWidget {
   @override
@@ -23,7 +25,7 @@ class _LanguageState extends State<Language> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              SizedBox(height: 10),
+              //SizedBox(height: 10),
               Container(
                 height: size.height * .30,
                 width: size.width,
@@ -31,15 +33,12 @@ class _LanguageState extends State<Language> {
                 child: Center(
                   child: Column(
                     children: [
+                      SizedBox(
+                        height: 20.h,
+                      ),
                       Container(
-                        height: 190.h,
-                        width: size.width * 0.36,
-                        // decoration: BoxDecoration(
-                        //     borderRadius: BorderRadius.only(
-                        //       bottomLeft: Radius.circular(10.0),bottomRight: Radius.circular(10.0),topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)
-                        //     ),
-                        //   //  color: AppColors.background_color1
-                        //     ),
+                        height: 150.h,
+                        width: size.width * 0.30,
                         child: Image.asset(
                           "assets/images/logo.png",
                           fit: BoxFit.cover,
@@ -50,7 +49,11 @@ class _LanguageState extends State<Language> {
                       ),
                       Text(
                         "Sportica".toUpperCase(),
-                        style: mediumextwhiteStyle,
+                        style: GoogleFonts.didactGothic(
+                            fontSize: 34.sp,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.whiteColor),
                       )
                     ],
                   ),
@@ -61,7 +64,7 @@ class _LanguageState extends State<Language> {
               Column(
                 children: [
                   Container(
-                    height: size.height * .65,
+                    height: size.height * .40,
                     width: size.width,
                     color: AppColors.bar_color,
                     child: Padding(
@@ -69,7 +72,7 @@ class _LanguageState extends State<Language> {
                         child: Column(
                           children: [
                             SizedBox(
-                              height: 50.h,
+                              height: 30.h,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,24 +107,6 @@ class _LanguageState extends State<Language> {
                                     "assets/images/england-flag.jpg", "English")
                               ],
                             ),
-                            SizedBox(
-                              height: 40.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
-                                    "English"),
-                                buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
-                                    "English"),
-                                buildavatar(size,
-                                    "assets/images/england-flag.jpg", "English")
-                              ],
-                            )
                           ],
                         )),
                   ),
@@ -132,11 +117,12 @@ class _LanguageState extends State<Language> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       RaisedGradientButton(
-                          width: 120,
-                          height: 30,
+                          width: 135.w,
+                          height: 50.h,
                           child: Text(
                             "Sign Up",
-                            style: subtitleStyle,
+                            style: TextStyle(
+                                fontSize: 12, color: AppColors.whiteColor),
                           ),
                           gradient: LinearGradient(
                             colors: [
@@ -208,8 +194,8 @@ class _LanguageState extends State<Language> {
               // });
             },
             child: Container(
-              height: size.height * .06,
-              width: size.width / 2,
+              height: size.height * .07,
+              width: size.width / 1.6,
               decoration: BoxDecoration(
                   borderRadius: isSignup == true
                       ? BorderRadius.only(
@@ -224,7 +210,10 @@ class _LanguageState extends State<Language> {
               child: Center(
                 child: Text(
                   "Choose language",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -237,7 +226,7 @@ class _LanguageState extends State<Language> {
             },
             child: Container(
               height: size.height * .06,
-              width: size.width / 2,
+              width: size.width / 2.7,
               decoration: BoxDecoration(
                   borderRadius: isSignup == false
                       ? BorderRadius.only(

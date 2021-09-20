@@ -18,6 +18,7 @@ List<DrawerListModel> drawerContent = [
     screen: MainScreen2(),
     title: 'Home',
   ),
+  
   DrawerListModel(
     icon: Images.prediction,
     screen: PredictionScreen(),
@@ -83,7 +84,7 @@ class DrawerFull extends PreferredSize {
                             Center(
                               child: Container(
                                 height: size.height * .1,
-                                width: size.width * .7,
+                                width: size.width * .8,
                                 decoration: new BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
                                   gradient: new LinearGradient(
@@ -121,7 +122,7 @@ class DrawerFull extends PreferredSize {
                                 itemCount: drawerContent.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return SizedBox(
-                                    height: 50,
+                                    height: 70,
                                     child: ListTile(
                                       onTap: () => AppRoutes.push(
                                           context, drawerContent[index].screen),
@@ -133,8 +134,9 @@ class DrawerFull extends PreferredSize {
                                       title: Text(
                                         drawerContent[index].title,
                                         style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0XFFCCCCCC),
+                                          fontSize: 20
                                         ),
                                       ),
                                     ),

@@ -29,7 +29,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                 buildappbarContainer(size, context),
                 SizedBox(height: 50.h,),
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.w),
+                  padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 5.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -69,6 +69,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
   Column buildColumn(Size size, String title, String subtitle,
       VoidCallback onPressed, String link) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
           height: size.height * 0.20,
@@ -88,7 +89,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
             
             title,
             textAlign: TextAlign.start,
-            style: GoogleFonts.openSans(fontSize:18.sp,fontWeight: FontWeight.w700,color:AppColors.white)
+            style: GoogleFonts.openSans(fontSize:16.sp,fontWeight: FontWeight.w700,color:AppColors.white)
           ),
         ),
         SizedBox(
@@ -97,16 +98,16 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-          Text(subtitle,style:TextStyle(fontSize:18.sp,fontWeight: FontWeight.w700,color:AppColors.goldenColor),),
-          Text("(Conversion Rate)",style: GoogleFonts.openSans(fontSize:13.sp,fontWeight: FontWeight.w700,color:AppColors.goldenColor),),
+          Text(subtitle,style:TextStyle(fontSize:16.sp,fontWeight: FontWeight.w500,color:AppColors.goldenColor),),
+          Text("(Conversion Rate)",style: GoogleFonts.openSans(fontSize:13.sp,fontWeight: FontWeight.w500,color:AppColors.goldenColor),),
         ],),
         SizedBox(height:10.h),
         RaisedGradientButton(
-            width: 120,
-            height: 30,
+            width: 120.w,
+            height: 35.h,
             child: Text(
               "Exchange",
-              style: mediumwhiteStyle,
+              style: subtitleStyle,
             ),
             gradient: LinearGradient(
               colors: [

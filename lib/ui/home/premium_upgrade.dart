@@ -25,10 +25,11 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
               children: [
                 // buildApp_only_title_bar(
                 //     size, context, "Upgrade", AppColors.background_color),
-                appBarWithText(size, context, "Upgrade", AppColors.bar_color,
+                appBarWithText(size, context, "Upgrade", AppColors.background_color1,
                     () {
                   Navigator.of(context).pop();
                 }),
+                SizedBox(height: 20.h,),
                 build_premium(size),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 134.w),
@@ -155,7 +156,7 @@ Widget build_premiumlist(
             title,
             style: GoogleFonts.raleway(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.bold,
                 color: AppColors.whiteColor),
           ),
           SizedBox(
@@ -165,7 +166,7 @@ Widget build_premiumlist(
             subtitle,
             style: GoogleFonts.openSans(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.w700,
+                fontWeight: FontWeight.w300,
                 color: AppColors.whiteColor),
           ),
         ],

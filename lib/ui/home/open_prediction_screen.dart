@@ -68,7 +68,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                   ],
                 ),
               )),
-          SizedBox(height: 20.h),
+          SizedBox(height: 40.h),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.0),
@@ -104,33 +104,36 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     child: FadeInAnimation(
                         child: Padding(
                   padding: EdgeInsets.only(
-                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
+                      left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
                       height: size.height * .23,
                       width: size.width * .485,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                              spreadRadius: 5,
-                              offset: Offset(5, 5),
-                              blurRadius: 2.0,
+                              spreadRadius: 3,
+                              offset: Offset(0.0, 0.60),
+                              blurRadius: 1.0,
                               color: AppColors.background_color1,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.background_color1),
+                          ]),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 20.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Image.asset("assets/images/timer.png"),
+                                Image.asset("assets/images/Vector grey.png"),
                                 Text(
                                   "UEFA Champions League",
                                   style: titlegreyStyle,
+                                ),
+                                SizedBox(
+                                  width: 5.w,
                                 ),
                                 Text(
                                   "Thu, Aug 23",
@@ -142,16 +145,16 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                           Divider(
                             color: Color(0xff7D7D7D),
                             height: 3,
-                            endIndent: 20,
-                            indent: 10,
+                            endIndent: 10,
+                            indent: 15,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 10,
+                                  width: 20,
                                 ),
                                 Text(
                                   "Predict :",
@@ -177,7 +180,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 ),
                                 child: Image.asset(
                                   "assets/images/madrid.png",
-                                  scale: 1.5,
+                                  scale: 1.4,
                                 ),
                               ),
                               Padding(
@@ -227,26 +230,26 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     child: FadeInAnimation(
                         child: Padding(
                   padding: EdgeInsets.only(
-                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
+                      left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
                       height: size.height * .23,
                       width: size.width * .485,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                              spreadRadius: 5,
-                              offset: Offset(5, 5),
-                              blurRadius: 2.0,
+                              spreadRadius: 3,
+                              offset: Offset(0.0, 0.60),
+                              blurRadius: 1.0,
                               color: AppColors.background_color1,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.background_color1),
+                          ]),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 20.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -254,6 +257,9 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 Text(
                                   "UEFA Champions League",
                                   style: titlegreyStyle,
+                                ),
+                                SizedBox(
+                                  width: 5.w,
                                 ),
                                 Text(
                                   "Thu, Aug 23",
@@ -265,16 +271,16 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                           Divider(
                             color: Color(0xff7D7D7D),
                             height: 3,
-                            endIndent: 20,
-                            indent: 10,
+                            endIndent: 10,
+                            indent: 15,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 10,
+                                  width: 20,
                                 ),
                                 Text(
                                   "Predict :",
@@ -300,7 +306,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 ),
                                 child: Image.asset(
                                   "assets/images/madrid.png",
-                                  scale: 1.5,
+                                  scale: 1.4,
                                 ),
                               ),
                               Padding(
@@ -342,8 +348,8 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
         });
       },
       child: Container(
-        width: 140,
-        height: 25,
+        width: 140.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(
@@ -374,8 +380,8 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
         });
       },
       child: Container(
-        width: 140,
-        height: 25,
+        width: 140.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(
@@ -418,7 +424,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
           child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),

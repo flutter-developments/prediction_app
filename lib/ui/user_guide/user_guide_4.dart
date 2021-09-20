@@ -16,27 +16,29 @@ class _UserGuide4State extends State<UserGuide4> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-          color: AppColors.background_color,
-          child: ListView(
-            children: [
-              appBarWithText(size, context, "How To Play", AppColors.background_color,
-                    () {
-                  Navigator.of(context).pop();
-                }),
-              // buildApp_only_title_bar(
-              //     size, context, "How To Play", AppColors.background_color),
-              //build_userGuide(size),
-              GuideContainer(
-                  title:
-                      "Select any sport category  to view the live\nchampionships ",
-                  onPressed: () {
-                    AppRoutes.push(context, UserGuide());
-                  },
-                  buttonText: "Next",
-                  link: "assets/images/how_to_play_3.png")
-            ],
-          )),
+      body: SafeArea(
+        child: Container(
+            color: AppColors.background_color,
+            child: ListView(
+              children: [
+                appBarWithText(size, context, "How To Play", AppColors.background_color,
+                      () {
+                    Navigator.of(context).pop();
+                  }),
+                // buildApp_only_title_bar(
+                //     size, context, "How To Play", AppColors.background_color),
+                //build_userGuide(size),
+                GuideContainer(
+                    title:
+                        "Select any sport category  to view the live\nchampionships ",
+                    onPressed: () {
+                      AppRoutes.push(context, UserGuide());
+                    },
+                    buttonText: "Next",
+                    link: "assets/images/how_to_play_3.png")
+              ],
+            )),
+      ),
     );
   }
 }

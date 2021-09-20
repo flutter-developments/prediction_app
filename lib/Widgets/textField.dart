@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/utils/app_colors.dart';
+import 'package:prediction_app/utils/app_text_styles.dart';
 
 class TextFields {
   static Widget emailTextField(
@@ -22,13 +23,13 @@ class TextFields {
     return Container(
       width: MediaQuery.of(context).size.width * .9,
       child: TextFormField(
-        controller:controller ,
-          validator: (value) {
-        Pattern pattern =
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-        RegExp regex = new RegExp(pattern as String);
-        return (!regex.hasMatch(value!)) ? validaterMsg : null;
-      },
+        controller: controller,
+        validator: (value) {
+          Pattern pattern =
+              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+          RegExp regex = new RegExp(pattern as String);
+          return (!regex.hasMatch(value!)) ? validaterMsg : null;
+        },
         keyboardType: TextInputType.emailAddress,
         style: TextStyle(color: AppColors.textColor),
         decoration: InputDecoration(
@@ -56,7 +57,7 @@ class TextFields {
     );
   }
 
- static Widget normalTextField(
+  static Widget normalTextField(
     BuildContext context, {
     IconData? icon,
     String? hintText,
@@ -68,34 +69,39 @@ class TextFields {
     required Color color,
   }) {
     return TextFormField(
+      style: mediumwhiteStyle,
       decoration: InputDecoration(
-        // hintText: hintText,
-        labelText: hintText,
-        // labelStyle: TextStyle(
-        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
-        labelStyle: GoogleFonts.raleway(
-            color: AppColors.textColor,
-            fontSize: 15,
-            fontWeight: FontWeight.w600),
-        filled: true,
-        fillColor: Color(0xFF50566C),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15.0),
+          // hintText: hintText,
+          labelText: hintText,
+          // labelStyle: TextStyle(
+          //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+          labelStyle: GoogleFonts.raleway(
+              color: AppColors.textColor,
+              fontSize: 15,
+              fontWeight: FontWeight.w600),
+          filled: true,
+          fillColor: Color(0xFF50566C),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            ),
+            borderSide: BorderSide(color: Color(0xff50566C), width: 0),
           ),
-          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
-        ),
-
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-       prefixIcon: Icon(icon,color:AppColors.textColor,)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                15.0,
+              ),
+            ),
+            borderSide: BorderSide(color: AppColors.white, width: 2),
+          ),
+          //contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.textColor,
+          )),
     );
   }
-
-
 
   static Widget passwordTextField(
     BuildContext context, {
@@ -105,34 +111,34 @@ class TextFields {
     bool readOnly = false,
     String? emptyValidationMessage,
     TextInputType? inputType,
-    
-   
   }) {
     return TextFormField(
       decoration: InputDecoration(
-        // hintText: hintText,
-        labelText: hintText,
-        // labelStyle: TextStyle(
-        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
-        labelStyle: GoogleFonts.raleway(
-            color: AppColors.textColor,
-            fontSize: 15,
-            fontWeight: FontWeight.w600),
-        filled: true,
-        fillColor: Color(0xFF50566C),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(15.0),
+          // hintText: hintText,
+          labelText: hintText,
+          // labelStyle: TextStyle(
+          //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+          labelStyle: GoogleFonts.raleway(
+              color: AppColors.textColor,
+              fontSize: 15,
+              fontWeight: FontWeight.w600),
+          filled: true,
+          fillColor: Color(0xFF50566C),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            ),
+            borderSide: BorderSide(color: Color(0xff50566C), width: 0),
           ),
-          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
-        ),
-
-        contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-       prefixIcon: Icon(icon,color:AppColors.textColor,)),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15.0)),
+            //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+          ),
+          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.textColor,
+          )),
     );
   }
 }

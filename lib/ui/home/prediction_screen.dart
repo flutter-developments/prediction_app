@@ -44,18 +44,16 @@ class _PredictionScreenState extends State<PredictionScreen> {
               height: 30.h,
             ),
             buildscreen(size),
+            SizedBox(height:20.h),
+            buildTeam(size),
             Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: buildTeam(size),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 120.w, vertical: 20.h),
+              padding: EdgeInsets.symmetric(horizontal: 120.w, vertical: 30.h),
               child: RaisedGradientButton(
-                  width: 120,
-                  height: 30,
+                  width: 120.w,
+                  height: 50.h,
                   child: Text(
                     "Set Prediction",
-                    style: mediumwhiteStyle,
+                    style: smallwhiteStyle,
                   ),
                   gradient: LinearGradient(
                     colors: [
@@ -77,7 +75,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
     Size size,
   ) {
     return Container(
-      height: size.height * .65,
+      height: size.height * .60,
       width: size.width,
       color: AppColors.primery_color,
       child: Column(
@@ -137,11 +135,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
               children: [
                 Text(
                   "Real Madrid",
-                  style: mediumwhiteStyle,
+                  style: smallwhiteStyle,
                 ),
                 Text(
                   "Barcalona",
-                  style: mediumwhiteStyle,
+                  style: smallwhiteStyle,
                 )
               ],
             ),
@@ -157,7 +155,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
-            child: TextFields.normalTextField(context,
+            child: TextFields.normalTextField(context,inputType: TextInputType.number,
                 color: Colors.grey, hintText: "Enter Credits Amount"),
           ),
           Divider(
@@ -167,13 +165,13 @@ class _PredictionScreenState extends State<PredictionScreen> {
             indent: 10,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
+            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 25.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 new CircularPercentIndicator(
                   startAngle: 180.0,
-                  radius: 80.0,
+                  radius: 70.0,
                   animation: true,
                   animationDuration: 1100,
                   lineWidth: 5.0,
@@ -198,7 +196,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 ),
                 new CircularPercentIndicator(
                   startAngle: 180.0,
-                  radius: 80.0,
+                  radius: 70.0,
                   animation: true,
                   animationDuration: 1200,
                   lineWidth: 5.0,
@@ -224,11 +222,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
               children: [
                 Text(
                   "Normal Member",
-                  style: mediumwhiteStyle,
+                  style: smallwhiteStyle,
                 ),
                 Text(
                   "Premium Member",
-                  style: mediumwhiteStyle,
+                  style: smallwhiteStyle,
                 )
               ],
             ),
@@ -239,7 +237,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
           Divider(
             color: Color(0xff7D7D7D),
             height: 2,
-            endIndent: 20,
+            endIndent: 10,
             indent: 10,
           ),
         ],
@@ -355,157 +353,162 @@ class _PredictionScreenState extends State<PredictionScreen> {
     );
   }
 
-  Column buildTeam(Size size) {
-    return Column(
-      children: [
-        Card(
-          child: Container(
-            height: size.height * .18,
-            width: size.width,
-            decoration: BoxDecoration(
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    spreadRadius: 5,
-                    offset: Offset(5, 5),
-                    blurRadius: 2.0,
-                    color: AppColors.background_color1,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.background_color1),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
-                  child: Text(
-                    "Which Team Will Win",
-                    style: titlegreyStyle,
-                  ),
-                ),
-                //league pictures row
-                SizedBox(height: 30.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    buildOutlineGradientButton(),
-                    buildPurpelOutlineGradiant(),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          color: AppColors.background_color1,
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Card(
-          child: Container(
-            height: size.height * .23,
-            width: size.width,
-            decoration: BoxDecoration(
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    spreadRadius: 5,
-                    offset: Offset(5, 5),
-                    blurRadius: 2.0,
-                    color: AppColors.background_color1,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.background_color1),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
-                  child: Text(
-                    "Who will score 2 Goals?",
-                    style: titlegreyStyle,
-                  ),
-                ),
-                //league pictures row
-                SizedBox(height: 30.h),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildOutline(),
-                        buildPurpel(),
-                      ],
-                    ),
-                    SizedBox(height: 20.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildOutline1(),
-                        buildPurpel1(),
-                      ],
+  Widget buildTeam(Size size) {
+    return Padding(
+      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+      child: Column(
+        children: [
+          Card(
+            child: Container(
+              height: size.height * .18,
+              width: size.width,
+              decoration: BoxDecoration(
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      spreadRadius: 3,
+                        offset: Offset(0.0, 0.60),
+                        blurRadius: 1.0,
+
+                      color: AppColors.background_color1,
                     ),
                   ],
-                ),
-              ],
-            ),
-          ),
-          color: AppColors.background_color1,
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Card(
-          child: Container(
-            height: size.height * .23,
-            width: size.width,
-            decoration: BoxDecoration(
-                boxShadow: <BoxShadow>[
-                  BoxShadow(
-                    spreadRadius: 5,
-                    offset: Offset(5, 5),
-                    blurRadius: 2.0,
-                    color: AppColors.background_color1,
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.background_color1),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:30.h),
+                    child: Text(
+                      "Which Team Will Win",
+                      style: titlegreyStyle,
+                    ),
+                  ),
+                  //league pictures row
+                  //SizedBox(height: 50.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      buildOutlineGradientButton(),
+                      buildPurpelOutlineGradiant(),
+                    ],
                   ),
                 ],
-                borderRadius: BorderRadius.circular(10),
-                color: AppColors.background_color1),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10.h, left: 20.h),
-                  child: Text(
-                    "Who will get a Red Card?",
-                    style: titlegreyStyle,
-                  ),
-                ),
-                //league pictures row
-                SizedBox(height: 30.h),
-                Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildOutline(),
-                        buildPurpel(),
-                      ],
-                    ),
-                    SizedBox(height: 20.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        buildOutline1(),
-                        buildPurpel1(),
-                      ],
+              ),
+            ),
+            color: AppColors.background_color1,
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          Card(
+            child: Container(
+              height: size.height * .24,
+              width: size.width,
+              decoration: BoxDecoration(
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      spreadRadius: 3,
+                        offset: Offset(0.0, 0.60),
+                        blurRadius: 1.0,
+
+                      color: AppColors.background_color1,
                     ),
                   ],
-                ),
-              ],
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.background_color1),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:10.h),
+                    child: Text(
+                      "Who will score 2 Goals?",
+                      style: titlegreyStyle,
+                    ),
+                  ),
+                  //league pictures row
+                  SizedBox(height: 30.h),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildOutline(),
+                          buildPurpel(),
+                        ],
+                      ),
+                      SizedBox(height: 20.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildOutline1(),
+                          buildPurpel1(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
+            color: AppColors.background_color1,
           ),
-          color: AppColors.background_color1,
-        ),
-      ],
+          SizedBox(
+            height: 30,
+          ),
+          Card(
+            child: Container(
+              height: size.height * .23,
+              width: size.width,
+              decoration: BoxDecoration(
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(
+                      spreadRadius: 3,
+                      offset: Offset(0.0, 0.60),
+                      blurRadius: 1.0,
+                      color: AppColors.background_color1,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.background_color1),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:10.h),
+                    child: Text(
+                      "Who will get a Red Card?",
+                      style: titlegreyStyle,
+                    ),
+                  ),
+                  //league pictures row
+                  SizedBox(height: 30.h),
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildOutline(),
+                          buildPurpel(),
+                        ],
+                      ),
+                      SizedBox(height: 20.h),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          buildOutline1(),
+                          buildPurpel1(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            color: AppColors.background_color1,
+          ),
+        ],
+      ),
     );
   }
 
@@ -518,8 +521,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.h,
         child: Container(
           constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
           child: Center(
@@ -550,8 +553,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.w,
         child: Container(
           child: Center(
             child: Text(
@@ -580,8 +583,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.h,
         child: Container(
           constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
           child: Center(
@@ -611,8 +614,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(
@@ -641,8 +644,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.h,
         child: Container(
           constraints: BoxConstraints(maxWidth: 140, maxHeight: 37),
           child: Center(
@@ -672,8 +675,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         });
       },
       child: Container(
-        width: 110,
-        height: 25,
+        width: 120.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(

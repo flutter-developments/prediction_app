@@ -39,15 +39,15 @@ class _AuthState extends State<Auth> {
           color: AppColors.background_color,
           child: ListView(
             children: [
-              SizedBox(height: 10),
+              //SizedBox(height: 10),
               Container(
-                height: size.height * .30,
+                height: size.height * .22,
                 width: size.width,
                 decoration: BoxDecoration(color: AppColors.primery_color),
                 child: Center(
                   child: Container(
-                    height: 190.h,
-                    width: size.width * 0.36,
+                    height: 130.h,
+                    width: size.width * 0.50,
                     // decoration: BoxDecoration(
                     //     borderRadius: BorderRadius.only(
                     //       bottomLeft: Radius.circular(10.0),
@@ -55,7 +55,7 @@ class _AuthState extends State<Auth> {
                     //     color: AppColors.background_color1),
                     child: Image.asset(
                       "assets/images/logo.png",
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                     ),
                   ),
                 ),
@@ -66,19 +66,17 @@ class _AuthState extends State<Auth> {
                   ? Column(
                       children: [
                         Container(
-                          height: size.height * .65,
+                          height: size.height * .52,
                           width: size.width,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(10.0),
-                              ),
+                             
                               color: AppColors.bar_color),
                           child: Padding(
                             padding: EdgeInsets.symmetric(horizontal: 35.w),
                             child: Column(
                               children: [
                                 SizedBox(
-                                  height: 80.h,
+                                  height: 50.h,
                                 ),
                                 TextFields.normalTextField(context,
                                     color: Colors.white,
@@ -99,7 +97,7 @@ class _AuthState extends State<Auth> {
                                     hintText: "Confirm Password",
                                     icon: Icons.vpn_key),
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 15.h,
                                 ),
                                 Text(
                                   "OR Sign Up With",
@@ -109,7 +107,7 @@ class _AuthState extends State<Auth> {
                                       color: AppColors.whiteColor),
                                 ),
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 15.h,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -124,14 +122,17 @@ class _AuthState extends State<Auth> {
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 30.h,
+                                  height: 15.h,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
                                       "Already have an account ?",
-                                      style: smallwhiteStyle,
+                                      style: GoogleFonts.raleway(
+                                                fontSize: 15.sp,
+                                                color: AppColors.white,
+                                                fontWeight: FontWeight.w500),
                                     ),
                                     SizedBox(
                                       width: 5.w,
@@ -146,7 +147,7 @@ class _AuthState extends State<Auth> {
                                             style: GoogleFonts.raleway(
                                                 fontSize: 15.sp,
                                                 color: AppColors.gradiantColor1,
-                                                fontWeight: FontWeight.w700))),
+                                                fontWeight: FontWeight.w500))),
                                   ],
                                 ),
                               ],
@@ -154,14 +155,15 @@ class _AuthState extends State<Auth> {
                           ),
                         ),
                         SizedBox(
-                          height: 60.h,
+                          height: 40.h,
                         ),
                         RaisedGradientButton(
-                            width: 120,
-                            height: 30,
+                            width: 150.w,
+                            height: 50.h,
                             child: Text(
                               "Sign Up",
-                              style: mediumwhiteStyle,
+                              style: TextStyle(
+                                  fontSize: 16.sp, color: AppColors.whiteColor),
                             ),
                             gradient: LinearGradient(
                               colors: [
@@ -180,7 +182,7 @@ class _AuthState extends State<Auth> {
                   : Column(
                       children: [
                         Container(
-                          height: size.height * .55,
+                          height: size.height * .50,
                           width: size.width,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -192,7 +194,7 @@ class _AuthState extends State<Auth> {
                             child: Column(
                               children: [
                                 SizedBox(
-                                  height: 80.h,
+                                  height: 50.h,
                                 ),
                                 TextFields.normalTextField(context,
                                     color: Colors.white,
@@ -259,14 +261,15 @@ class _AuthState extends State<Auth> {
                           ),
                         ),
                         SizedBox(
-                          height: 60.h,
+                          height: 40.h,
                         ),
                         RaisedGradientButton(
-                            width: 120,
-                            height: 30,
+                            width: 140.w,
+                            height: 50.h,
                             child: Text(
                               "Sign In",
-                              style: mediumwhiteStyle,
+                              style: TextStyle(
+                                  fontSize: 16.sp, color: AppColors.whiteColor),
                             ),
                             gradient: LinearGradient(
                               colors: [
@@ -324,11 +327,13 @@ class _AuthState extends State<Auth> {
               child: Center(
                 child: Text(
                   "Sign Up",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                                  fontSize: 18.sp, color: AppColors.whiteColor),
+                            ),
                 ),
               ),
             ),
-          ),
+          
           GestureDetector(
             onTap: () {
               setState(() {
@@ -352,8 +357,9 @@ class _AuthState extends State<Auth> {
               child: Center(
                 child: Text(
                   "Sign In",
-                  style: TextStyle(color: Colors.white),
-                ),
+                  style: TextStyle(
+                                  fontSize: 18.sp, color: AppColors.whiteColor),
+                            ),
               ),
             ),
           )
