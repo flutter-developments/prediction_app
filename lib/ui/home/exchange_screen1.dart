@@ -2,15 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
-import 'package:prediction_app/Widgets/appBar.dart';
-import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/withdraw_email.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:prediction_app/utils/routes.dart';
 
 class ExchangeScreen1 extends StatefulWidget {

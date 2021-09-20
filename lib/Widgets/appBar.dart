@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/utils/app_colors.dart';

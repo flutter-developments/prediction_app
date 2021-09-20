@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
@@ -8,8 +9,7 @@ import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:syncfusion_flutter_sliders/sliders.dart';
-import 'package:flutter_xlider/flutter_xlider.dart';
+
 
 class WithDrawEmail extends StatefulWidget {
   @override
@@ -19,6 +19,7 @@ class WithDrawEmail extends StatefulWidget {
 class _WithDrawEmailState extends State<WithDrawEmail> {
   @override
   Widget build(BuildContext context) {
+    // ignore: unused_local_variable
     double _value = 52.0;
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -90,7 +91,9 @@ Widget buildplayStoreIcon(Size size) {
 }
 
 Widget buildSliderArea(Size size, BuildContext context) {
+  // ignore: unused_local_variable
   int _lowerValue = 0;
+  // ignore: unused_local_variable
   int _upperValue = 100;
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 15.w),

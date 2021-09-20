@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
-import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
-import 'package:prediction_app/Widgets/custom_appbar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/open_prediction_screen.dart';
@@ -13,11 +11,8 @@ import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
-import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:percent_indicator/percent_indicator.dart';
-
-import 'exchange_history.dart';
 import 'exchange_screen1.dart';
 
 class PredictionScreen extends StatefulWidget {
@@ -27,7 +22,7 @@ class PredictionScreen extends StatefulWidget {
 
 class _PredictionScreenState extends State<PredictionScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  var _strokeOrangeWidth = 3.0;
+  var _strokeOrangeWidth = 30.0;
   // ignore: non_constant_identifier_names
   var _stroke_purpel_Width = 3.0;
   List goals = [30.0, 3.0, 3.0, 3.0];

@@ -3,11 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
-import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/custom_appbar.dart';
 import 'package:prediction_app/ui/home/notification.dart';
-import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +21,7 @@ class OpenPredictionScreen extends StatefulWidget {
 class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   var _strokeOrangeWidth = 3.0;
+  // ignore: non_constant_identifier_names
   var _stroke_purpel_Width = 30.0;
   bool isLeft = false;
   @override

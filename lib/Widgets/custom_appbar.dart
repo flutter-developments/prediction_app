@@ -14,6 +14,7 @@ class StatsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // ignore: unused_local_variable
     final borderWidth = 1.0;
     final kInnerDecoration = BoxDecoration(
       border: Border.all(

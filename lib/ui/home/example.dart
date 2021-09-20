@@ -17,6 +17,7 @@ class _ChoiceChipDisplayState extends State<ChoiceChipDisplay> {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: todo
     // TODO: implement build
     return new Scaffold(
       
@@ -38,7 +39,7 @@ class _ChoiceChipDisplayState extends State<ChoiceChipDisplay> {
                   spacing: 55.0,
                   runSpacing: 55.0,
                   children: <Widget>[
-                    choiceChipWidget(chipList),
+                    ChoiceChipWidget(chipList),
                   ],
                 )),
                               ],
@@ -50,16 +51,16 @@ class _ChoiceChipDisplayState extends State<ChoiceChipDisplay> {
   }
 }
 
-class choiceChipWidget extends StatefulWidget {
+class ChoiceChipWidget extends StatefulWidget {
   final List<String> reportList;
 
-  choiceChipWidget(this.reportList);
+  ChoiceChipWidget(this.reportList);
 
   @override
-  _choiceChipWidgetState createState() => new _choiceChipWidgetState();
+  _ChoiceChipWidgetState createState() => new _ChoiceChipWidgetState();
 }
 
-class _choiceChipWidgetState extends State<choiceChipWidget> {
+class _ChoiceChipWidgetState extends State<ChoiceChipWidget> {
   String selectedChoice = "";
 
   _buildChoiceList() {

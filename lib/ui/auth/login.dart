@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/textField.dart';
-import 'package:prediction_app/ui/home/main_screen.dart';
-import 'package:prediction_app/ui/user_guide/user_guide_4.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:prediction_app/ui/welcome/welcome.dart';
 
 class Auth extends StatefulWidget {
   final bool isSignup;
@@ -171,7 +170,7 @@ class _AuthState extends State<Auth> {
                               ],
                             ),
                             onPressed: () {
-                              AppRoutes.push(context, UserGuide4());
+                              AppRoutes.push(context, Welcome());
                             }),
                         SizedBox(
                           height: 40.h,
@@ -276,7 +275,7 @@ class _AuthState extends State<Auth> {
                               ],
                             ),
                             onPressed: () {
-                              AppRoutes.push(context, UserGuide4());
+                              AppRoutes.push(context, Welcome());
                             }),
                         SizedBox(
                           height: 40.h,

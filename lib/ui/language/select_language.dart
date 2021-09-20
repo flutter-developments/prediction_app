@@ -1,11 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
-import 'package:prediction_app/Widgets/appBar.dart';
-import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/ui/auth/login.dart';
-import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';

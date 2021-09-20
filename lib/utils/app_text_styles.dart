@@ -3,9 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 //Custom TextStyles here
+// ignore: non_constant_identifier_names
 Widget WavyText(String text, Color color, double size, FontWeight fontWeight) {
   return DefaultTextStyle(
     style: GoogleFonts.raleway(
@@ -19,6 +19,7 @@ Widget WavyText(String text, Color color, double size, FontWeight fontWeight) {
   );
 }
 
+// ignore: non_constant_identifier_names
 Widget ScaleText(String text, Color color, double size, FontWeight fontWeight) {
   return DefaultTextStyle(
     style: TextStyle(fontSize: size, fontWeight: fontWeight, color: color),
