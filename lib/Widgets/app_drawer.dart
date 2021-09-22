@@ -18,7 +18,6 @@ List<DrawerListModel> drawerContent = [
     screen: MainScreen2(),
     title: 'Home',
   ),
-  
   DrawerListModel(
     icon: Images.prediction,
     screen: PredictionScreen(),
@@ -37,7 +36,7 @@ List<DrawerListModel> drawerContent = [
   DrawerListModel(
     icon: Images.withdraw,
     screen: WithDrawEmail(),
-    title: 'Withdrawal',
+    title: 'Cash Out',
   ),
   DrawerListModel(
     icon: Images.userGuide,
@@ -134,10 +133,9 @@ class DrawerFull extends PreferredSize {
                                       title: Text(
                                         drawerContent[index].title,
                                         style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0XFFCCCCCC),
-                                          fontSize: 20
-                                        ),
+                                            fontWeight: FontWeight.w600,
+                                            color: Color(0XFFCCCCCC),
+                                            fontSize: 20),
                                       ),
                                     ),
                                   );

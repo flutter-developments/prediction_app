@@ -44,7 +44,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
               height: 30.h,
             ),
             buildscreen(size),
-            SizedBox(height:20.h),
+            SizedBox(height: 20.h),
             buildTeam(size),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 120.w, vertical: 30.h),
@@ -129,7 +129,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
+            padding: EdgeInsets.symmetric(horizontal: 25.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -155,8 +155,10 @@ class _PredictionScreenState extends State<PredictionScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
-            child: TextFields.normalTextField(context,inputType: TextInputType.number,
-                color: Colors.grey, hintText: "Enter Credits Amount"),
+            child: TextFields.normalTextField(context,
+                inputType: TextInputType.number,
+                color: Colors.grey,
+                hintText: "Enter Credits Amount"),
           ),
           Divider(
             color: Color(0xff7D7D7D),
@@ -165,7 +167,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
             indent: 10,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 25.h),
+            padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 15.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -188,11 +190,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   progressColor: Colors.yellow,
                 ),
                 Text(
-                  "Estimated\nWinnings",
+                  "Estimated\n Winnings",
                   style: GoogleFonts.raleway(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
-                      fontSize: 20.0),
+                      fontSize: 18.0),
                 ),
                 new CircularPercentIndicator(
                   startAngle: 180.0,
@@ -232,7 +234,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
             ),
           ),
           SizedBox(
-            height: 20.h,
+            height: 15.h,
           ),
           Divider(
             color: Color(0xff7D7D7D),
@@ -284,15 +286,18 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: size.width * .01,
+                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
                       Image.asset("assets/images/Group.png"),
                     ],
@@ -328,14 +333,14 @@ class _PredictionScreenState extends State<PredictionScreen> {
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -355,7 +360,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
 
   Widget buildTeam(Size size) {
     return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 15.w),
+      padding: EdgeInsets.symmetric(horizontal: 15.w),
       child: Column(
         children: [
           Card(
@@ -366,9 +371,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                       spreadRadius: 3,
-                        offset: Offset(0.0, 0.60),
-                        blurRadius: 1.0,
-
+                      offset: Offset(0.0, 0.60),
+                      blurRadius: 1.0,
                       color: AppColors.background_color1,
                     ),
                   ],
@@ -378,7 +382,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:30.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                     child: Text(
                       "Which Team Will Win",
                       style: titlegreyStyle,
@@ -409,9 +414,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   boxShadow: <BoxShadow>[
                     BoxShadow(
                       spreadRadius: 3,
-                        offset: Offset(0.0, 0.60),
-                        blurRadius: 1.0,
-
+                      offset: Offset(0.0, 0.60),
+                      blurRadius: 1.0,
                       color: AppColors.background_color1,
                     ),
                   ],
@@ -421,7 +425,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:10.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                     child: Text(
                       "Who will score 2 Goals?",
                       style: titlegreyStyle,
@@ -475,7 +480,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.w,vertical:10.h),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
                     child: Text(
                       "Who will get a Red Card?",
                       style: titlegreyStyle,

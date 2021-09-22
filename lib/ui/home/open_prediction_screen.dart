@@ -56,7 +56,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
       child: Column(
         children: [
           Container(
-              height: size.height * .20,
+              height: size.height * .18,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
@@ -64,7 +64,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                   children: [
                     StatsContainer(title: "Predictions", stats: '255'),
                     StatsContainer(title: "Wins", stats: '35'),
-                    StatsContainer(title: "Winrate", stats: '32%'),
+                    StatsContainer(title: "Win rate", stats: '32%'),
                   ],
                 ),
               )),
@@ -107,7 +107,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                       left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
-                      height: size.height * .23,
+                      height: size.height * .25,
                       width: size.width * .485,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -233,7 +233,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                       left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
-                      height: size.height * .23,
+                      height: size.height * .25,
                       width: size.width * .485,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -424,7 +424,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
           child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -442,15 +442,18 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: size.width * .01,
+                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
                       Image.asset("assets/images/Group.png"),
                     ],
@@ -486,14 +489,14 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),

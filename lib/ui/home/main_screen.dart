@@ -79,15 +79,18 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: size.width * .01,
+                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
                       Image.asset("assets/images/Group.png"),
                     ],
@@ -123,14 +126,14 @@ class _MainScreenState extends State<MainScreen> {
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -163,8 +166,19 @@ Widget buildSuper_leauge(Size size) {
               padding: EdgeInsets.symmetric(vertical: 15.w, horizontal: 15.w),
               child: Container(
                 decoration: BoxDecoration(
+
                     //color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        spreadRadius: 1,
+                        offset: Offset(0, 3.0),
+                        blurRadius: 12.0,
+                        color: AppColors.background_color1,
+                      ),
+                    ]),
                 height: size.height * .27,
                 width: size.width * .491,
                 child: Stack(

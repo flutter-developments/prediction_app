@@ -7,7 +7,6 @@ import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
-import 'package:gradient_text/gradient_text.dart';
 
 class Language extends StatefulWidget {
   @override
@@ -27,36 +26,29 @@ class _LanguageState extends State<Language> {
             children: [
               //SizedBox(height: 10),
               Container(
-                height: size.height * .30,
+                height: size.height * .40,
                 width: size.width,
                 decoration: BoxDecoration(color: AppColors.primery_color),
-                child: Center(
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20.h,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 270,
+                      child: Image.asset(
+                        "assets/images/logo.png",
                       ),
-                      Container(
-                        height: 150.h,
-                        width: size.width * 0.30,
-                        child: Image.asset(
-                          "assets/images/logo.png",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        "Sportica".toUpperCase(),
-                        style: GoogleFonts.didactGothic(
-                            fontSize: 34.sp,
-                            letterSpacing: 1,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.whiteColor),
-                      )
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      "Sportica".toUpperCase(),
+                      style: GoogleFonts.didactGothic(
+                          fontSize: 34.sp,
+                          letterSpacing: 1,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.whiteColor),
+                    )
+                  ],
                 ),
               ),
               Container(
@@ -64,7 +56,7 @@ class _LanguageState extends State<Language> {
               Column(
                 children: [
                   Container(
-                    height: size.height * .40,
+                    height: size.height * .20,
                     width: size.width,
                     color: AppColors.bar_color,
                     child: Padding(
@@ -75,43 +67,21 @@ class _LanguageState extends State<Language> {
                               height: 30.h,
                             ),
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 buildavatar(
                                     size,
                                     "assets/images/england-flag.jpg",
                                     "English"),
                                 buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
-                                    "English"),
-                                buildavatar(size,
-                                    "assets/images/england-flag.jpg", "English")
-                              ],
-                            ),
-                            SizedBox(
-                              height: 40.h,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
-                                    "English"),
-                                buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
-                                    "English"),
-                                buildavatar(size,
-                                    "assets/images/england-flag.jpg", "English")
+                                    size, "assets/images/arabic.png", "Arabic"),
                               ],
                             ),
                           ],
                         )),
                   ),
                   SizedBox(
-                    height: 60.h,
+                    height: 100.h,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -157,6 +127,7 @@ class _LanguageState extends State<Language> {
           child: Image.asset(
             link,
             scale: 5,
+            fit: BoxFit.fitHeight,
           ),
         ),
         SizedBox(
@@ -187,64 +158,60 @@ class _LanguageState extends State<Language> {
       ),
       child: Row(
         children: [
-          GestureDetector(
-            onTap: () {
-              // setState(() {
-              //   isSignup = true;
-              // });
-            },
-            child: Container(
-              height: size.height * .07,
-              width: size.width / 1.6,
-              decoration: BoxDecoration(
-                  borderRadius: isSignup == true
-                      ? BorderRadius.only(
-                          topRight: Radius.circular(10.0),
-                        )
-                      : BorderRadius.only(
-                          bottomRight: Radius.circular(10.0),
-                        ),
-                  color: isSignup == true
-                      ? AppColors.bar_color
-                      : AppColors.background_color),
-              child: Center(
-                child: Text(
-                  "Choose language",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w600),
-                ),
+          Container(
+            height: size.height * .06,
+            width: size.width * .25,
+            decoration: BoxDecoration(
+                borderRadius: isSignup == false
+                    ? BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                      )
+                    : BorderRadius.only(
+                        bottomRight: Radius.circular(10.0),
+                      ),
+                color: isSignup == false
+                    ? AppColors.bar_color
+                    : AppColors.background_color),
+          ),
+          Container(
+            height: size.height * .07,
+            width: size.width * .5,
+            decoration: BoxDecoration(
+                borderRadius: isSignup == true
+                    ? BorderRadius.only(
+                        topRight: Radius.circular(10.0),
+                        topLeft: Radius.circular(10.0),
+                      )
+                    : BorderRadius.only(
+                        bottomRight: Radius.circular(10.0),
+                      ),
+                color: isSignup == true
+                    ? AppColors.bar_color
+                    : AppColors.background_color),
+            child: Center(
+              child: Text(
+                "Choose language",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w600),
               ),
             ),
           ),
-          GestureDetector(
-            onTap: () {
-              // setState(() {
-              //   isSignup = false;
-              // });
-            },
-            child: Container(
-              height: size.height * .06,
-              width: size.width / 2.7,
-              decoration: BoxDecoration(
-                  borderRadius: isSignup == false
-                      ? BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                        )
-                      : BorderRadius.only(
-                          bottomLeft: Radius.circular(10.0),
-                        ),
-                  color: isSignup == false
-                      ? AppColors.bar_color
-                      : AppColors.background_color),
-              child: Center(
-                child: Text(
-                  "",
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-            ),
+          Container(
+            height: size.height * .06,
+            width: size.width * .25,
+            decoration: BoxDecoration(
+                borderRadius: isSignup == false
+                    ? BorderRadius.only(
+                        topLeft: Radius.circular(10.0),
+                      )
+                    : BorderRadius.only(
+                        bottomLeft: Radius.circular(10.0),
+                      ),
+                color: isSignup == false
+                    ? AppColors.bar_color
+                    : AppColors.background_color),
           )
         ],
       ),

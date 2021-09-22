@@ -33,7 +33,7 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
                 build_premium(size),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 134.w),
-                  child: RaisedGradientButton(
+                  child: RaisedGradientButton(height: 50.h,
                     child: Text(
                       "Upgrade",
                       style: TextStyle(
@@ -156,7 +156,7 @@ Widget build_premiumlist(
             title,
             style: GoogleFonts.raleway(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
                 color: AppColors.whiteColor),
           ),
           SizedBox(
@@ -166,7 +166,7 @@ Widget build_premiumlist(
             subtitle,
             style: GoogleFonts.openSans(
                 fontSize: 20.sp,
-                fontWeight: FontWeight.w300,
+                fontWeight: FontWeight.w600,
                 color: AppColors.whiteColor),
           ),
         ],

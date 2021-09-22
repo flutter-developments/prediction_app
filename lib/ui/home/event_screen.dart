@@ -39,7 +39,9 @@ class _EventScreenState extends State<EventScreen> {
               height: 30.h,
             ),
             buildGames(size),
-            SizedBox(height: 30.h,)
+            SizedBox(
+              height: 30.h,
+            )
           ],
         )),
       ),
@@ -86,15 +88,18 @@ class _EventScreenState extends State<EventScreen> {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: size.width * .01,
+                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
                       Image.asset("assets/images/Group.png"),
                     ],
@@ -130,14 +135,14 @@ class _EventScreenState extends State<EventScreen> {
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -172,8 +177,7 @@ class _EventScreenState extends State<EventScreen> {
                         child: Padding(
                   padding: EdgeInsets.only(
                       left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
-                  child:
-                   Card(
+                  child: Card(
                     child: Container(
                       height: size.height * .28,
                       width: size.width * .485,
@@ -202,7 +206,7 @@ class _EventScreenState extends State<EventScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: 10.w),
+                                padding: EdgeInsets.symmetric(horizontal: 20.w),
                                 child: Image.asset("assets/images/madrid.png"),
                               ),
                               Padding(
@@ -213,7 +217,8 @@ class _EventScreenState extends State<EventScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 15.h),
+                                padding:
+                                    EdgeInsets.only(top: 15.h, right: 10.w),
                                 child: Image.asset(
                                   "assets/images/barca.png",
                                 ),
@@ -234,7 +239,7 @@ class _EventScreenState extends State<EventScreen> {
                                 ),
                                 RaisedGradientButton(
                                     width: 120.w,
-                                    height: 50.h,
+                                    height: 45.h,
                                     child: Text(
                                       "Predict Now",
                                       style: smallwhiteStyle,
@@ -246,7 +251,8 @@ class _EventScreenState extends State<EventScreen> {
                                       ],
                                     ),
                                     onPressed: () {
-                                      AppRoutes.push(context, PredictionScreen());
+                                      AppRoutes.push(
+                                          context, PredictionScreen());
                                     }),
                                 Text(
                                   "Barcalona",
@@ -265,15 +271,11 @@ class _EventScreenState extends State<EventScreen> {
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffB6B6B6)),
                           ),
-                          
                         ],
                       ),
                     ),
                     color: AppColors.background_color1,
                   ),
-               
-               
-               
                 ))));
           }),
     );

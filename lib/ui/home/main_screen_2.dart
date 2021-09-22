@@ -83,15 +83,18 @@ class _MainScreen2State extends State<MainScreen2> {
                   ),
                   Row(
                     children: [
+                      SizedBox(
+                        width: size.width * .01,
+                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
                       Image.asset("assets/images/Group.png"),
                     ],
@@ -127,14 +130,14 @@ class _MainScreen2State extends State<MainScreen2> {
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
@@ -177,8 +180,17 @@ Widget buildSuper_leauge(Size size) {
                 height: size.height * .28,
                 width: size.width * .491,
                  decoration: BoxDecoration(
+                   
                   color: Colors.transparent,
-                 borderRadius: BorderRadius.all(Radius.circular(10))
+                 borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        spreadRadius: 1,
+                        offset: Offset(0, 3.0),
+                        blurRadius: 12.0,
+                        color: AppColors.background_color1,
+                      ),
+                    ]
                 ),
                 child: Stack(
                   fit: StackFit.expand,

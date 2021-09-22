@@ -66,7 +66,7 @@ class _AuthState extends State<Auth> {
                   ? Column(
                       children: [
                         Container(
-                          height: size.height * .52,
+                          height: size.height * .55,
                           width: size.width,
                           decoration: BoxDecoration(
                              
@@ -97,17 +97,17 @@ class _AuthState extends State<Auth> {
                                     hintText: "Confirm Password",
                                     icon: Icons.vpn_key),
                                 SizedBox(
-                                  height: 15.h,
+                                  height: 20.h,
                                 ),
                                 Text(
                                   "OR Sign Up With",
                                   style: GoogleFonts.raleway(
-                                      fontSize: 15.sp,
+                                      fontSize: 13.sp,
                                       fontWeight: FontWeight.w600,
                                       color: AppColors.whiteColor),
                                 ),
                                 SizedBox(
-                                  height: 15.h,
+                                  height: 20.h,
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -115,14 +115,14 @@ class _AuthState extends State<Auth> {
                                   children: [
                                     GestureDetector(
                                         child: Image.asset(
-                                            "assets/images/google.png")),
+                                            "assets/images/google.png",height: 60.h,)),
                                     GestureDetector(
                                         child:
-                                            Image.asset("assets/images/fb.png"))
+                                            Image.asset("assets/images/fb.png",height: 60.h,))
                                   ],
                                 ),
                                 SizedBox(
-                                  height: 15.h,
+                                  height: 20.h,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -130,7 +130,7 @@ class _AuthState extends State<Auth> {
                                     Text(
                                       "Already have an account ?",
                                       style: GoogleFonts.raleway(
-                                                fontSize: 15.sp,
+                                                fontSize: 14.sp,
                                                 color: AppColors.white,
                                                 fontWeight: FontWeight.w500),
                                     ),
@@ -145,7 +145,7 @@ class _AuthState extends State<Auth> {
                                         },
                                         child: Text("Sign In",
                                             style: GoogleFonts.raleway(
-                                                fontSize: 15.sp,
+                                                fontSize: 14.sp,
                                                 color: AppColors.gradiantColor1,
                                                 fontWeight: FontWeight.w500))),
                                   ],
@@ -182,7 +182,7 @@ class _AuthState extends State<Auth> {
                   : Column(
                       children: [
                         Container(
-                          height: size.height * .50,
+                          height: size.height * .47,
                           width: size.width,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.only(
@@ -212,7 +212,7 @@ class _AuthState extends State<Auth> {
                                 ),
                                 Text("OR Sign In With",
                                     style: GoogleFonts.raleway(
-                                        fontSize: 15.sp,
+                                        fontSize: 14.sp,
                                         fontWeight: FontWeight.w600,
                                         color: AppColors.whiteColor)),
                                 SizedBox(
@@ -224,10 +224,10 @@ class _AuthState extends State<Auth> {
                                   children: [
                                     GestureDetector(
                                         child: Image.asset(
-                                            "assets/images/google.png")),
+                                            "assets/images/google.png",height: 60.h,)),
                                     GestureDetector(
                                         child:
-                                            Image.asset("assets/images/fb.png"))
+                                            Image.asset("assets/images/fb.png",height: 60.h))
                                   ],
                                 ),
                                 SizedBox(
@@ -251,7 +251,7 @@ class _AuthState extends State<Auth> {
                                         },
                                         child: Text("Sign Up",
                                             style: GoogleFonts.raleway(
-                                                fontSize: 15.sp,
+                                                fontSize: 14.sp,
                                                 color: AppColors.gradiantColor1,
                                                 fontWeight: FontWeight.w700))),
                                   ],
