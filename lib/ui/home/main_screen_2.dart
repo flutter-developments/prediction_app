@@ -83,9 +83,6 @@ class _MainScreen2State extends State<MainScreen2> {
                   ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: size.width * .01,
-                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
@@ -167,7 +164,6 @@ Widget buildSuper_leauge(Size size) {
         itemCount: notifications.length,
         itemBuilder: (context, index) {
           return InkWell(
-          
             onTap: () {
               AppRoutes.push(
                 context,
@@ -179,24 +175,22 @@ Widget buildSuper_leauge(Size size) {
               child: Container(
                 height: size.height * .28,
                 width: size.width * .491,
-                 decoration: BoxDecoration(
-                   
-                  color: Colors.transparent,
-                 borderRadius: BorderRadius.all(Radius.circular(10)),
-                  boxShadow: <BoxShadow>[
+                decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    boxShadow: <BoxShadow>[
                       BoxShadow(
                         spreadRadius: 1,
                         offset: Offset(0, 3.0),
                         blurRadius: 12.0,
                         color: AppColors.background_color1,
                       ),
-                    ]
-                ),
+                    ]),
                 child: Stack(
                   fit: StackFit.expand,
                   children: [
-                    ClipRRect(borderRadius: BorderRadius.circular(10),
-                      
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
                       child: Image.asset(notifications[index].image,
                           fit: BoxFit.cover),
                     ),
@@ -205,10 +199,10 @@ Widget buildSuper_leauge(Size size) {
                       child: BackdropFilter(
                         filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
                         child: Container(
-                           decoration: BoxDecoration(
-                 color: Colors.transparent.withOpacity(0.3),
-                 borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
+                          decoration: BoxDecoration(
+                              color: Colors.transparent.withOpacity(0.3),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
                           //color: Colors.transparent.withOpacity(0.1),
                           alignment: Alignment.center,
                           child: Column(

@@ -48,7 +48,7 @@ final subtitleStyle1 = GoogleFonts.raleway(
     fontSize: 15.sp, fontWeight: FontWeight.w500, color: AppColors.greyColor);
 
 final largetextwhiteStyle = TextStyle(
-    fontSize: 45.sp, fontWeight: FontWeight.bold, color: AppColors.white);
+    fontSize: 40.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 final largetextVSStyle = TextStyle(
     fontSize: 35.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 final mediumextwhiteStyle = GoogleFonts.raleway(

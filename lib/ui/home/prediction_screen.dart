@@ -33,40 +33,41 @@ class _PredictionScreenState extends State<PredictionScreen> {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.primery_color,
         key: _key,
         drawer: DrawerFull(context, MediaQuery.of(context).size),
         body: Container(
+            color: AppColors.background_color,
             child: ListView(
-          children: [
-            buildappbarContainer(size, context),
-            SizedBox(
-              height: 30.h,
-            ),
-            buildscreen(size),
-            SizedBox(height: 20.h),
-            buildTeam(size),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 120.w, vertical: 30.h),
-              child: RaisedGradientButton(
-                  width: 120.w,
-                  height: 50.h,
-                  child: Text(
-                    "Set Prediction",
-                    style: smallwhiteStyle,
-                  ),
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0XFFDD7EE0).withOpacity(0.9),
-                      Color(0XFF8787F2),
-                    ],
-                  ),
-                  onPressed: () {
-                    AppRoutes.push(context, OpenPredictionScreen());
-                  }),
-            ),
-          ],
-        )),
+              children: [
+                buildappbarContainer(size, context),
+                SizedBox(
+                  height: 30.h,
+                ),
+                buildscreen(size),
+                SizedBox(height: 20.h),
+                buildTeam(size),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 120.w, vertical: 30.h),
+                  child: RaisedGradientButton(
+                      width: 120.w,
+                      height: 50.h,
+                      child: Text(
+                        "Set Prediction",
+                        style: smallwhiteStyle,
+                      ),
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0XFFDD7EE0).withOpacity(0.9),
+                          Color(0XFF8787F2),
+                        ],
+                      ),
+                      onPressed: () {
+                        AppRoutes.push(context, OpenPredictionScreen());
+                      }),
+                ),
+              ],
+            )),
       ),
     );
   }
@@ -75,14 +76,12 @@ class _PredictionScreenState extends State<PredictionScreen> {
     Size size,
   ) {
     return Container(
-      height: size.height * .60,
+      height: size.height * .55,
       width: size.width,
       color: AppColors.primery_color,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 15.h,
-          ),
           Text(
             "UEFA Champions League",
             style: mediumextwhiteStyle,
@@ -93,7 +92,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
             style: titlegreyStyle,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 15.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -101,26 +100,24 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   padding: EdgeInsets.only(left: 10.w),
                   child: Image.asset("assets/images/madrid.png"),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(top: 15.h),
-                  child: Column(
-                    children: [
-                      Text(
-                        "Semi-finals",
-                        style: titlegreyStyle,
-                      ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      Text(
-                        "VS",
-                        style: mediumextwhiteStyle,
-                      ),
-                    ],
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Semi-finals",
+                      style: titlegreyStyle,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Text(
+                      "VS",
+                      style: mediumextwhiteStyle,
+                    ),
+                  ],
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 15.h),
+                  padding: EdgeInsets.only(top: 10.h),
                   child: Image.asset(
                     "assets/images/barca.png",
                   ),
@@ -190,11 +187,12 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   progressColor: Colors.yellow,
                 ),
                 Text(
-                  "Estimated\n Winnings",
+                  "Estimated\nWinnings",
                   style: GoogleFonts.raleway(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0),
+                  textAlign: TextAlign.center,
                 ),
                 new CircularPercentIndicator(
                   startAngle: 180.0,
@@ -286,9 +284,6 @@ class _PredictionScreenState extends State<PredictionScreen> {
                   ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: size.width * .01,
-                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
@@ -426,14 +421,12 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 children: [
                   Padding(
                     padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
                     child: Text(
                       "Who will score 2 Goals?",
                       style: titlegreyStyle,
                     ),
                   ),
-                  //league pictures row
-                  SizedBox(height: 30.h),
                   Column(
                     children: [
                       Row(

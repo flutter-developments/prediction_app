@@ -88,9 +88,6 @@ class _EventScreenState extends State<EventScreen> {
                   ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: size.width * .01,
-                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(

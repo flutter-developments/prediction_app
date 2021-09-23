@@ -32,16 +32,14 @@ class _HomeState extends State<Home> {
             Center(
                 child: Image.asset(
               "assets/images/logo.png",
-              height: 200.h,
-              width: 220.w,
             )),
             SizedBox(
               height: 30.h,
             ),
             Padding(
-              padding:  EdgeInsets.only(bottom: 50.h),
+              padding: EdgeInsets.only(bottom: 50.h),
               child: SpinKitFadingCube(
-                color:Colors.white,
+                color: Colors.white,
                 size: 50.0.sp,
               ),
             ),

@@ -81,7 +81,9 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
             borderRadius: BorderRadius.circular(10),
             color: AppColors.background_color1,
           ),
-          child: Center(child: SvgPicture.asset("assets/images/master.svg",color: Colors.white)),
+          child: Center(
+              child: SvgPicture.asset("assets/images/master.svg",
+                  color: Colors.white)),
         ),
         SizedBox(
           height: 10.h,
@@ -129,7 +131,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
   //appbar
   Container buildappbarContainer(Size size, BuildContext context) {
     return Container(
-      height: size.height * .140,
+      height: size.height * .150,
       width: size.width,
       decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
@@ -166,9 +168,6 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                   ),
                   Row(
                     children: [
-                      // SizedBox(
-                      //   width: size.width * .01,
-                      // ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
@@ -195,7 +194,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.h),
               child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
                       onTap: () {
@@ -210,7 +209,6 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                         },
                       )),
                   Row(
-                    
                     children: [
                       Image.asset("assets/images/Group 20.png"),
                       SizedBox(
@@ -229,7 +227,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                       onTap: () {
                         AppRoutes.push(context, ExchangeScreen1());
                       },
-                      child:  Image.asset("assets/images/Group 24.png"),)
+                      child: Image.asset("assets/images/Group 24.png"))
                 ],
               ),
             ),

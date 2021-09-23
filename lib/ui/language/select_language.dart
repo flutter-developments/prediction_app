@@ -31,11 +31,8 @@ class _LanguageState extends State<Language> {
                 decoration: BoxDecoration(color: AppColors.primery_color),
                 child: Column(
                   children: [
-                    Container(
-                      height: 270,
-                      child: Image.asset(
-                        "assets/images/logo.png",
-                      ),
+                    Image.asset(
+                      "assets/images/logo.png",
                     ),
                     SizedBox(
                       height: 20.h,
@@ -122,6 +119,7 @@ class _LanguageState extends State<Language> {
 
   Widget buildavatar(Size size, String link, String title) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         ClipOval(
           child: Image.asset(

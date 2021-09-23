@@ -6,6 +6,7 @@ import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/home/open_prediction_screen.dart';
 import 'package:prediction_app/ui/home/prediction_screen.dart';
+import 'package:prediction_app/ui/home/premium_upgrade.dart';
 import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:prediction_app/ui/welcome/entry_page.dart';
 
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: () => MaterialApp(
-          debugShowCheckedModeBanner: false, home: OpenPredictionScreen()),
+          debugShowCheckedModeBanner: false, home: PremiumUpgrade()),
       designSize: Size(414, 896),
     );
   }

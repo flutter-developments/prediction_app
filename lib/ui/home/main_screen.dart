@@ -79,9 +79,6 @@ class _MainScreenState extends State<MainScreen> {
                   ),
                   Row(
                     children: [
-                      SizedBox(
-                        width: size.width * .01,
-                      ),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
