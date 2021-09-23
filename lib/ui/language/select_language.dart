@@ -73,8 +73,8 @@ class _LanguageState extends State<Language> {
                                     size,
                                     "assets/images/england-flag.jpg",
                                     "English"),
-                                buildavatar(
-                                    size, "assets/images/arabic.png", "Arabic"),
+                                buildavatar(size,
+                                    "assets/images/england-flag.jpg", "Arabic"),
                               ],
                             ),
                           ],

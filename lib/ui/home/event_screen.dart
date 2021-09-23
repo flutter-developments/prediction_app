@@ -193,13 +193,11 @@ class _EventScreenState extends State<EventScreen> {
                           borderRadius: BorderRadius.circular(10),
                           color: AppColors.background_color1),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10.h),
-                            child: Text(
-                              "UEFA Champions League",
-                              style: titlegreyStyle,
-                            ),
+                          Text(
+                            "UEFA Champions League",
+                            style: titlegreyStyle,
                           ),
                           //league pictures row
                           Row(
@@ -239,7 +237,7 @@ class _EventScreenState extends State<EventScreen> {
                                 ),
                                 RaisedGradientButton(
                                     width: 120.w,
-                                    height: 45.h,
+                                    height: 40.h,
                                     child: Text(
                                       "Predict Now",
                                       style: smallwhiteStyle,

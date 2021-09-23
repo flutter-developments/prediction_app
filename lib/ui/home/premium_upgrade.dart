@@ -25,15 +25,18 @@ class _PremiumUpgradeState extends State<PremiumUpgrade> {
               children: [
                 // buildApp_only_title_bar(
                 //     size, context, "Upgrade", AppColors.background_color),
-                appBarWithText(size, context, "Upgrade", AppColors.background_color1,
-                    () {
+                appBarWithText(
+                    size, context, "Upgrade", AppColors.background_color1, () {
                   Navigator.of(context).pop();
                 }),
-                SizedBox(height: 20.h,),
+                SizedBox(
+                  height: 20.h,
+                ),
                 build_premium(size),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 134.w),
-                  child: RaisedGradientButton(height: 50.h,
+                  child: RaisedGradientButton(
+                    height: 50.h,
                     child: Text(
                       "Upgrade",
                       style: TextStyle(
@@ -67,7 +70,7 @@ build_premium(Size size) {
       horizontal: 15.w,
     ),
     child: Container(
-      height: size.height * .85,
+      height: size.height * .75,
       width: size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,7 +111,7 @@ build_premium(Size size) {
           ),
           Container(
               width: size.width * 0.95,
-              height: 385.h,
+              height: 300.h,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.background_color1),
@@ -118,7 +121,6 @@ build_premium(Size size) {
                   build_premiumlist(() {}, "Premium Benefit", "2", size),
                   build_premiumlist(() {}, "Premium Benefit", "3", size),
                   build_premiumlist(() {}, "Premium Benefit", "4", size),
-                  build_premiumlist(() {}, "Premium Benefit", "5", size)
                 ],
               )),
         ],

@@ -9,8 +9,6 @@ import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:prediction_app/ui/welcome/entry_page.dart';
 
-
-
 void main() => runApp(MyApp());
 void configLoading() {}
 
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: () => MaterialApp(
-          debugShowCheckedModeBanner: false, home:Language()),
+          debugShowCheckedModeBanner: false, home: OpenPredictionScreen()),
       designSize: Size(414, 896),
     );
   }
