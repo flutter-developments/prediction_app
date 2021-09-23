@@ -515,8 +515,12 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          _strokeOrangeWidth = 30.0;
-          _stroke_purpel_Width = 3.0;
+          if (_strokeOrangeWidth == 30) {
+            _strokeOrangeWidth = 3.0;
+          } else {
+            _strokeOrangeWidth = 30.0;
+            _stroke_purpel_Width = 3.0;
+          }
         });
       },
       child: Container(
@@ -547,8 +551,12 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          _strokeOrangeWidth = 3.0;
-          _stroke_purpel_Width = 30.0;
+          if (_stroke_purpel_Width == 30.0) {
+            _stroke_purpel_Width = 3.0;
+          } else {
+            _strokeOrangeWidth = 3.0;
+            _stroke_purpel_Width = 30.0;
+          }
         });
       },
       child: Container(
@@ -578,7 +586,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          goals = [30.0, 3.0, 3.0, 3.0];
+          if (goals[0] == 30.0) {
+            goals = [3.0, 3.0, 3.0, 3.0];
+          } else {
+            goals = [30.0, 3.0, 3.0, 3.0];
+          }
         });
       },
       child: Container(
@@ -609,7 +621,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          goals = [3.0, 30.0, 3.0, 3.0];
+          if (goals[1] == 30.0) {
+            goals = [3.0, 3.0, 3.0, 3.0];
+          } else {
+            goals = [3.0, 30.0, 3.0, 3.0];
+          }
         });
       },
       child: Container(
@@ -639,7 +655,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          goals = [3.0, 3.0, 30.0, 3.0];
+          if (goals[2] == 30.0) {
+            goals = [3.0, 3.0, 3.0, 3.0];
+          } else {
+            goals = [3.0, 3.0, 30.0, 3.0];
+          }
         });
       },
       child: Container(
@@ -670,7 +690,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
     return OutlineGradientButton(
       onTap: () {
         setState(() {
-          goals = [3.0, 3.0, 3.0, 30.0];
+          if (goals[3] == 30.0) {
+            goals = [3.0, 3.0, 3.0, 3.0];
+          } else {
+            goals = [3.0, 3.0, 3.0, 30.0];
+          }
         });
       },
       child: Container(

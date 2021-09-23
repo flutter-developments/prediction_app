@@ -89,7 +89,14 @@ class _MainScreenState extends State<MainScreen> {
                       SizedBox(
                         width: size.width * .01,
                       ),
-                      Image.asset("assets/images/Group.png"),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                            height: 30,
+                            width: 30,
+                            child: Image.asset(
+                                "assets/images/appbar_notification.png")),
+                      ),
                     ],
                   ),
                   GestureDetector(

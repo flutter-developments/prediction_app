@@ -100,8 +100,11 @@ class _MainScreen2State extends State<MainScreen2> {
                       onTap: () {
                         AppRoutes.push(context, Notifications());
                       },
-                      child:
-                          Image.asset("assets/images/appbar_notification.png")),
+                      child: Container(
+                          height: 30,
+                          width: 30,
+                          child: Image.asset(
+                              "assets/images/appbar_notification.png"))),
                 ],
               ),
             ),
