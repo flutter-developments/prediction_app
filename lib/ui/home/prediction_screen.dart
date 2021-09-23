@@ -152,7 +152,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
-            child: TextFields.normalTextField(context,
+            child: TextFields.normalTextField1(context,
                 inputType: TextInputType.number,
                 color: Colors.grey,
                 hintText: "Enter Credits Amount"),

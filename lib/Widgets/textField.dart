@@ -60,6 +60,7 @@ class TextFields {
   static Widget normalTextField(
     BuildContext context, {
     IconData? icon,
+    bool? obsecuretext,
     String? hintText,
     TextEditingController? controller,
     bool readOnly = false,
@@ -69,6 +70,7 @@ class TextFields {
     required Color color,
   }) {
     return TextFormField(
+      obscureText: false,
       style: mediumwhiteStyle,
       decoration: InputDecoration(
           // hintText: hintText,
@@ -100,6 +102,53 @@ class TextFields {
             icon,
             color: AppColors.textColor,
           )),
+    );
+  }
+
+  static Widget normalTextField1(
+    BuildContext context, {
+    IconData? icon,
+    String? hintText,
+    TextEditingController? controller,
+    bool readOnly = false,
+    String? emptyValidationMessage,
+    TextInputType? inputType,
+    int? maxLength,
+    required Color color,
+  }) {
+    return TextFormField(
+      style: mediumwhiteStyle,
+      decoration: InputDecoration(
+        // hintText: hintText,
+        labelText: hintText,
+        // labelStyle: TextStyle(
+        //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
+        labelStyle: GoogleFonts.raleway(
+            color: AppColors.textColor,
+            fontSize: 15,
+            fontWeight: FontWeight.w600),
+        filled: true,
+        fillColor: Color(0xFF50566C),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(15.0),
+          ),
+          borderSide: BorderSide(color: Color(0xff50566C), width: 0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              15.0,
+            ),
+          ),
+          borderSide: BorderSide(color: AppColors.white, width: 2),
+        ),
+        //contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
+        // prefixIcon: Icon(
+        //   icon,
+        //   color: AppColors.textColor,
+        // )
+      ),
     );
   }
 

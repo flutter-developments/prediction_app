@@ -27,17 +27,19 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
         child: Container(
             color: AppColors.background_color,
             height: size.height,
-            child: ListView(
-              children: [
-                appBarWithText(size, context, "Withdraw", AppColors.bar_color,
-                    () {
-                  Navigator.of(context).pop();
-                }),
-                buildWithdrawArea(size, context),
-                SizedBox(
-                  height: 30.h,
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  appBarWithText(size, context, "Withdraw", AppColors.bar_color,
+                      () {
+                    Navigator.of(context).pop();
+                  }),
+                  buildWithdrawArea(size, context),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                ],
+              ),
             )),
       ),
     );
@@ -240,7 +242,7 @@ Widget buildtextfieldarea(Size size, BuildContext context) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 15.w),
     child: Container(
-      height: size.height * .40,
+      height: size.height * .35,
       decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
@@ -297,8 +299,8 @@ Widget buildtextfieldarea(Size size, BuildContext context) {
             height: 30.h,
           ),
           RaisedGradientButton(
-              width: 120,
-              height: 30,
+              width: 120.w,
+              height: 45.h,
               child: Text(
                 "Send",
                 style: mediumwhiteStyle,

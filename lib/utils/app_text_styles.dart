@@ -55,7 +55,7 @@ final mediumextwhiteStyle = GoogleFonts.raleway(
     fontSize: 23.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 
 final smallwhiteStyle = GoogleFonts.raleway(
-    fontSize: 15.sp,
+    fontSize: 17.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.whiteTextColor);
 

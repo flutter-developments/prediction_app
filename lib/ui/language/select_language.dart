@@ -31,8 +31,11 @@ class _LanguageState extends State<Language> {
                 decoration: BoxDecoration(color: AppColors.primery_color),
                 child: Column(
                   children: [
-                    Image.asset(
-                      "assets/images/logo.png",
+                    Container(
+                      height: 260.h,
+                      child: Image.asset(
+                        "assets/images/logo.png",
+                      ),
                     ),
                     SizedBox(
                       height: 20.h,
@@ -66,12 +69,10 @@ class _LanguageState extends State<Language> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                buildavatar(
-                                    size,
-                                    "assets/images/england-flag.jpg",
+                                buildavatar(size, "assets/images/england.png",
                                     "English"),
-                                buildavatar(size,
-                                    "assets/images/england-flag.jpg", "Arabic"),
+                                buildavatar(size, "assets/images/england.png",
+                                    "Arabic"),
                               ],
                             ),
                           ],
@@ -124,7 +125,7 @@ class _LanguageState extends State<Language> {
         ClipOval(
           child: Image.asset(
             link,
-            scale: 5,
+            //scale: 5,
             fit: BoxFit.fitHeight,
           ),
         ),
