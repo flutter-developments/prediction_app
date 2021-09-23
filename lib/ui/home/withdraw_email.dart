@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
-import 'package:flutter_xlider/flutter_xlider.dart';
+//import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
@@ -9,7 +9,6 @@ import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 
 class WithDrawEmail extends StatefulWidget {
   @override
@@ -29,13 +28,14 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
             height: size.height,
             child: ListView(
               children: [
-
                 appBarWithText(size, context, "Withdraw", AppColors.bar_color,
                     () {
                   Navigator.of(context).pop();
                 }),
                 buildWithdrawArea(size, context),
-                SizedBox(height: 30.h,),
+                SizedBox(
+                  height: 30.h,
+                ),
               ],
             )),
       ),
@@ -152,61 +152,62 @@ Widget buildSliderArea(Size size, BuildContext context) {
               ),
             ],
           ),
-          Container(
-              margin: EdgeInsets.only(top: 50, left: 10, right: 10),
-              alignment: Alignment.centerLeft,
-              child: FlutterSlider(
-                  values: [0, 100],
-                  max: 100,
-                  min: 0,
-                  step: FlutterSliderStep(step: 1),
-                  jump: true,
-                  trackBar: FlutterSliderTrackBar(
-                    inactiveTrackBarHeight: 6,
-                    inactiveTrackBar: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    activeTrackBarHeight: 6,
-                    activeTrackBar: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0XFF8A87F2),
-                          Color(0XFFD87FE2),
-                        ],
-                      ),
-                    ),
-                  ),
-                  tooltip: FlutterSliderTooltip(
-                    boxStyle: FlutterSliderTooltipBox(
-                      decoration: BoxDecoration(
-                        color: AppColors.background_color1,
-                      ),
-                    ),
-                    textStyle:
-                        TextStyle(fontSize: 25, color: Color(0xFFD87FE2)),
-                  ),
-                  handler: FlutterSliderHandler(
-                    decoration: BoxDecoration(),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Color(0XFFD87FE2),
-                          borderRadius: BorderRadius.circular(25)),
-                      padding: EdgeInsets.all(10),
-                      child: Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: AppColors.background_color1,
-                            borderRadius: BorderRadius.circular(25)),
-                      ),
-                    ),
-                  ),
-                  disabled: false,
-                  onDragging: (handlerIndex, lowerValue, upperValue) {
-                    _lowerValue = lowerValue;
-                    _upperValue = upperValue;
-                  })),
+          // Container(
+          //     margin: EdgeInsets.only(top: 50, left: 10, right: 10),
+          //     alignment: Alignment.centerLeft,
+          //     child: FlutterSlider(
+          //         values: [0, 100],
+          //         max: 100,
+          //         min: 0,
+          //         step: FlutterSliderStep(step: 1),
+          //         jump: true,
+          //         trackBar: FlutterSliderTrackBar(
+          //           inactiveTrackBarHeight: 6,
+          //           inactiveTrackBar: BoxDecoration(
+          //             color: Colors.white,
+          //             borderRadius: BorderRadius.circular(10),
+          //           ),
+          //           activeTrackBarHeight: 6,
+          //           activeTrackBar: BoxDecoration(
+          //             borderRadius: BorderRadius.circular(10),
+          //             gradient: LinearGradient(
+          //               colors: [
+          //                 Color(0XFF8A87F2),
+          //                 Color(0XFFD87FE2),
+          //               ],
+          //             ),
+          //           ),
+          //         ),
+          //         tooltip: FlutterSliderTooltip(
+          //           boxStyle: FlutterSliderTooltipBox(
+          //             decoration: BoxDecoration(
+          //               color: AppColors.background_color1,
+          //             ),
+          //           ),
+          //           textStyle:
+          //               TextStyle(fontSize: 25, color: Color(0xFFD87FE2)),
+          //         ),
+          //         handler: FlutterSliderHandler(
+          //           decoration: BoxDecoration(),
+          //           child: Container(
+          //             decoration: BoxDecoration(
+          //                 color: Color(0XFFD87FE2),
+          //                 borderRadius: BorderRadius.circular(25)),
+          //             padding: EdgeInsets.all(10),
+          //             child: Container(
+          //               padding: EdgeInsets.all(5),
+          //               decoration: BoxDecoration(
+          //                   color: AppColors.background_color1,
+          //                   borderRadius: BorderRadius.circular(25)),
+          //             ),
+          //           ),
+          //         ),
+          //         disabled: false,
+          //         onDragging: (handlerIndex, lowerValue, upperValue) {
+          //           _lowerValue = lowerValue;
+          //           _upperValue = upperValue;
+          //         })),
+
           Padding(
             padding: EdgeInsets.only(bottom: 20.h, left: 30.w, right: 30.w),
             child: Row(
