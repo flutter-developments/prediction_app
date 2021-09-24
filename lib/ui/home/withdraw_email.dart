@@ -1,5 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 // ignore: import_of_legacy_library_into_null_safe
 //import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,6 +18,12 @@ class WithDrawEmail extends StatefulWidget {
 }
 
 class _WithDrawEmailState extends State<WithDrawEmail> {
+  // @override
+  // initState() {
+  //   SystemChrome.setEnabledSystemUIOverlays([]);
+  //   super.initState();
+  // }
+
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -26,17 +34,19 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
         child: Container(
             color: AppColors.background_color,
             height: size.height,
-            child: ListView(
-              children: [
-                appBarWithText(size, context, "Withdraw", AppColors.bar_color,
-                    () {
-                  Navigator.of(context).pop();
-                }),
-                buildWithdrawArea(size, context),
-                SizedBox(
-                  height: 30.h,
-                ),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  appBarWithText(size, context, "Withdraw", AppColors.bar_color,
+                      () {
+                    Navigator.of(context).pop();
+                  }),
+                  buildWithdrawArea(size, context),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                ],
+              ),
             )),
       ),
     );
@@ -46,20 +56,22 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
     return Container(
       height: size.height,
       width: size.width,
-      child: ListView(
-        children: [
-          buildplayStoreIcon(
-            size,
-          ),
-          buildSliderArea(size, context),
-          SizedBox(
-            height: 50.h,
-          ),
-          buildtextfieldarea(size, context),
-          SizedBox(
-            height: 50.h,
-          )
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            buildplayStoreIcon(
+              size,
+            ),
+            buildSliderArea(size, context),
+            SizedBox(
+              height: 50.h,
+            ),
+            buildtextfieldarea(size, context),
+            SizedBox(
+              height: 150.h,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -83,8 +95,9 @@ Widget buildplayStoreIcon(Size size) {
           borderRadius: BorderRadius.circular(10),
           color: AppColors.background_color1),
       child: Image.asset(
-        "assets/images/playstore.png",
-        height: 300,
+        "assets/images/palystore.png",
+        // placeholderBuilder: (BuildContext context) =>
+        //     Container(child: const CircularProgressIndicator()),
       ),
     ),
   );
@@ -101,14 +114,14 @@ Widget buildSliderArea(Size size, BuildContext context) {
       height: size.height * 0.45,
       width: size.width,
       decoration: BoxDecoration(
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: AppColors.background_color1,
-          //     spreadRadius: 1,
-          //     blurRadius: 5,
-          //     offset: Offset(0, 3), // changes position of shadow
-          //   ),
-          // ],
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.background_color1,
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3), // changes position of shadow
+            ),
+          ],
           borderRadius: BorderRadius.circular(10),
           color: AppColors.background_color1),
       child: Column(
@@ -237,78 +250,85 @@ Widget buildSliderArea(Size size, BuildContext context) {
 Widget buildtextfieldarea(Size size, BuildContext context) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 15.w),
-    child: Container(
-      height: size.height * .40,
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.background_color1,
-              spreadRadius: 1,
-              blurRadius: 5,
-              offset: Offset(0, 3), // changes position of shadow
-            ),
-          ],
-          borderRadius: BorderRadius.circular(10),
-          color: AppColors.background_color1),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 20.h,
-          ),
-          RichText(
-              textAlign: TextAlign.center,
-              text: TextSpan(children: [
-                TextSpan(
-                  text: '\u0024 15.00',
-                  style: TextStyle(
-                      color: AppColors.goldenColor,
-                      fontSize: 25.sp,
-                      fontWeight: FontWeight.w600),
+    child: SingleChildScrollView(
+      child: Container(
+        height: size.height * .37,
+        decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.background_color1,
+                spreadRadius: 1,
+                blurRadius: 5,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.background_color1),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20.h,
+              ),
+              RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(children: [
+                    TextSpan(
+                      text: '\u0024 15.00',
+                      style: TextStyle(
+                          color: AppColors.goldenColor,
+                          fontSize: 25.sp,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    TextSpan(
+                        text: '  (All Transactions in USD)',
+                        style: TextStyle(
+                            color: AppColors.goldenColor,
+                            fontSize: 17.sp,
+                            fontWeight: FontWeight.w600)),
+                  ])),
+              SizedBox(
+                height: 25.h,
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Enter your Google Play Store email address to\nrecieve voucher ( Vouchers will be delivered in 72 hours )",
+                  style: smallwhiteStyle,
                 ),
-                TextSpan(
-                    text: '  (All Transactions in USD)',
-                    style: TextStyle(
-                        color: AppColors.goldenColor,
-                        fontSize: 17.sp,
-                        fontWeight: FontWeight.w600)),
-              ])),
-          SizedBox(
-            height: 25.h,
-          ),
-          Text(
-            "Enter your Google Play Store email address to\nrecieve voucher ( Vouchers will be delivered in 72\nhours )",
-            style: smallwhiteStyle,
-          ),
-          SizedBox(
-            height: 20.h,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20.w),
-            child: TextFields.normalTextField(
-              context,
-              color: Color(0xff50566C),
-              hintText: "Email Adress",
-              icon: Icons.email,
-            ),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          RaisedGradientButton(
-              width: 120,
-              height: 30,
-              child: Text(
-                "Send",
-                style: mediumwhiteStyle,
               ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0XFFDD7EE0).withOpacity(0.9),
-                  Color(0XFF8787F2),
-                ],
+              SizedBox(
+                height: 20.h,
               ),
-              onPressed: () {}),
-        ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                child: TextFields.normalTextField(
+                  context,
+                  color: Color(0xff50566C),
+                  hintText: "Email Adress",
+                  icon: Icons.email,
+                ),
+              ),
+              SizedBox(
+                height: 30.h,
+              ),
+              RaisedGradientButton(
+                  width: 120.w,
+                  height: 45.h,
+                  child: Text(
+                    "Send",
+                    style: mediumwhiteStyle,
+                  ),
+                  gradient: LinearGradient(
+                    colors: [
+                      Color(0XFFDD7EE0).withOpacity(0.9),
+                      Color(0XFF8787F2),
+                    ],
+                  ),
+                  onPressed: () {}),
+            ],
+          ),
+        ),
       ),
     ),
   );

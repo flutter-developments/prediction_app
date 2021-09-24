@@ -56,7 +56,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
       child: Column(
         children: [
           Container(
-              height: size.height * .20,
+              height: size.height * .18,
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
                 child: Row(
@@ -64,11 +64,11 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                   children: [
                     StatsContainer(title: "Predictions", stats: '255'),
                     StatsContainer(title: "Wins", stats: '35'),
-                    StatsContainer(title: "Winrate", stats: '32%'),
+                    StatsContainer(title: "Win rate", stats: '32%'),
                   ],
                 ),
               )),
-          SizedBox(height: 20.h),
+          SizedBox(height: 40.h),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(24.0),
@@ -104,33 +104,36 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     child: FadeInAnimation(
                         child: Padding(
                   padding: EdgeInsets.only(
-                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
+                      left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
-                      height: size.height * .23,
+                      height: size.height * .25,
                       width: size.width * .485,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                              spreadRadius: 5,
-                              offset: Offset(5, 5),
-                              blurRadius: 2.0,
+                              spreadRadius: 3,
+                              offset: Offset(0.0, 0.60),
+                              blurRadius: 1.0,
                               color: AppColors.background_color1,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.background_color1),
+                          ]),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 20.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Image.asset("assets/images/timer.png"),
+                                Image.asset("assets/images/Vector grey.png"),
                                 Text(
                                   "UEFA Champions League",
                                   style: titlegreyStyle,
+                                ),
+                                SizedBox(
+                                  width: 5.w,
                                 ),
                                 Text(
                                   "Thu, Aug 23",
@@ -142,16 +145,16 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                           Divider(
                             color: Color(0xff7D7D7D),
                             height: 3,
-                            endIndent: 20,
-                            indent: 10,
+                            endIndent: 10,
+                            indent: 15,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 10,
+                                  width: 20,
                                 ),
                                 Text(
                                   "Predict :",
@@ -177,7 +180,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 ),
                                 child: Image.asset(
                                   "assets/images/madrid.png",
-                                  scale: 1.5,
+                                  scale: 1.4,
                                 ),
                               ),
                               Padding(
@@ -227,26 +230,26 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     child: FadeInAnimation(
                         child: Padding(
                   padding: EdgeInsets.only(
-                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
+                      left: 15.w, right: 15.w, top: 20.h, bottom: 15.h),
                   child: Card(
                     child: Container(
-                      height: size.height * .23,
+                      height: size.height * .25,
                       width: size.width * .485,
                       decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
                           boxShadow: <BoxShadow>[
                             BoxShadow(
-                              spreadRadius: 5,
-                              offset: Offset(5, 5),
-                              blurRadius: 2.0,
+                              spreadRadius: 3,
+                              offset: Offset(0.0, 0.60),
+                              blurRadius: 1.0,
                               color: AppColors.background_color1,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.background_color1),
+                          ]),
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 20.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -254,6 +257,9 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 Text(
                                   "UEFA Champions League",
                                   style: titlegreyStyle,
+                                ),
+                                SizedBox(
+                                  width: 5.w,
                                 ),
                                 Text(
                                   "Thu, Aug 23",
@@ -265,16 +271,16 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                           Divider(
                             color: Color(0xff7D7D7D),
                             height: 3,
-                            endIndent: 20,
-                            indent: 10,
+                            endIndent: 10,
+                            indent: 15,
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.symmetric(vertical: 10.h),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 SizedBox(
-                                  width: 10,
+                                  width: 20,
                                 ),
                                 Text(
                                   "Predict :",
@@ -300,7 +306,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                                 ),
                                 child: Image.asset(
                                   "assets/images/madrid.png",
-                                  scale: 1.5,
+                                  scale: 1.4,
                                 ),
                               ),
                               Padding(
@@ -342,8 +348,8 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
         });
       },
       child: Container(
-        width: 140,
-        height: 25,
+        width: 140.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(
@@ -374,8 +380,8 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
         });
       },
       child: Container(
-        width: 140,
-        height: 25,
+        width: 140.w,
+        height: 35.h,
         child: Container(
           child: Center(
             child: Text(
@@ -414,8 +420,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10))),
-      child: Container(
-          child: Padding(
+      child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -435,26 +440,38 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SizedBox(width: size.width * 0.05),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
-                      Image.asset("assets/images/Group.png"),
+                      Container(
+                        height: 20.h,
+                        width: 20.h,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.goldenColor)),
+                        child: Image.asset("assets/images/colon.png"),
+                      )
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
+                  IconButton(
+                      onPressed: () {
                         AppRoutes.push(context, Notifications());
                       },
-                      child:
-                          Image.asset("assets/images/appbar_notification.png")),
+                      icon: Icon(
+                        Icons.notification_add_outlined,
+                        color: AppColors.white,
+                        size: 35.sp,
+                      ))
                 ],
               ),
             ),
@@ -478,30 +495,69 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                       )),
                   Row(
                     children: [
-                      Image.asset("assets/images/Group 20.png"),
+                      CircleAvatar(
+                        maxRadius: 17,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xFFDD7EE0),
+                                Color(0xFF8787F2),
+                                Color(0xFFDD7EE0),
+                              ],
+                            ),
+                          ),
+                          child: IconButton(
+                              alignment: Alignment.topCenter,
+                              iconSize: 19.sp,
+                              onPressed: () {
+                               
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: AppColors.white,
+                              )),
+                        ),
+                      ),
+                      //Image.asset("assets/images/icon1.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        AppRoutes.push(context, ExchangeScreen1());
-                      },
-                      child: Image.asset("assets/images/Group 24.png"))
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.w),
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.goldenColor,
+                      maxRadius: 17.sp,
+                      child: IconButton(
+                          alignment: Alignment.topCenter,
+                          iconSize: 20.sp,
+                          onPressed: () {
+                            AppRoutes.push(context, ExchangeScreen1());
+                          },
+                          icon: Icon(
+                            Icons.attach_money,
+                            color: AppColors.white,
+                          )),
+                    ),
+                  )
                 ],
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

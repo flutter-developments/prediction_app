@@ -9,6 +9,7 @@ import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ExchangeScreen1 extends StatefulWidget {
   @override
@@ -27,39 +28,41 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
             child: ListView(
               children: [
                 buildappbarContainer(size, context),
-                SizedBox(height: 50.h,),
+                SizedBox(
+                  height: 50.h,
+                ),
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    buildColumn(size, "Google PlayStore", "\u0024 15.00 ", () {
-                   AppRoutes.push(context, WithDrawEmail());
-                    },
-                      "assets/images/playstore.png"),
+                      buildColumn(size, "Google PlayStore", "\u0024 15.00 ",
+                          () {
+                        AppRoutes.push(context, WithDrawEmail());
+                      }, "assets/images/palystore.png"),
                       buildColumn(size, "Apple App Store", "\u0024 15.00 ", () {
-                       AppRoutes.push(context, WithDrawEmail());
-                      },
-                      "assets/images/apple.png")
-                  ],),
+                        AppRoutes.push(context, WithDrawEmail());
+                      }, "assets/images/apple.png")
+                    ],
+                  ),
                 ),
                 Padding(
-                  padding:  EdgeInsets.symmetric(horizontal: 20.w,vertical: 20.w),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                    buildColumn(size, "PayPal", "\u0024 15.00 ", () {
-                   AppRoutes.push(context, WithDrawEmail());
-                    },
-                      "assets/images/paypal.png"),
+                      buildColumn(size, "PayPal", "\u0024 15.00 ", () {
+                        AppRoutes.push(context, WithDrawEmail());
+                      }, "assets/images/paypal.png"),
                       buildColumn(size, "MasterCard", "\u0024 15.00 ", () {
-                       AppRoutes.push(context, WithDrawEmail());
-                      },
-                      "assets/images/master.png")
-                  ],),
+                        AppRoutes.push(context, WithDrawEmail());
+                      }, "assets/images/master.png")
+                    ],
+                  ),
                 ),
-                SizedBox(height:40.h)
-                
+                SizedBox(height: 40.h)
               ],
             )),
       ),
@@ -69,6 +72,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
   Column buildColumn(Size size, String title, String subtitle,
       VoidCallback onPressed, String link) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
           height: size.height * 0.20,
@@ -84,38 +88,39 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
         ),
         Align(
           alignment: Alignment.topLeft,
-          child: Text(
-            
-            title,
-            textAlign: TextAlign.start,
-            style: GoogleFonts.openSans(fontSize:18.sp,fontWeight: FontWeight.w700,color:AppColors.white)
-          ),
+          child: Text(title,
+              textAlign: TextAlign.start,
+              style: GoogleFonts.openSans(
+                  fontSize: 16.sp,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.white)),
         ),
         SizedBox(
           height: 10.h,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-          Text(subtitle,style:TextStyle(fontSize:18.sp,fontWeight: FontWeight.w700,color:AppColors.goldenColor),),
-          Text("(Conversion Rate)",style: GoogleFonts.openSans(fontSize:13.sp,fontWeight: FontWeight.w700,color:AppColors.goldenColor),),
-        ],),
-        SizedBox(height:10.h),
+        Text(
+          subtitle,
+          style: TextStyle(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              color: AppColors.goldenColor),
+        ),
+        SizedBox(height: 10.h),
         RaisedGradientButton(
-            width: 120,
-            height: 30,
+            width: 120.w,
+            height: 45.h,
             child: Text(
               "Exchange",
-              style: mediumwhiteStyle,
+              style: subtitleStyle,
             ),
             gradient: LinearGradient(
               colors: [
                 Color(0XFFDD7EE0).withOpacity(0.9),
-                        Color(0XFF8787F2).withOpacity(0.9),
+                Color(0XFF8787F2).withOpacity(0.9),
               ],
             ),
             onPressed: () {
-           AppRoutes.push(context, WithDrawEmail());
+              AppRoutes.push(context, WithDrawEmail());
             }),
       ],
     );
@@ -139,8 +144,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10))),
-      child: Container(
-          child: Padding(
+      child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -160,26 +164,38 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SizedBox(width: size.width * 0.05),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
-                      Image.asset("assets/images/Group.png"),
+                      Container(
+                        height: 20.h,
+                        width: 20.h,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.goldenColor)),
+                        child: Image.asset("assets/images/colon.png"),
+                      )
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
+                  IconButton(
+                      onPressed: () {
                         AppRoutes.push(context, Notifications());
                       },
-                      child:
-                          Image.asset("assets/images/appbar_notification.png")),
+                      icon: Icon(
+                        Icons.notification_add_outlined,
+                        color: AppColors.white,
+                        size: 35.sp,
+                      ))
                 ],
               ),
             ),
@@ -203,30 +219,69 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                       )),
                   Row(
                     children: [
-                      Image.asset("assets/images/Group 20.png"),
+                      CircleAvatar(
+                        maxRadius: 17,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xFFDD7EE0),
+                                Color(0xFF8787F2),
+                                Color(0xFFDD7EE0),
+                              ],
+                            ),
+                          ),
+                          child: IconButton(
+                              alignment: Alignment.topCenter,
+                              iconSize: 19.sp,
+                              onPressed: () {
+                                
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: AppColors.white,
+                              )),
+                        ),
+                      ),
+                      //Image.asset("assets/images/icon1.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        AppRoutes.push(context, ExchangeScreen1());
-                      },
-                      child: Image.asset("assets/images/Group 24.png"))
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.w),
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.goldenColor,
+                      maxRadius: 17.sp,
+                      child: IconButton(
+                          alignment: Alignment.topCenter,
+                          iconSize: 20.sp,
+                          onPressed: () {
+                            AppRoutes.push(context, ExchangeScreen1());
+                          },
+                          icon: Icon(
+                            Icons.attach_money,
+                            color: AppColors.white,
+                          )),
+                    ),
+                  )
                 ],
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }

@@ -15,27 +15,25 @@ class Notifications extends StatefulWidget {
 class _NotificationsState extends State<Notifications> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-        child: Container(
-            height: size.height,
-            color: AppColors.background_color,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  appBarWithText(size, context, "Notifications",
-                      AppColors.background_color1, () {
-                    Navigator.of(context).pop();
-                  }),
-                  build_notifications(size, context),
-                  SizedBox(
-                    height: 30,
-                  )
-                ],
-              ),
-            )),
-      ),
+      body: Container(
+          height: MediaQuery.of(context).size.height,
+          color: AppColors.background_color,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                appBarWithText(MediaQuery.of(context).size, context,
+                    "Notifications", AppColors.background_color1, () {
+                  Navigator.of(context).pop();
+                }),
+                build_notifications(MediaQuery.of(context).size, context),
+                SizedBox(
+                  height: 30,
+                )
+              ],
+            ),
+          )),
     );
   }
 

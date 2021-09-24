@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
@@ -9,7 +10,6 @@ import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'notification.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -26,11 +26,7 @@ class _MainScreenState extends State<MainScreen> {
         backgroundColor: AppColors.primery_color,
         key: _key,
         drawer: DrawerFull(context, MediaQuery.of(context).size),
-        // appBar: AppBar(
-        //   title: Text("title"),
-        // ),
         body: Container(
-            // color: AppColors.textColor,
             child: ListView(
           children: [
             buildappbarContainer(size, context),
@@ -61,8 +57,7 @@ class _MainScreenState extends State<MainScreen> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10))),
-      child: Container(
-          child: Padding(
+      child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -82,26 +77,35 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SizedBox(width: size.width * 0.09),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
-                      SizedBox(
-                        width: size.width * .02,
-                      ),
-                      Image.asset("assets/images/Group.png"),
+                      // SizedBox(
+                      //   width: size.width * .01,
+                      // ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.monetization_on_outlined,
+                            color: AppColors.goldenColor,
+                            size: 20.sp,
+                          ))
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        AppRoutes.push(context, Notifications());
-                      },
-                      child:
-                          Image.asset("assets/images/appbar_notification.png")),
+                  IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.notification_add_outlined,
+                        color: AppColors.white,
+                        size: 35.sp,
+                      ))
                 ],
               ),
             ),
@@ -125,36 +129,73 @@ class _MainScreenState extends State<MainScreen> {
                       )),
                   Row(
                     children: [
-                      Image.asset("assets/images/Group 20.png"),
+                      CircleAvatar(
+                        maxRadius: 17,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xFFDD7EE0),
+                                Color(0xFF8787F2),
+                                Color(0xFFDD7EE0),
+                              ],
+                            ),
+                          ),
+                          child: IconButton(
+                              alignment: Alignment.topCenter,
+                              iconSize: 19.sp,
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.add,
+                                color: AppColors.white,
+                              )),
+                        ),
+                      ),
+                      //Image.asset("assets/images/icon1.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        AppRoutes.push(context, ExchangeScreen1());
-                      },
-                      child: Image.asset("assets/images/Group 24.png"))
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.w),
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.goldenColor,
+                      maxRadius: 17.sp,
+                      child: IconButton(
+                          alignment: Alignment.topCenter,
+                          iconSize: 20.sp,
+                          onPressed: () {
+                            AppRoutes.push(context, ExchangeScreen1());
+                          },
+                          icon: Icon(
+                            Icons.attach_money,
+                            color: AppColors.white,
+                          )),
+                    ),
+                  )
                 ],
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 }
 
 // ignore: non_constant_identifier_names
-Container buildSuper_leauge(Size size) {
+Widget buildSuper_leauge(Size size) {
   return Container(
     color: AppColors.primery_color,
     height: size.height * .85,
@@ -162,69 +203,86 @@ Container buildSuper_leauge(Size size) {
     child: ListView.builder(
         itemCount: notifications.length,
         itemBuilder: (context, index) {
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10.h),
-            child: InkWell(
-              child: Card(
-                child: Container(
-                  height: size.height * .30,
-                  width: size.width * .491,
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      Image.asset(sports[index].image, fit: BoxFit.cover),
-                      ClipRRect(
-                        // Clip it cleanly.
-                        child: BackdropFilter(
-                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                          child: Container(
+          return InkWell(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 15.w, horizontal: 15.w),
+              child: Container(
+                decoration: BoxDecoration(
+
+                    //color: Colors.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        spreadRadius: 1,
+                        offset: Offset(0, 3.0),
+                        blurRadius: 12.0,
+                        color: AppColors.background_color1,
+                      ),
+                    ]),
+                height: size.height * .27,
+                width: size.width * .491,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    ClipRRect(
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        child: Image.asset(sports[index].image,
+                            fit: BoxFit.cover)),
+                    ClipRRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Colors.black.withOpacity(0.5),
-                            alignment: Alignment.center,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Text(sports[index].title,
+                          ),
+                          alignment: Alignment.center,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(sports[index].title,
+                                  style: GoogleFonts.openSans(
+                                      color: Colors.white,
+                                      fontSize: 23.sp,
+                                      fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                height: 20.h,
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    sports[index].games,
                                     style: GoogleFonts.openSans(
-                                        color: Colors.white,
-                                        fontSize: 23.sp,
-                                        fontWeight: FontWeight.w900)),
-                                SizedBox(
-                                  height: 20.h,
-                                ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      sports[index].games,
-                                      style: GoogleFonts.openSans(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                    SizedBox(width: 3.w),
-                                    Text(
-                                      "Live Championships",
-                                      style: TextStyle(
-                                          fontSize: 15.sp,
-                                          fontWeight: FontWeight.w500,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                  SizedBox(width: 3.w),
+                                  Text(
+                                    "Live Championships",
+                                    style: TextStyle(
+                                        fontSize: 15.sp,
+                                        fontWeight: FontWeight.w500,
+                                        color: Colors.white),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              onTap: () {
-                AppRoutes.push(context, MainScreen2());
-              },
             ),
+            onTap: () {
+              AppRoutes.push(context, MainScreen2());
+            },
           );
         }),
   );

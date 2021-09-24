@@ -39,7 +39,9 @@ class _EventScreenState extends State<EventScreen> {
               height: 30.h,
             ),
             buildGames(size),
-            SizedBox(height: 30.h,)
+            SizedBox(
+              height: 30.h,
+            )
           ],
         )),
       ),
@@ -64,8 +66,7 @@ class _EventScreenState extends State<EventScreen> {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(10),
               bottomRight: Radius.circular(10))),
-      child: Container(
-          child: Padding(
+      child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Column(
           //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -85,26 +86,38 @@ class _EventScreenState extends State<EventScreen> {
                     ),
                   ),
                   Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      SizedBox(width: size.width * 0.05),
                       Text(
                         "1000",
                         style: GoogleFonts.raleway(
                             color: Colors.white,
-                            fontSize: 24,
+                            fontSize: 25.sp,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        width: size.width * .02,
+                        width: size.width * .01,
                       ),
-                      Image.asset("assets/images/Group.png"),
+                      Container(
+                        height: 20.h,
+                        width: 20.h,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: AppColors.goldenColor)),
+                        child: Image.asset("assets/images/colon.png"),
+                      )
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
+                  IconButton(
+                      onPressed: () {
                         AppRoutes.push(context, Notifications());
                       },
-                      child:
-                          Image.asset("assets/images/appbar_notification.png")),
+                      icon: Icon(
+                        Icons.notification_add_outlined,
+                        color: AppColors.white,
+                        size: 35.sp,
+                      ))
                 ],
               ),
             ),
@@ -128,30 +141,69 @@ class _EventScreenState extends State<EventScreen> {
                       )),
                   Row(
                     children: [
-                      Image.asset("assets/images/Group 20.png"),
+                      CircleAvatar(
+                        maxRadius: 17,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Color(0xFFDD7EE0),
+                                Color(0xFF8787F2),
+                                Color(0xFFDD7EE0),
+                              ],
+                            ),
+                          ),
+                          child: IconButton(
+                              alignment: Alignment.topCenter,
+                              iconSize: 19.sp,
+                              onPressed: () {
+                               
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                color: AppColors.white,
+                              )),
+                        ),
+                      ),
+                      //Image.asset("assets/images/icon1.png"),
                       SizedBox(
-                        width: size.width * .03,
+                        width: size.width * .02,
                       ),
                       Text(
                         "Get Credit",
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 15,
-                            fontWeight: FontWeight.w900),
+                            fontWeight: FontWeight.w500),
                       ),
                     ],
                   ),
-                  GestureDetector(
-                      onTap: () {
-                        AppRoutes.push(context, ExchangeScreen1());
-                      },
-                      child: Image.asset("assets/images/Group 24.png"))
+                  Padding(
+                    padding: EdgeInsets.only(right: 5.w),
+                    child: CircleAvatar(
+                      backgroundColor: AppColors.goldenColor,
+                      maxRadius: 17.sp,
+                      child: IconButton(
+                          alignment: Alignment.topCenter,
+                          iconSize: 20.sp,
+                          onPressed: () {
+                            AppRoutes.push(context, ExchangeScreen1());
+                          },
+                          icon: Icon(
+                            Icons.attach_money,
+                            color: AppColors.white,
+                          )),
+                    ),
+                  )
                 ],
               ),
             ),
           ],
         ),
-      )),
+      ),
     );
   }
 
@@ -172,8 +224,7 @@ class _EventScreenState extends State<EventScreen> {
                         child: Padding(
                   padding: EdgeInsets.only(
                       left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
-                  child:
-                   Card(
+                  child: Card(
                     child: Container(
                       height: size.height * .28,
                       width: size.width * .485,
@@ -189,20 +240,18 @@ class _EventScreenState extends State<EventScreen> {
                           borderRadius: BorderRadius.circular(10),
                           color: AppColors.background_color1),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10.h),
-                            child: Text(
-                              "UEFA Champions League",
-                              style: titlegreyStyle,
-                            ),
+                          Text(
+                            "UEFA Champions League",
+                            style: titlegreyStyle,
                           ),
                           //league pictures row
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Padding(
-                                padding: EdgeInsets.only(left: 10.w),
+                                padding: EdgeInsets.symmetric(horizontal: 20.w),
                                 child: Image.asset("assets/images/madrid.png"),
                               ),
                               Padding(
@@ -213,7 +262,8 @@ class _EventScreenState extends State<EventScreen> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(top: 15.h),
+                                padding:
+                                    EdgeInsets.only(top: 15.h, right: 10.w),
                                 child: Image.asset(
                                   "assets/images/barca.png",
                                 ),
@@ -233,11 +283,11 @@ class _EventScreenState extends State<EventScreen> {
                                   style: mediumwhiteStyle,
                                 ),
                                 RaisedGradientButton(
-                                    width: 120,
-                                    height: 30,
+                                    width: 120.w,
+                                    height: 40.h,
                                     child: Text(
                                       "Predict Now",
-                                      style: mediumwhiteStyle,
+                                      style: smallwhiteStyle,
                                     ),
                                     gradient: LinearGradient(
                                       colors: [
@@ -246,7 +296,8 @@ class _EventScreenState extends State<EventScreen> {
                                       ],
                                     ),
                                     onPressed: () {
-                                      AppRoutes.push(context, PredictionScreen());
+                                      AppRoutes.push(
+                                          context, PredictionScreen());
                                     }),
                                 Text(
                                   "Barcalona",
@@ -265,15 +316,11 @@ class _EventScreenState extends State<EventScreen> {
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffB6B6B6)),
                           ),
-                          
                         ],
                       ),
                     ),
                     color: AppColors.background_color1,
                   ),
-               
-               
-               
                 ))));
           }),
     );

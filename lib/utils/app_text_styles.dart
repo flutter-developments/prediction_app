@@ -37,7 +37,7 @@ final subtitleStyle = GoogleFonts.raleway(
     fontSize: 18.sp, fontWeight: FontWeight.w500, color: AppColors.whiteColor);
 
 final titlegreyStyle = GoogleFonts.raleway(
-    fontSize: 15.sp, fontWeight: FontWeight.w700, color: Color(0xffB6B6B6));
+    fontSize: 15.sp, fontWeight: FontWeight.w500, color: Color(0xffB6B6B6));
 final titlegoldan = GoogleFonts.raleway(
     fontSize: 15.sp, fontWeight: FontWeight.w700, color: Color(0xffF3C624));
 
@@ -48,7 +48,7 @@ final subtitleStyle1 = GoogleFonts.raleway(
     fontSize: 15.sp, fontWeight: FontWeight.w500, color: AppColors.greyColor);
 
 final largetextwhiteStyle = TextStyle(
-    fontSize: 45.sp, fontWeight: FontWeight.bold, color: AppColors.white);
+    fontSize: 40.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 final largetextVSStyle = TextStyle(
     fontSize: 35.sp, fontWeight: FontWeight.bold, color: AppColors.white);
 final mediumextwhiteStyle = GoogleFonts.raleway(
