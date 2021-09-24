@@ -20,63 +20,18 @@ class TextFields {
     int? maxLength,
     String? validaterMsg,
   }) {
-    return Container(
-      width: MediaQuery.of(context).size.width * .9,
-      child: TextFormField(
-        controller: controller,
-        validator: (value) {
-          Pattern pattern =
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-          RegExp regex = new RegExp(pattern as String);
-          return (!regex.hasMatch(value!)) ? validaterMsg : null;
-        },
-        keyboardType: TextInputType.emailAddress,
-        style: TextStyle(color: AppColors.textColor),
-        decoration: InputDecoration(
-          labelText: hintText,
-          labelStyle: TextStyle(
-              color: AppColors.textColor,
-              fontSize: 16,
-              fontWeight: FontWeight.w400),
-          filled: true,
-          fillColor: Color(0xFF50566C),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-            borderSide: BorderSide(color: Color(0xFF50566C), width: 2),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-          ),
-          prefixIcon: Icon(
-            icon,
-            color: Colors.grey,
-          ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
-        ),
-      ),
-    );
-  }
-
-  static Widget normalTextField(
-    BuildContext context, {
-    IconData? icon,
-    bool? obsecuretext,
-    String? hintText,
-    TextEditingController? controller,
-    bool readOnly = false,
-    String? emptyValidationMessage,
-    TextInputType? inputType,
-    int? maxLength,
-    required Color color,
-  }) {
     return TextFormField(
+      controller: controller,
+      validator: (value) {
+        Pattern pattern =
+            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
+        RegExp regex = new RegExp(pattern as String);
+        return (!regex.hasMatch(value!)) ? emptyValidationMessage : null;
+      },
       obscureText: false,
       style: mediumwhiteStyle,
       decoration: InputDecoration(
-          // hintText: hintText,
           labelText: hintText,
-          // labelStyle: TextStyle(
-          //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
           labelStyle: GoogleFonts.raleway(
               color: AppColors.textColor,
               fontSize: 15,
@@ -152,21 +107,27 @@ class TextFields {
     );
   }
 
-  static Widget passwordTextField(
+  static Widget normalTextField(
     BuildContext context, {
     IconData? icon,
+    bool? obsecuretext,
     String? hintText,
     TextEditingController? controller,
     bool readOnly = false,
     String? emptyValidationMessage,
     TextInputType? inputType,
+    int? maxLength,
+    required Color color,
   }) {
     return TextFormField(
+      controller: controller,
+      validator: (value) {
+        return (value!.isEmpty) ? emptyValidationMessage : null;
+      },
+      obscureText: false,
+      style: mediumwhiteStyle,
       decoration: InputDecoration(
-          // hintText: hintText,
           labelText: hintText,
-          // labelStyle: TextStyle(
-          //     color: Colors.grey, fontSize: 14, fontWeight: FontWeight.w600),
           labelStyle: GoogleFonts.raleway(
               color: AppColors.textColor,
               fontSize: 15,
@@ -180,10 +141,59 @@ class TextFields {
             borderSide: BorderSide(color: Color(0xff50566C), width: 0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(15.0)),
-            //borderSide: BorderSide(color: AppColors.bar_color, width: 2),
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                15.0,
+              ),
+            ),
+            borderSide: BorderSide(color: AppColors.white, width: 2),
           ),
-          contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
+          //contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
+          prefixIcon: Icon(
+            icon,
+            color: AppColors.textColor,
+          )),
+    );
+  }
+
+  static Widget passwordTextField(
+    BuildContext context, {
+    IconData? icon,
+    String? hintText,
+    var validator,
+    TextEditingController? controller,
+    bool readOnly = false,
+    String? emptyValidationMessage,
+    TextInputType? inputType,
+  }) {
+    return TextFormField(
+      controller: controller,
+      validator: validator,
+      obscureText: false,
+      style: mediumwhiteStyle,
+      decoration: InputDecoration(
+          labelText: hintText,
+          labelStyle: GoogleFonts.raleway(
+              color: AppColors.textColor,
+              fontSize: 15,
+              fontWeight: FontWeight.w600),
+          filled: true,
+          fillColor: Color(0xFF50566C),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(15.0),
+            ),
+            borderSide: BorderSide(color: Color(0xff50566C), width: 0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                15.0,
+              ),
+            ),
+            borderSide: BorderSide(color: AppColors.white, width: 2),
+          ),
+          //contentPadding: EdgeInsets.fromLTRB(10.0, 10.0, 20.0, 10.0),
           prefixIcon: Icon(
             icon,
             color: AppColors.textColor,
@@ -191,6 +201,7 @@ class TextFields {
     );
   }
 }
+
 //   static Widget passwordTextField(
 //     BuildContext context, {
 //     String? hintText,

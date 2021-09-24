@@ -5,10 +5,10 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/ui/auth/login.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
 
 class Language extends StatefulWidget {
+  const Language({Key? key}) : super(key: key);
   @override
   _LanguageState createState() => _LanguageState();
 }

@@ -12,6 +12,8 @@ import 'exchange_screen1.dart';
 import 'notification.dart';
 
 class MainScreen2 extends StatefulWidget {
+  const MainScreen2({Key? key}) : super(key: key);
+
   @override
   _MainScreen2State createState() => _MainScreen2State();
 }
