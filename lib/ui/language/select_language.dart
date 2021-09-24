@@ -32,9 +32,9 @@ class _LanguageState extends State<Language> {
                 child: Column(
                   children: [
                     Container(
-                      height: 260.h,
+                      height: 270.h,
                       child: Image.asset(
-                        "assets/images/logo.png",
+                        "assets/images/logo 4.png",
                       ),
                     ),
                     SizedBox(
@@ -71,8 +71,8 @@ class _LanguageState extends State<Language> {
                               children: [
                                 buildavatar(size, "assets/images/england.png",
                                     "English"),
-                                buildavatar(size, "assets/images/england.png",
-                                    "Arabic"),
+                                buildavatar(
+                                    size, "assets/images/arabic.png", "Arabic"),
                               ],
                             ),
                           ],
@@ -125,7 +125,7 @@ class _LanguageState extends State<Language> {
         ClipOval(
           child: Image.asset(
             link,
-            //scale: 5,
+            scale: 5,
             fit: BoxFit.fitHeight,
           ),
         ),

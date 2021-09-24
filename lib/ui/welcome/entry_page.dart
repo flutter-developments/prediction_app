@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
           children: [
             Center(
                 child: Image.asset(
-              "assets/images/logo.png",
+              "assets/images/logo1.png",
             )),
             SizedBox(
               height: 30.h,

@@ -113,7 +113,11 @@ Container buildApp_bar(Size size, BuildContext context) {
                   onTap: () {
                     AppRoutes.push(context, Notifications());
                   },
-                  child: Image.asset("assets/images/appbar_notification.png")),
+                  child: Container(
+                      height: 30.h,
+                      width: 30.h,
+                      child: Image.asset(
+                          "assets/images/appbar_notification.png"))),
               SizedBox(height: 10.h),
               GestureDetector(
                   onTap: () {
@@ -135,45 +139,6 @@ Container buildApp_bar(Size size, BuildContext context) {
   );
 }
 
-// ignore: non_constant_identifier_names
-// Container buildApp_only_title_bar(
-//     Size size, BuildContext context, String title, Color color) {
-//   return Container(
-//     height: size.height * .095,
-//     width: size.width,
-//     decoration: BoxDecoration(
-//       color: color,
-//     ),
-//     child: Container(
-//         child: Padding(
-//       padding: EdgeInsets.all(8.0),
-//       child: Row(
-//         children: [
-//           IconButton(
-//             icon: Icon(
-//               Icons.arrow_back,
-//               size: 25.sp,
-//               color: Colors.white,
-//             ),
-//             onPressed: () {
-//               AppRoutes.pop(context);
-//             },
-//           ),
-//           SizedBox(
-//             width: 50.w,
-//           ),
-//           Text(title,
-//               style: GoogleFonts.raleway(
-//                   color: Colors.white,
-//                   letterSpacing: 1,
-//                   fontSize: 30.sp,
-//                   fontWeight: FontWeight.w900))
-//         ],
-//       ),
-//     )),
-//   );
-// }
-
 AppBar appBarWithText(Size size, BuildContext context, String title,
     Color color, VoidCallback onPressed) {
   return AppBar(
@@ -190,7 +155,6 @@ AppBar appBarWithText(Size size, BuildContext context, String title,
     elevation: 0.0,
     backgroundColor: color,
     leading: IconButton(icon: Icon(Icons.arrow_back), onPressed: onPressed),
-    
   );
 }
 
