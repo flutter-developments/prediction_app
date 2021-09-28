@@ -3,6 +3,10 @@
 // import 'package:eve_and_co/models/product_slider_card.dart';
 // import 'package:eve_and_co/models/tv_slider_card.dart';
 
+import 'dart:core';
+
+import 'package:prediction_app/database/data/sports_class.dart';
+
 import 'leauge_class.dart';
 
 List<SuperLeauge> superLeauge = [
@@ -32,6 +36,41 @@ List<SuperLeauge> superLeauge = [
       image: "assets/images/league2.png"),
 ];
 
+List<Sports> sports = [
+  Sports(
+      title: "Football",
+      games: "3",
+      image: "assets/images/football.png",
+      onPressed:(){}),
+      
+  Sports(
+      title: "Golf",
+      games: "4",
+      image: "assets/images/golf.png",
+      onPressed:(){}),
+  Sports(
+      title: "Basketball",
+      games: "3",
+      image: "assets/images/basketball.png",
+      onPressed:(){}),
+  Sports(
+      title: "Football",
+      games: "3",
+      image: "assets/images/football.png",
+      onPressed:(){}),
+  Sports(
+      title: "Golf",
+      games: "3",
+      image: "assets/images/golf.png",
+      onPressed:(){}),
+  Sports(
+      title: "Basketball",
+      games: "3",
+      image: "assets/images/basketball.png",
+      onPressed:(){}),
+  
+];
+
 List<SuperLeauge> notifications = [
   SuperLeauge(
       title: "UEFA Champions League",
@@ -40,7 +79,7 @@ List<SuperLeauge> notifications = [
   SuperLeauge(
       title: "Premier League",
       time: DateTime.now(),
-      image: "assets/images/league1.png"),
+      image: "assets/images/league1.png",),
   SuperLeauge(
       title: "La Liga Santander",
       time: DateTime.now(),

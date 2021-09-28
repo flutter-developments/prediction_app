@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive/hive.dart';
+import 'package:prediction_app/provider/register_provider.dart';
+import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:provider/provider.dart';
-import 'provider/providermodel.dart';
-import 'ui/user_guide/user_guide1.dart';
+import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'dart:async';
+import 'database/hive/user_box.dart';
+import 'provider/sports_provider.dart';
+import 'ui/home/main_screen.dart';
 
-void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => ProviderModel(),
-      child: MaterialApp(
-        theme: ThemeData(fontFamily: "Raleway"),
-        home: MyApp(),
-      )));
+UserBox? res;
+Box<dynamic>? boxUser;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
+  Hive.init(appDocumentDir.path);
+  Hive.registerAdapter(UserBoxAdapter());
+  boxUser = await Hive.openBox("user");
+  print(
+      "Accounts exist in local db " + boxUser!.length.toString().toUpperCase());
+  if (boxUser!.length == 0) {
+    print('Accounts :  0'.toUpperCase());
+  } else {
+    res = boxUser!.get(0) as UserBox;
+  }
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -19,21 +36,36 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  // void initState() {
-  //   var provider = Provider.of<ProviderModel>(context, listen: false);
-  //   provider.initialize();
-  //   super.initState();
-  // }
-
-  @override
-  void dispose() {
-    var provider = Provider.of<ProviderModel>(context, listen: false);
-    provider.subscription.cancel();
-    super.dispose();
+  Widget build(BuildContext context) {
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => SportsProvider()),
+      ],
+      child: ScreenUtilInit(
+        builder: () => MaterialApp(
+            debugShowCheckedModeBanner: false,
+            builder: EasyLoading.init(),
+            home: FutureBuilder(
+              future: Hive.openBox("user"),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasError)
+                    return Text(snapshot.error.toString());
+                  else
+                    return MainScreen();
+                } else
+                  return Scaffold();
+              },
+            )),
+        designSize: Size(414, 896),
+      ),
+    );
   }
 
   @override
-  Widget build(BuildContext context) {
-    return UserGuide();
+  void dispose() {
+    Hive.close();
+    super.dispose();
   }
 }
