@@ -8,6 +8,8 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
 import 'database/hive/user_box.dart';
+import 'provider/sports_provider.dart';
+import 'ui/home/main_screen.dart';
 
 UserBox? res;
 Box<dynamic>? boxUser;
@@ -38,6 +40,7 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
+        ChangeNotifierProvider(create: (_) => SportsProvider()),
       ],
       child: ScreenUtilInit(
         builder: () => MaterialApp(
@@ -50,11 +53,12 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return Language();
+                    return MainScreen();
                 } else
                   return Scaffold();
               },
             )),
+        designSize: Size(414, 896),
       ),
     );
   }

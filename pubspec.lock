@@ -183,6 +183,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
+  dio:
+    dependency: transitive
+    description:
+      name: dio
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -263,8 +270,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-<<<<<<< HEAD
-=======
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -291,7 +296,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.1"
->>>>>>> dev
   google_fonts:
     dependency: "direct main"
     description:
@@ -445,7 +449,7 @@ packages:
       name: page_transition
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.2"
+    version: "2.0.4"
   path:
     dependency: transitive
     description:
@@ -586,6 +590,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  sigv4:
+    dependency: "direct main"
+    description:
+      name: sigv4
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -604,7 +615,7 @@ packages:
       name: source_helper
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.1"
+    version: "1.3.0"
   source_span:
     dependency: transitive
     description:

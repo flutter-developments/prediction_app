@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
+import 'package:prediction_app/model/response_model/sports_model.dart';
+import 'package:prediction_app/provider/sports_provider.dart';
 import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -18,9 +21,29 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  late SportsProvider sportsProvider;
+  late SPORTSMODEL sportsmodel;
+  void initState() {
+    super.initState();
+    _getSports();
+  }
+
+  void _getSports() {
+    Provider.of<SportsProvider>(context, listen: false)
+        .sportsProvider()
+        .then((value) {
+      setState(() {
+        print(value.message.toString());
+        sportsmodel = value;
+        // isFetch=true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    sportsProvider = Provider.of<SportsProvider>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.primery_color,
@@ -33,7 +56,7 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(
               height: 30.h,
             ),
-            buildSuper_leauge(size),
+            buildSuper_leauge(size, sportsmodel),
           ],
         )),
       ),
@@ -100,7 +123,9 @@ class _MainScreenState extends State<MainScreen> {
                     ],
                   ),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        _getSports();
+                      },
                       icon: Icon(
                         Icons.notification_add_outlined,
                         color: AppColors.white,
@@ -195,13 +220,13 @@ class _MainScreenState extends State<MainScreen> {
 }
 
 // ignore: non_constant_identifier_names
-Widget buildSuper_leauge(Size size) {
+Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
   return Container(
     color: AppColors.primery_color,
     height: size.height * .85,
     width: size.width,
     child: ListView.builder(
-        itemCount: notifications.length,
+        itemCount: sportsmodel.data.length,
         itemBuilder: (context, index) {
           return InkWell(
             child: Padding(
@@ -243,7 +268,7 @@ Widget buildSuper_leauge(Size size) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Text(sports[index].title,
+                              Text(sportsmodel.data[index].name,
                                   style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: 23.sp,

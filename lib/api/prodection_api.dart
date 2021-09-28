@@ -5,7 +5,7 @@ class API_URLS {
   static const REGISTER_API = "$API_URL/register";
   static const LOGIN_API = "$API_URL/login";
 
-  static const IMAGEUPLOAD_API = "$API_URL/images/company";
+  static const SPORTS_API = "$API_URL/sports";
   static const PROFILESTEUP_API = "$API_URL/account/my-profile/";
   static const PROFILEIMAGE_API = "$API_URL/images/profile";
   static const CREATECOMPANY_API = "$API_URL/company";

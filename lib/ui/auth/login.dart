@@ -48,23 +48,23 @@ class _AuthState extends State<Auth> {
   ///Sign In Request
   // ignore: unused_element
   _validateAndSubmitSignIn(context) {
-    if (validateAndSaveLogin()) {
-      print(_emailController.text);
-      print(_passwordController.text);
-      Provider.of<RegisterProvider>(context, listen: false)
-          .login_response(_emailController.text, _passwordController.text)
-          .then((value) {
-        if (value.success == true) {
-          showMessageSuccess(value.message.toString().toUpperCase());
-          AppRoutes.push(context, Welcome());
-          _clearFields();
-        } else {
-          showMessageError(value.message.toString().toUpperCase());
-        }
-      });
-    } else {
-      print("Please fill all filds".toUpperCase());
-    }
+    //  if (validateAndSaveLogin()) {
+    print(_emailController.text);
+    print(_passwordController.text);
+    Provider.of<RegisterProvider>(context, listen: false)
+        .login_response(_emailController.text, _passwordController.text)
+        .then((value) {
+      if (value.success == true) {
+        showMessageSuccess(value.message.toString().toUpperCase());
+        AppRoutes.push(context, Welcome());
+        _clearFields();
+      } else {
+        showMessageError(value.message.toString().toUpperCase());
+      }
+    });
+    // } else {
+    //   print("Please fill all filds".toUpperCase());
+    // }
   }
 
 //Register
@@ -79,7 +79,6 @@ class _AuthState extends State<Auth> {
         if (value.success == true) {
           showMessageSuccess(value.message.toString().toUpperCase());
           _clearFields();
-          _addToLocalDB();
         } else {
           showMessageError(value.message.toString().toUpperCase());
         }
@@ -413,7 +412,7 @@ class _AuthState extends State<Auth> {
                               ],
                             ),
                             onPressed: () {
-                              //  _validateAndSubmitSignIn(context);
+                              // _validateAndSubmitSignIn(context);
                               AppRoutes.push(context, Welcome());
                             }),
                         SizedBox(
