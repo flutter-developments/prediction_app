@@ -13,6 +13,7 @@ class AuthApi {
       "password": "$password",
       "c_password": "$conformPassword",
       "name": "$name",
+      "language": "English"
     };
     print(body.toString());
     print("Adds Data getten is = = = = $body");

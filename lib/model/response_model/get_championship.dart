@@ -76,7 +76,7 @@ class Sports {
             ? null
             : List<Sports>.from(
                 json["championships"].map((x) => Sports.fromJson(x))),
-        sportsId: json["sports_id"] == null ? null : json["sports_id"],
+        sportsId: json["sports_id"] == null ? 0 : json["sports_id"],
       );
 
   Map<String, dynamic> toJson() => {

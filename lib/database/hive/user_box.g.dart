@@ -21,7 +21,7 @@ class UserBoxAdapter extends TypeAdapter<UserBox> {
       name: fields[1] as String,
       id: fields[3] as String,
       password: fields[2] as String,
-      token: fields[4] as Token,
+      token: fields[4] as String,
     );
   }
 

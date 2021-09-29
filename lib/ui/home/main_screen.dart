@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
     _getSports();
   }
 
-  void _getSports() {
+  _getSports() {
     Provider.of<SportsProvider>(context, listen: false)
         .sportsProvider()
         .then((value) {

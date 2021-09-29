@@ -10,10 +10,10 @@ class RegisterProvider with ChangeNotifier {
   late bool action, wait = false;
   var _registerResult;
   // ignore: unused_field
-  late REGISTERMODEL _registermodel;
-  late LOGINMODEL loginmodel;
+  REGISTERMODEL? _registermodel;
+  LOGINMODEL? loginmodel;
   //CREATE REGISTER REQUEST
-  Future<REGISTERMODEL> registerResponse(
+  Future<REGISTERMODEL?> registerResponse(
       name, email, password, cpassword) async {
     _waitingStata(true);
     await AuthApi().createUser(name, email, password, cpassword).then((data) {
@@ -38,7 +38,7 @@ class RegisterProvider with ChangeNotifier {
 
   //CREATE LOGIN REQUEST
   // ignore: non_constant_identifier_names
-  Future<REGISTERMODEL> login_response(
+  Future<LOGINMODEL?> login_response(
     email,
     password,
   ) async {
@@ -65,18 +65,18 @@ class RegisterProvider with ChangeNotifier {
       }
     });
 
-    return _registermodel;
+    return loginmodel;
   }
 
   _setUserData(value) {
     _registermodel = value;
-    print("Register Message = " + _registermodel.message.toString());
+    print("Register Message = " + _registermodel!.message.toString());
     notifyListeners();
   }
 
   _setLoginUser(value) {
     loginmodel = value;
-    print("Login Message = " + loginmodel.message.toString().toUpperCase());
+    print("Login Message = " + loginmodel!.message.toString().toUpperCase());
     notifyListeners();
   }
 

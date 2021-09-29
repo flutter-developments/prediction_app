@@ -13,7 +13,7 @@ class UserBox {
   @HiveField(3)
   late final String id;
   @HiveField(4)
-  final Token token;
+  final String token;
 
   UserBox({
     required this.email,

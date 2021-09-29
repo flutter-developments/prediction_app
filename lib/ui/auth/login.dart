@@ -27,7 +27,7 @@ class _AuthState extends State<Auth> {
   // ignore: unused_field
   final _formLoginKey = GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
-  late LOGINMODEL login_model;
+  LOGINMODEL? login_model;
   // ignore: unused_field
   late RegisterProvider _registerProvider;
   // ignore: unused_field
@@ -54,6 +54,7 @@ class _AuthState extends State<Auth> {
       Provider.of<RegisterProvider>(context, listen: false)
           .login_response(_emailController.text, _passwordController.text)
           .then((value) {
+        print(value!.message.toString());
         if (value.success == true) {
           showMessageSuccess(value.message.toString().toUpperCase());
           AppRoutes.push(context, Welcome());
@@ -76,7 +77,7 @@ class _AuthState extends State<Auth> {
           .registerResponse(_nameController.text, _emailController.text,
               _passwordController.text, _conformPasswordController.text)
           .then((value) {
-        if (value.success == true) {
+        if (value!.success == true) {
           showMessageSuccess(value.message.toString().toUpperCase());
           _clearFields();
         } else {
@@ -172,8 +173,7 @@ class _AuthState extends State<Auth> {
                                       hintText: "Name",
                                       icon: Icons.person,
                                       emptyValidationMessage:
-                                          "Name Can't be Emipty"
-                                          ),
+                                          "Name Can't be Emipty"),
                                   SizedBox(
                                     height: 15.h,
                                   ),

@@ -56,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return MainScreen();
+                    return Language();
                 } else
                   return Scaffold();
               },

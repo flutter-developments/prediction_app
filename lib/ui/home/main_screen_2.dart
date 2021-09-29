@@ -308,7 +308,9 @@ class _MainScreen2State extends State<MainScreen2> {
                                   height: 30.h,
                                 ),
                                 Text(
-                                  notifications[index].time.toString(),
+                                  championshipModel.data.sports
+                                      .championships![index].createdAt
+                                      .toString(),
                                   style: GoogleFonts.openSans(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
