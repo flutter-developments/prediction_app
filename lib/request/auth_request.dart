@@ -1,6 +1,5 @@
 import 'package:http/http.dart' as http;
 import 'package:prediction_app/api/prodection_api.dart';
-import 'package:sigv4/sigv4.dart';
 
 class AuthApi {
   Future<http.Response> createUser(

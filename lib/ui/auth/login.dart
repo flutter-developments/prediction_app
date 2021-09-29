@@ -172,7 +172,8 @@ class _AuthState extends State<Auth> {
                                       hintText: "Name",
                                       icon: Icons.person,
                                       emptyValidationMessage:
-                                          "Name Can't be Emipty"),
+                                          "Name Can't be Emipty"
+                                          ),
                                   SizedBox(
                                     height: 15.h,
                                   ),

@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
@@ -22,7 +23,8 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   late SportsProvider sportsProvider;
-  late SPORTSMODEL sportsmodel;
+  SPORTSMODEL? sportsmodel;
+  bool isFetched = false;
   void initState() {
     super.initState();
     _getSports();
@@ -34,10 +36,19 @@ class _MainScreenState extends State<MainScreen> {
         .then((value) {
       setState(() {
         print(value.message.toString());
-        sportsmodel = value;
+        if (value.success == true) {
+          _updateState(true);
+          sportsmodel = value;
+        }
+
         // isFetch=true;
       });
     });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    isFetched = isValue;
   }
 
   @override
@@ -45,22 +56,25 @@ class _MainScreenState extends State<MainScreen> {
     Size size = MediaQuery.of(context).size;
     sportsProvider = Provider.of<SportsProvider>(context);
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.primery_color,
-        key: _key,
-        drawer: DrawerFull(context, MediaQuery.of(context).size),
-        body: Container(
-            child: ListView(
-          children: [
-            buildappbarContainer(size, context),
-            SizedBox(
-              height: 30.h,
+        child: Scaffold(
+      backgroundColor: AppColors.primery_color,
+      key: _key,
+      drawer: DrawerFull(context, MediaQuery.of(context).size),
+      body: isFetched == true
+          ? Container(
+              child: ListView(
+              children: [
+                buildappbarContainer(size, context),
+                SizedBox(
+                  height: 30.h,
+                ),
+                buildSuper_leauge(size, sportsmodel!),
+              ],
+            ))
+          : Container(
+              child: Center(child: CircularProgressIndicator()),
             ),
-            buildSuper_leauge(size, sportsmodel),
-          ],
-        )),
-      ),
-    );
+    ));
   }
 
   Container buildappbarContainer(Size size, BuildContext context) {

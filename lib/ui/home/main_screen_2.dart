@@ -4,10 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/model/response_model/get_championship.dart';
+import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/event_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:provider/provider.dart';
 import 'exchange_screen1.dart';
 import 'notification.dart';
 
@@ -20,30 +23,62 @@ class MainScreen2 extends StatefulWidget {
 
 class _MainScreen2State extends State<MainScreen2> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  late ChampionShipProvider championShipProvider;
+  late ChampionshipModel championshipModel;
+  bool isFetched = false;
+
+  void initState() {
+    super.initState();
+    _getChampionship();
+  }
+
+  void _getChampionship() {
+    Provider.of<ChampionShipProvider>(context, listen: false)
+        .championshipProvider()
+        .then((value) {
+      setState(() {
+        print(value.message.toString());
+        print(value.message.toString());
+        if (value.success == true) {
+          _updateState(true);
+          championshipModel = value;
+        }
+      });
+    });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    isFetched = isValue;
+  }
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    championShipProvider = Provider.of<ChampionShipProvider>(context);
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: AppColors.background_color,
-        key: _key,
-        drawer: DrawerFull(context, MediaQuery.of(context).size),
-        // appBar: AppBar(
-        //   title: Text("title"),
-        // ),
-        body: Container(
-            child: ListView(
-          children: [
-            buildappbarContainer(size, context),
-            SizedBox(
-              height: 30.h,
+        child: Scaffold(
+      backgroundColor: AppColors.background_color,
+      key: _key,
+      drawer: DrawerFull(context, MediaQuery.of(context).size),
+      // appBar: AppBar(
+      //   title: Text("title"),
+      // ),
+      body: isFetched == true
+          ? Container(
+              child: ListView(
+              children: [
+                buildappbarContainer(size, context),
+                SizedBox(
+                  height: 30.h,
+                ),
+                buildSuper_leauge(size),
+              ],
+            ))
+          : Container(
+              child: Center(child: CircularProgressIndicator()),
             ),
-            buildSuper_leauge(size),
-          ],
-        )),
-      ),
-    );
+    ));
   }
 
   Container buildappbarContainer(Size size, BuildContext context) {
@@ -156,9 +191,7 @@ class _MainScreen2State extends State<MainScreen2> {
                           child: IconButton(
                               alignment: Alignment.topCenter,
                               iconSize: 19.sp,
-                              onPressed: () {
-                                
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.add,
                                 color: AppColors.white,
@@ -203,92 +236,95 @@ class _MainScreen2State extends State<MainScreen2> {
       ),
     );
   }
-}
 
 //main body card
 // ignore: non_constant_identifier_names
-Widget buildSuper_leauge(Size size) {
-  return Container(
-    color: AppColors.primery_color,
-    height: size.height * .85,
-    width: size.width,
-    child: ListView.builder(
-        itemCount: notifications.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              AppRoutes.push(
-                context,
-                EventScreen(),
-              );
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 15.w, horizontal: 15.w),
-              child: Container(
-                height: size.height * .28,
-                width: size.width * .491,
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        spreadRadius: 1,
-                        offset: Offset(0, 3.0),
-                        blurRadius: 12.0,
-                        color: AppColors.background_color1,
+  Widget buildSuper_leauge(
+    Size size,
+  ) {
+    return Container(
+      color: AppColors.primery_color,
+      height: size.height * .85,
+      width: size.width,
+      child: ListView.builder(
+          itemCount: championshipModel.data.sports.championships!.length,
+          itemBuilder: (context, index) {
+            return InkWell(
+              onTap: () {
+                AppRoutes.push(
+                  context,
+                  EventScreen(),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.w, horizontal: 15.w),
+                child: Container(
+                  height: size.height * .28,
+                  width: size.width * .491,
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                          spreadRadius: 1,
+                          offset: Offset(0, 3.0),
+                          blurRadius: 12.0,
+                          color: AppColors.background_color1,
+                        ),
+                      ]),
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(notifications[index].image,
+                            fit: BoxFit.cover),
                       ),
-                    ]),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(notifications[index].image,
-                          fit: BoxFit.cover),
-                    ),
-                    ClipRRect(
-                      // Clip it cleanly.
-                      child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.transparent.withOpacity(0.3),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10))),
-                          //color: Colors.transparent.withOpacity(0.1),
-                          alignment: Alignment.center,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Text(
-                                notifications[index].title,
-                                //     Colors.white, 23.sp, FontWeight.bold),
-                                style: GoogleFonts.openSans(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w700,
-                                    color: Colors.white),
-                              ),
-                              SizedBox(
-                                height: 30.h,
-                              ),
-                              Text(
-                                notifications[index].time.toString(),
-                                style: GoogleFonts.openSans(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    color: Colors.white),
-                              ),
-                            ],
+                      ClipRRect(
+                        // Clip it cleanly.
+                        child: BackdropFilter(
+                          filter: ImageFilter.blur(sigmaX: 1, sigmaY: 1),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.transparent.withOpacity(0.3),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(10))),
+                            //color: Colors.transparent.withOpacity(0.1),
+                            alignment: Alignment.center,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(
+                                  championshipModel
+                                      .data.sports.championships![index].name,
+                                  //     Colors.white, 23.sp, FontWeight.bold),
+                                  style: GoogleFonts.openSans(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w700,
+                                      color: Colors.white),
+                                ),
+                                SizedBox(
+                                  height: 30.h,
+                                ),
+                                Text(
+                                  notifications[index].time.toString(),
+                                  style: GoogleFonts.openSans(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        }),
-  );
+            );
+          }),
+    );
+  }
 }
