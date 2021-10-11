@@ -9,7 +9,6 @@ import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class ExchangeScreen1 extends StatefulWidget {
   @override
@@ -237,9 +236,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                           child: IconButton(
                               alignment: Alignment.topCenter,
                               iconSize: 19.sp,
-                              onPressed: () {
-                                
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.add,
                                 color: AppColors.white,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/user_guide/user_guide_4.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';

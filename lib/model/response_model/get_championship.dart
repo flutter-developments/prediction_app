@@ -87,6 +87,7 @@ class Sports {
         "championships": championships == null
             ? null
             : List<dynamic>.from(championships!.map((x) => x.toJson())),
+        // ignore: unnecessary_null_comparison
         "sports_id": sportsId == null ? null : sportsId,
       };
 }

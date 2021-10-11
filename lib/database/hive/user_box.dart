@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:prediction_app/model/post_model/login_model.dart';
 part 'user_box.g.dart';
 
 @HiveType(typeId: 1)

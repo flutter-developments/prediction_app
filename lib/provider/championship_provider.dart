@@ -2,9 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/model/response_model/get_championship.dart';
-import 'package:prediction_app/model/response_model/sports_model.dart';
 import 'package:prediction_app/request/championship.dart';
-import 'package:prediction_app/request/sports.dart';
 import 'package:prediction_app/utils/images.dart';
 
 class ChampionShipProvider with ChangeNotifier {
