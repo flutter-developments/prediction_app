@@ -11,16 +11,18 @@ import 'package:prediction_app/utils/app_text_styles.dart';
 class TextFields {
   static Widget emailTextField(
     BuildContext context, {
-    required IconData icon,
+    IconData? icon,
     String? hintText,
     TextEditingController? controller,
     bool readOnly = false,
     String? emptyValidationMessage,
     TextInputType? inputType,
-    int? maxLength,
+    int? lines,
     String? validaterMsg,
+    Widget? suffixdata,
   }) {
     return TextFormField(
+      maxLines: lines,
       controller: controller,
       validator: (value) {
         Pattern pattern =
@@ -31,6 +33,8 @@ class TextFields {
       obscureText: false,
       style: mediumwhiteStyle,
       decoration: InputDecoration(
+          suffixIcon: suffixdata,
+          // suffix: suffixdata,
           labelText: hintText,
           labelStyle: GoogleFonts.raleway(
               color: AppColors.textColor,
@@ -117,7 +121,7 @@ class TextFields {
     String? emptyValidationMessage,
     TextInputType? inputType,
     int? maxLength,
-    required Color color,
+    Color? color,
   }) {
     return TextFormField(
       controller: controller,

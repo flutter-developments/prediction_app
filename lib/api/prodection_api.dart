@@ -6,10 +6,11 @@ class API_URLS {
   static const LOGIN_API = "$API_URL/login";
 
   static const SPORTS_API = "$API_URL/sports";
-  static const CHAMPIONSHIP_API = "$API_URL/sports/2";
-  static const PROFILESTEUP_API = "$API_URL/account/my-profile/";
-  static const PROFILEIMAGE_API = "$API_URL/images/profile";
-  static const CREATECOMPANY_API = "$API_URL/company";
+  static const CHAMPIONSHIP_API = "$API_URL/sports/1";
+  static const CHAMPIONSHIPGEMEBYID_API = "$API_URL/getGamesByChampionshipID/1";
+  static const CHAMPIANLEADTEAMIMAGE_API = "$WITHOUT_API_URL/uploads";
+  static const PERDICTQUESTION_API = "$API_URL/games/1";
+
   static const ALLCATAGORY_API = "$API_URL/category";
   static const GET_A_CATEGORY_API = "$API_URL/category/";
 

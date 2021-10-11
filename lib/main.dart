@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/provider/register_provider.dart';
+import 'package:prediction_app/ui/home/main_screen_2.dart';
+import 'package:prediction_app/ui/language/contactus.dart';
 import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -10,6 +12,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
 import 'database/hive/user_box.dart';
 import 'provider/sports_provider.dart';
+import 'ui/home/event_screen.dart';
+import 'ui/home/main_screen.dart';
+import 'ui/home/prediction_screen.dart';
 
 UserBox? res;
 Box<dynamic>? boxUser;
@@ -54,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return Language();
+                    return PredictionScreen();
                 } else
                   return Scaffold();
               },
