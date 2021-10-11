@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/provider/register_provider.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
+import 'package:prediction_app/ui/language/contactus.dart';
 import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return MainScreen();
+                    return ContactUs();
                 } else
                   return Scaffold();
               },
