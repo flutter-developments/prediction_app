@@ -239,7 +239,7 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
     height: size.height * .85,
     width: size.width,
     child: ListView.builder(
-        itemCount: sportsmodel.data.length,
+        itemCount: sportsmodel.data.sports.length,
         itemBuilder: (context, index) {
           return InkWell(
             child: Padding(
@@ -281,7 +281,7 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Text(sportsmodel.data[index].name,
+                              Text(sportsmodel.data.sports[index].name,
                                   style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: 23.sp,
