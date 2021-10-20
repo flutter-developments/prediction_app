@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -31,7 +30,7 @@ class ContactUs extends StatefulWidget {
 class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
-    //late File galleryFile;
+    late File galleryFile;
     String textAttached = "Attachment";
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
@@ -76,8 +75,8 @@ class _ContactUsState extends State<ContactUs> {
                                 .pickImage(source: ImageSource.gallery);
                             if (gallery != null) {
                               setState(() {
-                                // galleryFile = File(gallery.path);
-                                // textAttached = galleryFile.path.toString();
+                                galleryFile = File(gallery.path);
+                                textAttached = galleryFile.path.toString();
                               });
                             }
                           },
