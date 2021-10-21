@@ -86,6 +86,8 @@ class _EventScreenState extends State<EventScreen> {
   }
 
   Container buildGames(Size size) {
+    var now = new DateTime.now();
+    var berlinWallFellDate = new DateTime.utc(1989, 11, 9);
     return Container(
       color: AppColors.primery_color,
       height: size.height * .85,
@@ -130,8 +132,8 @@ class _EventScreenState extends State<EventScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                                child: Image.network(
-                                    "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team1Logo}"),
+                                // child: Image.network(
+                                //     "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].sportId}"),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 15.h),
@@ -141,10 +143,11 @@ class _EventScreenState extends State<EventScreen> {
                                 ),
                               ),
                               Padding(
-                                  padding:
-                                      EdgeInsets.only(top: 15.h, right: 10.w),
-                                  child: Image.network(
-                                      "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team2Logo}")),
+                                padding:
+                                    EdgeInsets.only(top: 15.h, right: 10.w),
+                                // child: Image.network(
+                                //     "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team2Logo}")
+                              ),
                             ],
                           ),
                           SizedBox(
@@ -156,10 +159,10 @@ class _EventScreenState extends State<EventScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  csbyid.data.games[index].team1,
+                                  csbyid.data.games[index].team1Id.toString(),
                                   style: mediumwhiteStyle,
                                 ),
-                                RaisedGradientButton(
+                                csbyid.data.games[index].startTime.compareTo(now)>0?RaisedGradientButton(
                                     width: 120.w,
                                     height: 40.h,
                                     child: Text(
@@ -175,9 +178,9 @@ class _EventScreenState extends State<EventScreen> {
                                     onPressed: () {
                                       AppRoutes.push(
                                           context, PredictionScreen());
-                                    }),
+                                    }):Container(),
                                 Text(
-                                  csbyid.data.games[index].team2,
+                                  csbyid.data.games[index].team2Id.toString(),
                                   style: mediumwhiteStyle,
                                 )
                               ],
@@ -186,13 +189,13 @@ class _EventScreenState extends State<EventScreen> {
                           SizedBox(
                             height: 20.h,
                           ),
-                          Text(
+                          csbyid.data.games[index].startTime.compareTo(now)>0?Text(
                             "      Today,30 minutes left",
                             style: GoogleFonts.openSans(
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,
                                 color: Color(0xffB6B6B6)),
-                          ),
+                          ):Container(),
                         ],
                       ),
                     ),

@@ -1,12 +1,12 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final csbyid = csbyidFromJson(jsonString);
 
 import 'dart:convert';
 
-CSBYID welcomeFromJson(String str) => CSBYID.fromJson(json.decode(str));
+CSBYID CSBYIDFromJson(String str) => CSBYID.fromJson(json.decode(str));
 
-String welcomeToJson(CSBYID data) => json.encode(data.toJson());
+String csbyidToJson(CSBYID data) => json.encode(data.toJson());
 
 class CSBYID {
   CSBYID({
@@ -35,16 +35,20 @@ class CSBYID {
 class Data {
   Data({
     required this.games,
+    required this.logopath,
   });
 
   List<Game> games;
+  String logopath;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         games: List<Game>.from(json["games"].map((x) => Game.fromJson(x))),
+        logopath: json["logopath"],
       );
 
   Map<String, dynamic> toJson() => {
         "games": List<dynamic>.from(games.map((x) => x.toJson())),
+        "logopath": logopath,
       };
 }
 
@@ -54,12 +58,11 @@ class Game {
     required this.sportId,
     required this.championshipId,
     required this.type,
-    required this.team1,
-    required this.team1Logo,
-    required this.team2,
-    required this.team2Logo,
+    required this.team1Id,
+    required this.team2Id,
     required this.startTime,
     required this.endTime,
+    required this.isStatus,
     required this.createdBy,
     required this.updatedBy,
     required this.createdAt,
@@ -70,12 +73,11 @@ class Game {
   int sportId;
   int championshipId;
   int type;
-  String team1;
-  String team1Logo;
-  String team2;
-  String team2Logo;
+  int team1Id;
+  int team2Id;
   DateTime startTime;
   DateTime endTime;
+  int isStatus;
   int createdBy;
   int updatedBy;
   DateTime createdAt;
@@ -86,12 +88,11 @@ class Game {
         sportId: json["sport_id"],
         championshipId: json["championship_id"],
         type: json["type"],
-        team1: json["team1"],
-        team1Logo: json["team1Logo"],
-        team2: json["team2"],
-        team2Logo: json["team2Logo"],
+        team1Id: json["team1id"],
+        team2Id: json["team2id"],
         startTime: DateTime.parse(json["start_time"]),
         endTime: DateTime.parse(json["end_time"]),
+        isStatus: json["is_status"],
         createdBy: json["created_by"],
         updatedBy: json["updated_by"],
         createdAt: DateTime.parse(json["created_at"]),
@@ -103,12 +104,11 @@ class Game {
         "sport_id": sportId,
         "championship_id": championshipId,
         "type": type,
-        "team1": team1,
-        "team1Logo": team1Logo,
-        "team2": team2,
-        "team2Logo": team2Logo,
+        "team1id": team1Id,
+        "team2id": team2Id,
         "start_time": startTime.toIso8601String(),
         "end_time": endTime.toIso8601String(),
+        "is_status": isStatus,
         "created_by": createdBy,
         "updated_by": updatedBy,
         "created_at": createdAt.toIso8601String(),

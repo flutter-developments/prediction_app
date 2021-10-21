@@ -145,7 +145,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 Padding(
                   padding: EdgeInsets.only(left: 10.w),
                   child: Image.network(
-                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.games.team1Logo}"),
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team1[0].logo}"),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +166,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 Padding(
                   padding: EdgeInsets.only(top: 10.h),
                   child: Image.network(
-                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.games.team2Logo}"),
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team2[0].logo}"),
                 ),
               ],
             ),
@@ -177,11 +177,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  _gamedetaile!.data.games.team1,
+                  _gamedetaile!.data.teams.team1[0].name,
                   style: smallwhiteStyle,
                 ),
                 Text(
-                  _gamedetaile!.data.games.team2,
+                  _gamedetaile!.data.teams.team2[0].name,
                   style: smallwhiteStyle,
                 )
               ],
