@@ -123,7 +123,7 @@ class _EventScreenState extends State<EventScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "UEFA Champions League",
+                            "${csbyid.data.games[index].championship}",
                             style: titlegreyStyle,
                           ),
                           //league pictures row
@@ -132,8 +132,8 @@ class _EventScreenState extends State<EventScreen> {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                                // child: Image.network(
-                                //     "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].sportId}"),
+                                child: Image.network(
+                                    "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team1Logo}"),
                               ),
                               Padding(
                                 padding: EdgeInsets.only(top: 15.h),
@@ -145,8 +145,8 @@ class _EventScreenState extends State<EventScreen> {
                               Padding(
                                 padding:
                                     EdgeInsets.only(top: 15.h, right: 10.w),
-                                // child: Image.network(
-                                //     "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team2Logo}")
+                                child: Image.network(
+                                    "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team2Logo}")
                               ),
                             ],
                           ),
@@ -159,7 +159,7 @@ class _EventScreenState extends State<EventScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  csbyid.data.games[index].team1Id.toString(),
+                                  csbyid.data.games[index].team1Name,
                                   style: mediumwhiteStyle,
                                 ),
                                 csbyid.data.games[index].startTime.compareTo(now)>0?RaisedGradientButton(
@@ -180,7 +180,7 @@ class _EventScreenState extends State<EventScreen> {
                                           context, PredictionScreen());
                                     }):Container(),
                                 Text(
-                                  csbyid.data.games[index].team2Id.toString(),
+                                  csbyid.data.games[index].team2Name,
                                   style: mediumwhiteStyle,
                                 )
                               ],
@@ -190,7 +190,7 @@ class _EventScreenState extends State<EventScreen> {
                             height: 20.h,
                           ),
                           csbyid.data.games[index].startTime.compareTo(now)>0?Text(
-                            "      Today,30 minutes left",
+                            "${csbyid.data.games[index].startTime.difference(DateTime.now()).inHours} Hours",
                             style: GoogleFonts.openSans(
                                 fontSize: 15.sp,
                                 fontWeight: FontWeight.w400,

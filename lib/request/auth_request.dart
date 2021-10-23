@@ -1,5 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:prediction_app/api/prodection_api.dart';
+import 'package:prediction_app/model/post_model/save_prediction_model.dart';
 
 class AuthApi {
   Future<http.Response> createUser(
@@ -41,6 +42,26 @@ class AuthApi {
   }
 }
 
+
+
+
+class SavePredictionData_APi {
+  Future<http.Response> saveData(SavePredictionModel _model) async {
+    var body = {
+      "userid": "${_model.userid}",
+      "answerids": "${_model.answerids}",
+      "credits": "${_model.credits}",
+      "name": "${_model.gameId}"
+    };
+    print("predictionData = = = = $body");
+    // print("Signup create At ?? this link = >${API_URLS.REGISTER_API}");
+    return http.post(
+      Uri.parse("${API_URLS.SAVE_PREDICTION_DATA_API}"),
+      body: body,
+    );
+  }
+
+  }
 // Future<http.Response> loginUser(
 //   String email,
 //   String password,

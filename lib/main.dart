@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/provider/register_provider.dart';
+import 'package:prediction_app/provider/user_detail_provider.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/ui/language/contactus.dart';
 import 'package:prediction_app/ui/language/select_language.dart';
@@ -47,6 +48,8 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => RegisterProvider()),
         ChangeNotifierProvider(create: (_) => SportsProvider()),
         ChangeNotifierProvider(create: (_) => ChampionShipProvider()),
+        ChangeNotifierProvider(create: (_) => UserDetailProvider()),
+
       ],
       child: ScreenUtilInit(
         builder: () => MaterialApp(

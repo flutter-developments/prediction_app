@@ -5,12 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/custom_appbar.dart';
+import 'package:prediction_app/model/response_model/userDetailModel.dart';
+import 'package:prediction_app/provider/user_detail_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:provider/provider.dart';
 import 'exchange_screen1.dart';
 
 class OpenPredictionScreen extends StatefulWidget {
@@ -20,6 +23,41 @@ class OpenPredictionScreen extends StatefulWidget {
 
 class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  late UserDetailProvider userDetailProvider;
+  UserDetailModel? userDetailModel;
+  bool isFetched = false;
+  void initState() {
+    _getUserDetail();
+    super.initState();
+    // _getUserDetail();
+  }
+
+  void _getUserDetail() async{
+    await Provider.of<UserDetailProvider>(context, listen: false)
+        .getUserDetail()
+        .then((value) {
+          print('user data in widget class ${value.data.winRate}');
+      setState(() {
+         print(value.toString());
+        // print(value.message.toString());
+        if (value.success == true) {
+          _updateState(true);
+          userDetailModel = value;
+          print(userDetailModel?.data.winRate);
+
+        }
+      });
+    });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    setState(() {
+      isFetched = isValue;
+    });
+  }
+  // UserDetailProvider _userDetailProvider = UserDetailProvider();
+  // UserDetailModel _userDetailModel;
   var _strokeOrangeWidth = 3.0;
   // ignore: non_constant_identifier_names
   var _stroke_purpel_Width = 30.0;
@@ -27,12 +65,16 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    // userDetailProvider = Provider.of<UserDetailProvider>(context);
+    // _userDetailModel = await _userDetailProvider.getUserDetail();
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.primery_color,
         key: _key,
         drawer: DrawerFull(context, MediaQuery.of(context).size),
-        body: Container(
+        body:
+        // isFetched?Center(child: CircularProgressIndicator()):
+        Container(
             child: ListView(
           children: [
             buildappbarContainer(size, context),
@@ -62,9 +104,9 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    StatsContainer(title: "Predictions", stats: '255'),
-                    StatsContainer(title: "Wins", stats: '35'),
-                    StatsContainer(title: "Win rate", stats: '32%'),
+                    StatsContainer(title: "Predictions", stats: '${userDetailModel?.data.totalPrediction}'),
+                    StatsContainer(title: "Wins", stats: '${userDetailModel?.data.winPrediction}'),
+                    StatsContainer(title: "Win rate", stats: '${userDetailModel?.data.winRate}%'),
                   ],
                 ),
               )),

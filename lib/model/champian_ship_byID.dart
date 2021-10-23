@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-CSBYID CSBYIDFromJson(String str) => CSBYID.fromJson(json.decode(str));
+CSBYID csbyidFromJson(String str) => CSBYID.fromJson(json.decode(str));
 
 String csbyidToJson(CSBYID data) => json.encode(data.toJson());
 
@@ -20,16 +20,16 @@ class CSBYID {
   String message;
 
   factory CSBYID.fromJson(Map<String, dynamic> json) => CSBYID(
-        success: json["success"],
-        data: Data.fromJson(json["data"]),
-        message: json["message"],
-      );
+    success: json["success"],
+    data: Data.fromJson(json["data"]),
+    message: json["message"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "success": success,
-        "data": data.toJson(),
-        "message": message,
-      };
+    "success": success,
+    "data": data.toJson(),
+    "message": message,
+  };
 }
 
 class Data {
@@ -42,14 +42,14 @@ class Data {
   String logopath;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        games: List<Game>.from(json["games"].map((x) => Game.fromJson(x))),
-        logopath: json["logopath"],
-      );
+    games: List<Game>.from(json["games"].map((x) => Game.fromJson(x))),
+    logopath: json["logopath"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "games": List<dynamic>.from(games.map((x) => x.toJson())),
-        "logopath": logopath,
-      };
+    "games": List<dynamic>.from(games.map((x) => x.toJson())),
+    "logopath": logopath,
+  };
 }
 
 class Game {
@@ -57,61 +57,57 @@ class Game {
     required this.id,
     required this.sportId,
     required this.championshipId,
-    required this.type,
     required this.team1Id,
     required this.team2Id,
+    required this.championship,
+    required this.team1Name,
+    required this.team2Name,
+    required this.team1Logo,
+    required this.team2Logo,
     required this.startTime,
     required this.endTime,
-    required this.isStatus,
-    required this.createdBy,
-    required this.updatedBy,
-    required this.createdAt,
-    required this.updatedAt,
   });
 
   int id;
   int sportId;
   int championshipId;
-  int type;
   int team1Id;
   int team2Id;
+  String championship;
+  String team1Name;
+  String team2Name;
+  String team1Logo;
+  String team2Logo;
   DateTime startTime;
   DateTime endTime;
-  int isStatus;
-  int createdBy;
-  int updatedBy;
-  DateTime createdAt;
-  DateTime updatedAt;
 
   factory Game.fromJson(Map<String, dynamic> json) => Game(
-        id: json["id"],
-        sportId: json["sport_id"],
-        championshipId: json["championship_id"],
-        type: json["type"],
-        team1Id: json["team1id"],
-        team2Id: json["team2id"],
-        startTime: DateTime.parse(json["start_time"]),
-        endTime: DateTime.parse(json["end_time"]),
-        isStatus: json["is_status"],
-        createdBy: json["created_by"],
-        updatedBy: json["updated_by"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-      );
+    id: json["id"],
+    sportId: json["sport_id"],
+    championshipId: json["championship_id"],
+    team1Id: json["team1id"],
+    team2Id: json["team2id"],
+    championship: json["championship"],
+    team1Name: json["team1_name"],
+    team2Name: json["team2_name"],
+    team1Logo: json["team1_logo"],
+    team2Logo: json["team2_logo"],
+    startTime: DateTime.parse(json["start_time"]),
+    endTime: DateTime.parse(json["end_time"]),
+  );
 
   Map<String, dynamic> toJson() => {
-        "id": id,
-        "sport_id": sportId,
-        "championship_id": championshipId,
-        "type": type,
-        "team1id": team1Id,
-        "team2id": team2Id,
-        "start_time": startTime.toIso8601String(),
-        "end_time": endTime.toIso8601String(),
-        "is_status": isStatus,
-        "created_by": createdBy,
-        "updated_by": updatedBy,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-      };
+    "id": id,
+    "sport_id": sportId,
+    "championship_id": championshipId,
+    "team1id": team1Id,
+    "team2id": team2Id,
+    "championship": championship,
+    "team1_name": team1Name,
+    "team2_name": team2Name,
+    "team1_logo": team1Logo,
+    "team2_logo": team2Logo,
+    "start_time": startTime.toIso8601String(),
+    "end_time": endTime.toIso8601String(),
+  };
 }

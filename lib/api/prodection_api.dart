@@ -6,8 +6,10 @@ class API_URLS {
   static const LOGIN_API = "$API_URL/login";
 
   static const SPORTS_API = "$API_URL/sports";
+  static const USER_DETAIL_API = "$API_URL/getUsersDetails/2";
   static const CHAMPIONSHIP_API = "$API_URL/sports/1";
   static const CHAMPIONSHIPGEMEBYID_API = "$API_URL/getGamesByChampionshipID/1";
+  static const SAVE_PREDICTION_DATA_API = "$API_URL/savePrediction";
   static const CHAMPIANLEADTEAMIMAGE_API = "$WITHOUT_API_URL/uploads";
   static const PERDICTQUESTION_API = "$API_URL/games/1";
 

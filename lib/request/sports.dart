@@ -9,3 +9,13 @@ class SportsApi {
     );
   }
 }
+
+
+class UserDetailApi {
+  Future<http.Response> getUserDetail() async {
+    print("Supports Url = >${API_URLS.USER_DETAIL_API}".toUpperCase());
+    return await http.get(
+      Uri.parse("${API_URLS.USER_DETAIL_API}"),
+    );
+  }
+}

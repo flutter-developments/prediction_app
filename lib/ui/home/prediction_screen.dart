@@ -7,8 +7,10 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/api/prodection_api.dart';
+import 'package:prediction_app/model/post_model/save_prediction_model.dart';
 import 'package:prediction_app/model/predect_question.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
+import 'package:prediction_app/provider/save_prediction_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/open_prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
@@ -106,6 +108,10 @@ class _PredictionScreenState extends State<PredictionScreen> {
                               ],
                             ),
                             onPressed: () {
+                              SavePredictionModel model = SavePredictionModel(userid: 3,answerids: [2,3,4],credits: 200,gameId: 3);
+                              SavePredictionProvider _provider = SavePredictionProvider();
+                              _provider.savePredictionData(model);
+
                               AppRoutes.push(context, OpenPredictionScreen());
                             }),
                       ),
