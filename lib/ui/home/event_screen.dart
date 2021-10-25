@@ -25,7 +25,7 @@ class EventScreen extends StatefulWidget {
 class _EventScreenState extends State<EventScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
   late ChampionShipProvider championShipProvider;
-  late CSBYID csbyid;
+  late ChampionshipById csbyid;
   bool isFetched = false;
   void initState() {
     super.initState();
@@ -156,7 +156,7 @@ class _EventScreenState extends State<EventScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  csbyid.data.games[index].team1,
+                                  csbyid.data.games[index].team1Name,
                                   style: mediumwhiteStyle,
                                 ),
                                 RaisedGradientButton(
@@ -177,7 +177,7 @@ class _EventScreenState extends State<EventScreen> {
                                           context, PredictionScreen());
                                     }),
                                 Text(
-                                  csbyid.data.games[index].team2,
+                                  csbyid.data.games[index].team2Name,
                                   style: mediumwhiteStyle,
                                 )
                               ],

@@ -55,7 +55,7 @@ class _AuthState extends State<Auth> {
           .then((value) {
         print(value!.message.toString());
         if (value.success == true) {
-          showMessageSuccess(value.message.toString().toUpperCase());
+          // showMessageSuccess(value.message.toString().toUpperCase());
           AppRoutes.push(context, Welcome());
           _clearFields();
         } else {

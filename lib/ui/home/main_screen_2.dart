@@ -277,7 +277,10 @@ class _MainScreen2State extends State<MainScreen2> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(notifications[index].image,
+                        child: Image.network(
+                            championshipModel.data.logopath +
+                                "/" +
+                                championshipModel.data.sports.logo,
                             fit: BoxFit.cover),
                       ),
                       ClipRRect(

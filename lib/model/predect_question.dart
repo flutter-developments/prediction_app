@@ -1,16 +1,17 @@
 // To parse this JSON data, do
 //
-//     final welcome = welcomeFromJson(jsonString);
+//     final gameDetailesModel = gameDetailesModelFromJson(jsonString);
 
 import 'dart:convert';
 
-GAMEDETAILE welcomeFromJson(String str) =>
-    GAMEDETAILE.fromJson(json.decode(str));
+GameDetailesModel gameDetailesModelFromJson(String str) =>
+    GameDetailesModel.fromJson(json.decode(str));
 
-String welcomeToJson(GAMEDETAILE data) => json.encode(data.toJson());
+String gameDetailesModelToJson(GameDetailesModel data) =>
+    json.encode(data.toJson());
 
-class GAMEDETAILE {
-  GAMEDETAILE({
+class GameDetailesModel {
+  GameDetailesModel({
     required this.success,
     required this.data,
     required this.message,
@@ -20,7 +21,8 @@ class GAMEDETAILE {
   Data data;
   String message;
 
-  factory GAMEDETAILE.fromJson(Map<String, dynamic> json) => GAMEDETAILE(
+  factory GameDetailesModel.fromJson(Map<String, dynamic> json) =>
+      GameDetailesModel(
         success: json["success"],
         data: Data.fromJson(json["data"]),
         message: json["message"],
@@ -36,19 +38,23 @@ class GAMEDETAILE {
 class Data {
   Data({
     required this.games,
+    required this.teams,
     required this.logopath,
   });
 
   Games games;
+  Teams teams;
   String logopath;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         games: Games.fromJson(json["games"]),
+        teams: Teams.fromJson(json["teams"]),
         logopath: json["logopath"],
       );
 
   Map<String, dynamic> toJson() => {
         "games": games.toJson(),
+        "teams": teams.toJson(),
         "logopath": logopath,
       };
 }
@@ -59,12 +65,12 @@ class Games {
     required this.sportId,
     required this.championshipId,
     required this.type,
-    required this.team1,
-    required this.team1Logo,
-    required this.team2,
-    required this.team2Logo,
+    required this.team1Id,
+    required this.team2Id,
     required this.startTime,
     required this.endTime,
+    required this.isStatus,
+    required this.isAllocate,
     required this.createdBy,
     required this.updatedBy,
     required this.createdAt,
@@ -77,17 +83,17 @@ class Games {
   int sportId;
   int championshipId;
   int type;
-  String team1;
-  String team1Logo;
-  String team2;
-  String team2Logo;
+  int team1Id;
+  int team2Id;
   DateTime startTime;
   DateTime endTime;
+  int isStatus;
+  int isAllocate;
   int createdBy;
   int updatedBy;
   DateTime createdAt;
   DateTime updatedAt;
-  List<Answer> questions;
+  List<Question> questions;
   List<Answer> answers;
 
   factory Games.fromJson(Map<String, dynamic> json) => Games(
@@ -95,18 +101,18 @@ class Games {
         sportId: json["sport_id"],
         championshipId: json["championship_id"],
         type: json["type"],
-        team1: json["team1"],
-        team1Logo: json["team1Logo"],
-        team2: json["team2"],
-        team2Logo: json["team2Logo"],
+        team1Id: json["team1id"],
+        team2Id: json["team2id"],
         startTime: DateTime.parse(json["start_time"]),
         endTime: DateTime.parse(json["end_time"]),
+        isStatus: json["is_status"],
+        isAllocate: json["is_allocate"],
         createdBy: json["created_by"],
         updatedBy: json["updated_by"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        questions:
-            List<Answer>.from(json["questions"].map((x) => Answer.fromJson(x))),
+        questions: List<Question>.from(
+            json["questions"].map((x) => Question.fromJson(x))),
         answers:
             List<Answer>.from(json["answers"].map((x) => Answer.fromJson(x))),
       );
@@ -116,12 +122,12 @@ class Games {
         "sport_id": sportId,
         "championship_id": championshipId,
         "type": type,
-        "team1": team1,
-        "team1Logo": team1Logo,
-        "team2": team2,
-        "team2Logo": team2Logo,
+        "team1id": team1Id,
+        "team2id": team2Id,
         "start_time": startTime.toIso8601String(),
         "end_time": endTime.toIso8601String(),
+        "is_status": isStatus,
+        "is_allocate": isAllocate,
         "created_by": createdBy,
         "updated_by": updatedBy,
         "created_at": createdAt.toIso8601String(),
@@ -137,44 +143,156 @@ class Answer {
     required this.gameId,
     required this.questionId,
     required this.answer,
+    required this.points,
+    required this.teamId,
+    required this.isTrue,
     required this.createdBy,
     required this.updatedBy,
     required this.createdAt,
     required this.updatedAt,
-    required this.question,
   });
 
   int id;
   int gameId;
-  int? questionId;
-  String? answer;
+  int questionId;
+  String answer;
+  double points;
+  int teamId;
+  int isTrue;
   int createdBy;
   int updatedBy;
   DateTime createdAt;
   DateTime updatedAt;
-  String? question;
 
   factory Answer.fromJson(Map<String, dynamic> json) => Answer(
         id: json["id"],
         gameId: json["game_id"],
-        questionId: json["question_id"] == null ? 0 : json["question_id"],
-        answer: json["answer"] == null ? null : json["answer"],
+        questionId: json["question_id"],
+        answer: json["answer"],
+        points: json["points"].toDouble(),
+        teamId: json["team_id"],
+        isTrue: json["is_true"],
         createdBy: json["created_by"],
         updatedBy: json["updated_by"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
-        question: json["question"] == null ? null : json["question"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "game_id": gameId,
-        "question_id": questionId == null ? null : questionId,
-        "answer": answer == null ? null : answer,
+        "question_id": questionId,
+        "answer": answer,
+        "points": points,
+        "team_id": teamId,
+        "is_true": isTrue,
         "created_by": createdBy,
         "updated_by": updatedBy,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
-        "question": question == null ? null : question,
+      };
+}
+
+class Question {
+  Question({
+    required this.id,
+    required this.gameId,
+    required this.question,
+    required this.createdBy,
+    required this.updatedBy,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  int id;
+  int gameId;
+  String question;
+  int createdBy;
+  int updatedBy;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  factory Question.fromJson(Map<String, dynamic> json) => Question(
+        id: json["id"],
+        gameId: json["game_id"],
+        question: json["question"],
+        createdBy: json["created_by"],
+        updatedBy: json["updated_by"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "game_id": gameId,
+        "question": question,
+        "created_by": createdBy,
+        "updated_by": updatedBy,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+      };
+}
+
+class Teams {
+  Teams({
+    required this.team1,
+    required this.team2,
+  });
+
+  List<Team> team1;
+  List<Team> team2;
+
+  factory Teams.fromJson(Map<String, dynamic> json) => Teams(
+        team1: List<Team>.from(json["team1"].map((x) => Team.fromJson(x))),
+        team2: List<Team>.from(json["team2"].map((x) => Team.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "team1": List<dynamic>.from(team1.map((x) => x.toJson())),
+        "team2": List<dynamic>.from(team2.map((x) => x.toJson())),
+      };
+}
+
+class Team {
+  Team({
+    required this.id,
+    required this.name,
+    required this.logo,
+    required this.isStatus,
+    required this.createdBy,
+    required this.updatedBy,
+    required this.createdAt,
+    required this.updatedAt,
+  });
+
+  int id;
+  String name;
+  String logo;
+  int isStatus;
+  int createdBy;
+  int updatedBy;
+  DateTime createdAt;
+  DateTime updatedAt;
+
+  factory Team.fromJson(Map<String, dynamic> json) => Team(
+        id: json["id"],
+        name: json["name"],
+        logo: json["logo"],
+        isStatus: json["is_status"],
+        createdBy: json["created_by"],
+        updatedBy: json["updated_by"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "logo": logo,
+        "is_status": isStatus,
+        "created_by": createdBy,
+        "updated_by": updatedBy,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
       };
 }

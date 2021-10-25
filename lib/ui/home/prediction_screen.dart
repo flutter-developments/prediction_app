@@ -6,7 +6,6 @@ import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/textField.dart';
-import 'package:prediction_app/api/prodection_api.dart';
 import 'package:prediction_app/model/predect_question.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
@@ -34,7 +33,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
   // ignore: unused_field
   List _readCard = [30.0, 3.0, 3.0, 3.0];
   // ignore: unused_field
-  GAMEDETAILE? _gamedetaile;
+  GameDetailesModel? _gamedetaile;
   String time = DateTime.now().toString();
   bool isFetched = false;
   void initState() {
@@ -52,7 +51,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
         _updateState(true);
         setState(() {
           _gamedetaile = data;
-          // time = _gamedetaile!.data.games.startTime.toString();
+          print(
+              "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team1[0].logo}");
         });
       }
     });
@@ -145,7 +145,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 Padding(
                   padding: EdgeInsets.only(left: 10.w),
                   child: Image.network(
-                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.games.team1Logo}"),
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team1[0].logo}"),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -166,7 +166,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 Padding(
                   padding: EdgeInsets.only(top: 10.h),
                   child: Image.network(
-                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.games.team2Logo}"),
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team2[0].logo}"),
                 ),
               ],
             ),
@@ -177,11 +177,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  _gamedetaile!.data.games.team1,
+                  _gamedetaile!.data.teams.team1[0].name.toString(),
                   style: smallwhiteStyle,
                 ),
                 Text(
-                  _gamedetaile!.data.games.team2,
+                  _gamedetaile!.data.teams.team2[0].name.toString(),
                   style: smallwhiteStyle,
                 )
               ],

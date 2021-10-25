@@ -9,10 +9,10 @@ import 'package:prediction_app/utils/images.dart';
 
 class ChampionShipProvider with ChangeNotifier {
   late bool action, wait = false;
-  // ignore: unused_field
   late ChampionshipModel championshipModel;
-  CSBYID? csbyidModel;
-  GAMEDETAILE? gamedetaile;
+  ChampionshipById? championshipByIdModel;
+  GameDetailesModel? gamedetaile;
+
   Future<ChampionshipModel> championshipProvider() async {
     _waitingStata(true);
     await ChampioshipApi().requestChampionshipList().then((data) {
@@ -35,14 +35,14 @@ class ChampionShipProvider with ChangeNotifier {
   }
 
   //GetGamesByChampianShipid
-  Future<CSBYID?> getGamesByChampionshipID() async {
+  Future<ChampionshipById?> getGamesByChampionshipID() async {
     _waitingStata(true);
     await ChampioshipApi().requestgetGamesByChampionshipID().then((data) {
       print("STATUS CODE getGamesByChampionshipID => " +
           data.statusCode.toString());
       print("DATA => " + data.body.toString());
       if (data.statusCode == 200) {
-        _champianShipModel(CSBYID.fromJson(json.decode(data.body)));
+        _champianShipModel(ChampionshipById.fromJson(json.decode(data.body)));
       } else if (data.statusCode == 404) {
         //perform functionality
         showMessageError(data.statusCode);
@@ -59,18 +59,18 @@ class ChampionShipProvider with ChangeNotifier {
       }
     });
 
-    return csbyidModel;
+    return championshipByIdModel;
   }
 
   //get Game Details By ID
-  Future<GAMEDETAILE?> getGameDetailsByID() async {
+  Future<GameDetailesModel?> getGameDetailsByID() async {
     _waitingStata(true);
     await ChampioshipApi().requestGameDetailesByID().then((data) {
       print("STATUS CODE getGameDetailsByID => " +
           data.statusCode.toString().toUpperCase());
       print("DATA => " + data.body.toString());
       if (data.statusCode == 200) {
-        _getGameDetailes(GAMEDETAILE.fromJson(json.decode(data.body)));
+        _getGameDetailes(GameDetailesModel.fromJson(json.decode(data.body)));
       } else if (data.statusCode == 404) {
         //perform functionality
         showMessageError(data.statusCode);
@@ -97,8 +97,9 @@ class ChampionShipProvider with ChangeNotifier {
   }
 
   _champianShipModel(value) {
-    csbyidModel = value;
-    showMessageSuccess("Message = " + csbyidModel!.message.toString());
+    championshipByIdModel = value;
+    showMessageSuccess(
+        "Message = " + championshipByIdModel!.message.toString());
     notifyListeners();
   }
 

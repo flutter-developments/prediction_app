@@ -266,7 +266,10 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                   children: [
                     ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: Image.asset(sports[index].image,
+                        child: Image.network(
+                            sportsmodel.data.logopath +
+                                "/" +
+                                sportsmodel.data.sports[index].logo,
                             fit: BoxFit.cover)),
                     ClipRRect(
                       child: BackdropFilter(
@@ -293,7 +296,8 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    sports[index].games,
+                                    sportsmodel.data.sports[index].id
+                                        .toString(),
                                     style: GoogleFonts.openSans(
                                         fontSize: 15.sp,
                                         fontWeight: FontWeight.w500,
