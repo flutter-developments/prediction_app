@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
@@ -30,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
     _getSports();
   }
 
-  void _getSports() {
+  _getSports() {
     Provider.of<SportsProvider>(context, listen: false)
         .sportsProvider()
         .then((value) {
@@ -240,7 +239,7 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
     height: size.height * .85,
     width: size.width,
     child: ListView.builder(
-        itemCount: sportsmodel.data.length,
+        itemCount: sportsmodel.data.sports.length,
         itemBuilder: (context, index) {
           return InkWell(
             child: Padding(
@@ -267,7 +266,10 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                   children: [
                     ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        child: Image.asset(sports[index].image,
+                        child: Image.network(
+                            sportsmodel.data.logopath +
+                                "/" +
+                                sportsmodel.data.sports[index].logo,
                             fit: BoxFit.cover)),
                     ClipRRect(
                       child: BackdropFilter(
@@ -282,7 +284,7 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              Text(sportsmodel.data[index].name,
+                              Text(sportsmodel.data.sports[index].name,
                                   style: GoogleFonts.openSans(
                                       color: Colors.white,
                                       fontSize: 23.sp,
@@ -294,7 +296,8 @@ Widget buildSuper_leauge(Size size, SPORTSMODEL sportsmodel) {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    sports[index].games,
+                                    sportsmodel.data.sports[index].id
+                                        .toString(),
                                     style: GoogleFonts.openSans(
                                         fontSize: 15.sp,
                                         fontWeight: FontWeight.w500,

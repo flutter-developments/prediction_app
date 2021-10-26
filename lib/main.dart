@@ -14,7 +14,9 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
 import 'database/hive/user_box.dart';
 import 'provider/sports_provider.dart';
+import 'ui/home/event_screen.dart';
 import 'ui/home/main_screen.dart';
+import 'ui/home/prediction_screen.dart';
 
 UserBox? res;
 Box<dynamic>? boxUser;

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
+import 'package:prediction_app/api/prodection_api.dart';
+import 'package:prediction_app/model/champian_ship_byID.dart';
+import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
@@ -11,6 +14,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:provider/provider.dart';
 import 'exchange_screen1.dart';
 
 class EventScreen extends StatefulWidget {
@@ -20,31 +24,182 @@ class EventScreen extends StatefulWidget {
 
 class _EventScreenState extends State<EventScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+  late ChampionShipProvider championShipProvider;
+  late ChampionshipById csbyid;
+  bool isFetched = false;
+  void initState() {
+    super.initState();
+    _getChampianShipByID();
+  }
+
+  void _getChampianShipByID() {
+    Provider.of<ChampionShipProvider>(context, listen: false)
+        .getGamesByChampionshipID()
+        .then((value) {
+      setState(() {
+        print(value!.message.toString());
+        print(value.message.toString());
+        if (value.success == true) {
+          _updateState(true);
+          csbyid = value;
+        }
+      });
+    });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    setState(() {
+      isFetched = isValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    championShipProvider = Provider.of<ChampionShipProvider>(context);
+
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.primery_color,
-        key: _key,
-        drawer: DrawerFull(context, MediaQuery.of(context).size),
-        // appBar: AppBar(
-        //   title: Text("title"),
-        // ),
-        body: Container(
-            child: ListView(
-          children: [
-            buildappbarContainer(size, context),
-            SizedBox(
-              height: 30.h,
-            ),
-            buildGames(size),
-            SizedBox(
-              height: 30.h,
-            )
-          ],
-        )),
-      ),
+          backgroundColor: AppColors.primery_color,
+          key: _key,
+          drawer: DrawerFull(context, MediaQuery.of(context).size),
+          // appBar: AppBar(
+          //   title: Text("title"),
+          // ),
+          body: isFetched
+              ? Container(
+                  child: ListView(
+                  children: [
+                    buildappbarContainer(size, context),
+                    SizedBox(
+                      height: 30.h,
+                    ),
+                    buildGames(size),
+                    SizedBox(
+                      height: 30.h,
+                    )
+                  ],
+                ))
+              : Center(child: CircularProgressIndicator())),
+    );
+  }
+
+  Container buildGames(Size size) {
+    return Container(
+      color: AppColors.primery_color,
+      height: size.height * .85,
+      width: size.width,
+      child: ListView.builder(
+          itemCount: csbyid.data.games.length,
+          itemBuilder: (context, index) {
+            return AnimationConfiguration.staggeredList(
+                position: index,
+                duration: const Duration(milliseconds: 1500),
+                child: FlipAnimation(
+                    // verticalOffset: 50.0,
+                    child: FadeInAnimation(
+                        child: Padding(
+                  padding: EdgeInsets.only(
+                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
+                  child: Card(
+                    child: Container(
+                      height: size.height * .28,
+                      width: size.width * .485,
+                      decoration: BoxDecoration(
+                          boxShadow: <BoxShadow>[
+                            BoxShadow(
+                              spreadRadius: 5,
+                              offset: Offset(5, 5),
+                              blurRadius: 2.0,
+                              color: AppColors.background_color1,
+                            ),
+                          ],
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColors.background_color1),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "UEFA Champions League",
+                            style: titlegreyStyle,
+                          ),
+                          //league pictures row
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20.w),
+                                child: Image.network(
+                                    "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team1Logo}"),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 15.h),
+                                child: Text(
+                                  "VS",
+                                  style: largetextwhiteStyle,
+                                ),
+                              ),
+                              Padding(
+                                  padding:
+                                      EdgeInsets.only(top: 15.h, right: 10.w),
+                                  child: Image.network(
+                                      "${API_URLS.CHAMPIANLEADTEAMIMAGE_API}/${csbyid.data.games[index].team2Logo}")),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10.w),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  csbyid.data.games[index].team1Name,
+                                  style: mediumwhiteStyle,
+                                ),
+                                RaisedGradientButton(
+                                    width: 120.w,
+                                    height: 40.h,
+                                    child: Text(
+                                      "Predict Now",
+                                      style: smallwhiteStyle,
+                                    ),
+                                    gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xffBB306A),
+                                        Color(0XFFD28D27),
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      AppRoutes.push(
+                                          context, PredictionScreen());
+                                    }),
+                                Text(
+                                  csbyid.data.games[index].team2Name,
+                                  style: mediumwhiteStyle,
+                                )
+                              ],
+                            ),
+                          ),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          Text(
+                            "      Today,30 minutes left",
+                            style: GoogleFonts.openSans(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.w400,
+                                color: Color(0xffB6B6B6)),
+                          ),
+                        ],
+                      ),
+                    ),
+                    color: AppColors.background_color1,
+                  ),
+                ))));
+          }),
     );
   }
 
@@ -159,9 +314,7 @@ class _EventScreenState extends State<EventScreen> {
                           child: IconButton(
                               alignment: Alignment.topCenter,
                               iconSize: 19.sp,
-                              onPressed: () {
-                               
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.add,
                                 color: AppColors.white,
@@ -204,125 +357,6 @@ class _EventScreenState extends State<EventScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  Container buildGames(Size size) {
-    return Container(
-      color: AppColors.primery_color,
-      height: size.height * .85,
-      width: size.width,
-      child: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (context, index) {
-            return AnimationConfiguration.staggeredList(
-                position: index,
-                duration: const Duration(milliseconds: 1500),
-                child: FlipAnimation(
-                    // verticalOffset: 50.0,
-                    child: FadeInAnimation(
-                        child: Padding(
-                  padding: EdgeInsets.only(
-                      left: 10.w, right: 20.w, top: 15.h, bottom: 15.h),
-                  child: Card(
-                    child: Container(
-                      height: size.height * .28,
-                      width: size.width * .485,
-                      decoration: BoxDecoration(
-                          boxShadow: <BoxShadow>[
-                            BoxShadow(
-                              spreadRadius: 5,
-                              offset: Offset(5, 5),
-                              blurRadius: 2.0,
-                              color: AppColors.background_color1,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColors.background_color1),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "UEFA Champions League",
-                            style: titlegreyStyle,
-                          ),
-                          //league pictures row
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20.w),
-                                child: Image.asset("assets/images/madrid.png"),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(top: 15.h),
-                                child: Text(
-                                  "VS",
-                                  style: largetextwhiteStyle,
-                                ),
-                              ),
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(top: 15.h, right: 10.w),
-                                child: Image.asset(
-                                  "assets/images/barca.png",
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Real Madrid",
-                                  style: mediumwhiteStyle,
-                                ),
-                                RaisedGradientButton(
-                                    width: 120.w,
-                                    height: 40.h,
-                                    child: Text(
-                                      "Predict Now",
-                                      style: smallwhiteStyle,
-                                    ),
-                                    gradient: LinearGradient(
-                                      colors: [
-                                        Color(0xffBB306A),
-                                        Color(0XFFD28D27),
-                                      ],
-                                    ),
-                                    onPressed: () {
-                                      AppRoutes.push(
-                                          context, PredictionScreen());
-                                    }),
-                                Text(
-                                  "Barcalona",
-                                  style: mediumwhiteStyle,
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          Text(
-                            "      Today,30 minutes left",
-                            style: GoogleFonts.openSans(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffB6B6B6)),
-                          ),
-                        ],
-                      ),
-                    ),
-                    color: AppColors.background_color1,
-                  ),
-                ))));
-          }),
     );
   }
 }

@@ -36,67 +36,68 @@ List<SuperLeauge> superLeauge = [
       image: "assets/images/league2.png"),
 ];
 
-List<Sports> sports = [
-  Sports(
-      title: "Football",
-      games: "3",
-      image: "assets/images/football.png",
-      onPressed:(){}),
-      
-  Sports(
-      title: "Golf",
-      games: "4",
-      image: "assets/images/golf.png",
-      onPressed:(){}),
-  Sports(
-      title: "Basketball",
-      games: "3",
-      image: "assets/images/basketball.png",
-      onPressed:(){}),
-  Sports(
-      title: "Football",
-      games: "3",
-      image: "assets/images/football.png",
-      onPressed:(){}),
-  Sports(
-      title: "Golf",
-      games: "3",
-      image: "assets/images/golf.png",
-      onPressed:(){}),
-  Sports(
-      title: "Basketball",
-      games: "3",
-      image: "assets/images/basketball.png",
-      onPressed:(){}),
-  
-];
+// List<Sports> sports = [
+//   Sports(
+//       title: "Football",
+//       games: "3",
+//       image: "assets/images/football.png",
+//       onPressed:(){}),
 
-List<SuperLeauge> notifications = [
-  SuperLeauge(
-      title: "UEFA Champions League",
-      time: DateTime.now(),
-      image: "assets/images/league0.png"),
-  SuperLeauge(
-      title: "Premier League",
-      time: DateTime.now(),
-      image: "assets/images/league1.png",),
-  SuperLeauge(
-      title: "La Liga Santander",
-      time: DateTime.now(),
-      image: "assets/images/league2.png"),
-  SuperLeauge(
-      title: "UEFA Champions League",
-      time: DateTime.now(),
-      image: "assets/images/league0.png"),
-  SuperLeauge(
-      title: "Premier League",
-      time: DateTime.now(),
-      image: "assets/images/league1.png"),
-  SuperLeauge(
-      title: "La Liga Santander",
-      time: DateTime.now(),
-      image: "assets/images/league2.png"),
-];
+//   Sports(
+//       title: "Golf",
+//       games: "4",
+//       image: "assets/images/golf.png",
+//       onPressed:(){}),
+//   Sports(
+//       title: "Basketball",
+//       games: "3",
+//       image: "assets/images/basketball.png",
+//       onPressed:(){}),
+//   Sports(
+//       title: "Football",
+//       games: "3",
+//       image: "assets/images/football.png",
+//       onPressed:(){}),
+//   Sports(
+//       title: "Golf",
+//       games: "3",
+//       image: "assets/images/golf.png",
+//       onPressed:(){}),
+//   Sports(
+//       title: "Basketball",
+//       games: "3",
+//       image: "assets/images/basketball.png",
+//       onPressed:(){}),
+
+// ];
+
+// List<SuperLeauge> notifications = [
+//   SuperLeauge(
+//       title: "UEFA Champions League",
+//       time: DateTime.now(),
+//       image: "assets/images/league0.png"),
+//   SuperLeauge(
+//     title: "Premier League",
+//     time: DateTime.now(),
+//     image: "assets/images/league1.png",
+//   ),
+//   SuperLeauge(
+//       title: "La Liga Santander",
+//       time: DateTime.now(),
+//       image: "assets/images/league2.png"),
+//   SuperLeauge(
+//       title: "UEFA Champions League",
+//       time: DateTime.now(),
+//       image: "assets/images/league0.png"),
+//   SuperLeauge(
+//       title: "Premier League",
+//       time: DateTime.now(),
+//       image: "assets/images/league1.png"),
+//   SuperLeauge(
+//       title: "La Liga Santander",
+//       time: DateTime.now(),
+//       image: "assets/images/league2.png"),
+// ];
 
 // List<ProdSliderCardModel> newArrivals = [
 //   ProdSliderCardModel(

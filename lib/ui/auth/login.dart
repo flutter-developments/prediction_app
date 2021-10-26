@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/textField.dart';
@@ -27,7 +26,7 @@ class _AuthState extends State<Auth> {
   // ignore: unused_field
   final _formLoginKey = GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
-  late LOGINMODEL login_model;
+  LOGINMODEL? login_model;
   // ignore: unused_field
   late RegisterProvider _registerProvider;
   // ignore: unused_field
@@ -48,23 +47,24 @@ class _AuthState extends State<Auth> {
   ///Sign In Request
   // ignore: unused_element
   _validateAndSubmitSignIn(context) {
-    //  if (validateAndSaveLogin()) {
-    print(_emailController.text);
-    print(_passwordController.text);
-    Provider.of<RegisterProvider>(context, listen: false)
-        .login_response(_emailController.text, _passwordController.text)
-        .then((value) {
-      if (value.success == true) {
-        showMessageSuccess(value.message.toString().toUpperCase());
-        AppRoutes.push(context, Welcome());
-        _clearFields();
-      } else {
-        showMessageError(value.message.toString().toUpperCase());
-      }
-    });
-    // } else {
-    //   print("Please fill all filds".toUpperCase());
-    // }
+    if (validateAndSaveLogin()) {
+      print(_emailController.text);
+      print(_passwordController.text);
+      Provider.of<RegisterProvider>(context, listen: false)
+          .login_response(_emailController.text, _passwordController.text)
+          .then((value) {
+        print(value!.message.toString());
+        if (value.success == true) {
+          // showMessageSuccess(value.message.toString().toUpperCase());
+          AppRoutes.push(context, Welcome());
+          _clearFields();
+        } else {
+          showMessageError(value.message.toString().toUpperCase());
+        }
+      });
+    } else {
+      print("Please fill all filds".toUpperCase());
+    }
   }
 
 //Register
@@ -76,7 +76,7 @@ class _AuthState extends State<Auth> {
           .registerResponse(_nameController.text, _emailController.text,
               _passwordController.text, _conformPasswordController.text)
           .then((value) {
-        if (value.success == true) {
+        if (value!.success == true) {
           showMessageSuccess(value.message.toString().toUpperCase());
           _clearFields();
         } else {
@@ -172,8 +172,7 @@ class _AuthState extends State<Auth> {
                                       hintText: "Name",
                                       icon: Icons.person,
                                       emptyValidationMessage:
-                                          "Name Can't be Emipty"
-                                          ),
+                                          "Name Can't be Emipty"),
                                   SizedBox(
                                     height: 15.h,
                                   ),
@@ -413,8 +412,8 @@ class _AuthState extends State<Auth> {
                               ],
                             ),
                             onPressed: () {
-                              // _validateAndSubmitSignIn(context);
-                              AppRoutes.push(context, Welcome());
+                              _validateAndSubmitSignIn(context);
+                              // AppRoutes.push(context, Welcome());
                             }),
                         SizedBox(
                           height: 40.h,

@@ -1,5 +1,4 @@
 import 'package:hive/hive.dart';
-import 'package:prediction_app/model/post_model/login_model.dart';
 part 'user_box.g.dart';
 
 @HiveType(typeId: 1)
@@ -13,7 +12,7 @@ class UserBox {
   @HiveField(3)
   late final String id;
   @HiveField(4)
-  final Token token;
+  final String token;
 
   UserBox({
     required this.email,

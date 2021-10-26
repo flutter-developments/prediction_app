@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final SPORTSMODEL = welcomeFromJson(jsonString);
-
 import 'dart:convert';
 
 SPORTSMODEL welcomeFromJson(String str) =>
@@ -17,38 +13,64 @@ class SPORTSMODEL {
   });
 
   bool success;
-  List<Datum> data;
+  Data data;
   String message;
 
   factory SPORTSMODEL.fromJson(Map<String, dynamic> json) => SPORTSMODEL(
         success: json["success"],
-        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        data: Data.fromJson(json["data"]),
         message: json["message"],
       );
 
   Map<String, dynamic> toJson() => {
         "success": success,
-        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "data": data.toJson(),
         "message": message,
       };
 }
 
-class Datum {
-  Datum({
+class Data {
+  Data({
+    required this.sports,
+    required this.logopath,
+  });
+
+  List<Sport> sports;
+  String logopath;
+
+  factory Data.fromJson(Map<String, dynamic> json) => Data(
+        sports: List<Sport>.from(json["sports"].map((x) => Sport.fromJson(x))),
+        logopath: json["logopath"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "sports": List<dynamic>.from(sports.map((x) => x.toJson())),
+        "logopath": logopath,
+      };
+}
+
+class Sport {
+  Sport({
     required this.id,
     required this.name,
+    required this.logo,
+    required this.isStatus,
     required this.createdAt,
     required this.updatedAt,
   });
 
   int id;
   String name;
+  String logo;
+  int isStatus;
   DateTime createdAt;
   DateTime updatedAt;
 
-  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+  factory Sport.fromJson(Map<String, dynamic> json) => Sport(
         id: json["id"],
         name: json["name"],
+        logo: json["logo"],
+        isStatus: json["is_status"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
       );
@@ -56,6 +78,8 @@ class Datum {
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,
+        "logo": logo,
+        "is_status": isStatus,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
       };

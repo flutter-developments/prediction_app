@@ -1,10 +1,13 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/textField.dart';
+import 'package:prediction_app/model/predect_question.dart';
+import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/open_prediction_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';
@@ -13,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'exchange_screen1.dart';
 
 class PredictionScreen extends StatefulWidget {
@@ -28,47 +32,88 @@ class _PredictionScreenState extends State<PredictionScreen> {
   List goals = [30.0, 3.0, 3.0, 3.0];
   // ignore: unused_field
   List _readCard = [30.0, 3.0, 3.0, 3.0];
+  // ignore: unused_field
+  GameDetailesModel? _gamedetaile;
+  String time = DateTime.now().toString();
+  bool isFetched = false;
+  void initState() {
+    super.initState();
+    _getGameDetails();
+  }
+
+  void _getGameDetails() {
+    Provider.of<ChampionShipProvider>(context, listen: false)
+        .getGameDetailsByID()
+        .then((data) {
+      print(data!.message.toString());
+      print(data.message.toString());
+      if (data.success == true) {
+        _updateState(true);
+        setState(() {
+          _gamedetaile = data;
+          print(
+              "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team1[0].logo}");
+        });
+      }
+    });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    setState(() {
+      isFetched = isValue;
+    });
+  }
+
+  String _getDateTime() {
+    return DateFormat.jm('yyyy-MM-dd hh:mm')
+        .format(DateTime.parse(_gamedetaile!.data.games.startTime.toString()));
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
-        key: _key,
-        drawer: DrawerFull(context, MediaQuery.of(context).size),
-        body: Container(
-            color: AppColors.background_color,
-            child: ListView(
-              children: [
-                buildappbarContainer(size, context),
-                SizedBox(
-                  height: 30.h,
-                ),
-                buildscreen(size),
-                SizedBox(height: 20.h),
-                buildTeam(size),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 120.w, vertical: 30.h),
-                  child: RaisedGradientButton(
-                      width: 120.w,
-                      height: 50.h,
-                      child: Text(
-                        "Set Prediction",
-                        style: smallwhiteStyle,
+          key: _key,
+          drawer: DrawerFull(context, MediaQuery.of(context).size),
+          body: isFetched
+              ? Container(
+                  color: AppColors.background_color,
+                  child: ListView(
+                    children: [
+                      buildappbarContainer(size, context),
+                      SizedBox(
+                        height: 30.h,
                       ),
-                      gradient: LinearGradient(
-                        colors: [
-                          Color(0XFFDD7EE0).withOpacity(0.9),
-                          Color(0XFF8787F2),
-                        ],
+                      buildscreen(size),
+                      SizedBox(height: 20.h),
+                      buildTeam(size),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: 120.w, vertical: 30.h),
+                        child: RaisedGradientButton(
+                            width: 120.w,
+                            height: 50.h,
+                            child: Text(
+                              "Set Prediction",
+                              style: smallwhiteStyle,
+                            ),
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0XFFDD7EE0).withOpacity(0.9),
+                                Color(0XFF8787F2),
+                              ],
+                            ),
+                            onPressed: () {
+                              AppRoutes.push(context, OpenPredictionScreen());
+                            }),
                       ),
-                      onPressed: () {
-                        AppRoutes.push(context, OpenPredictionScreen());
-                      }),
-                ),
-              ],
-            )),
-      ),
+                    ],
+                  ))
+              : Center(
+                  child: CircularProgressIndicator(),
+                )),
     );
   }
 
@@ -88,7 +133,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
           ),
           SizedBox(height: 10.h),
           Text(
-            "Today, Sept 07    22:00",
+            _gamedetaile!.data.games.startTime.toString(),
+            // DateFormat.jm('yyyy-MM-dd hh:mm').format(DateTime.parse(time)),
             style: titlegreyStyle,
           ),
           Padding(
@@ -98,7 +144,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(left: 10.w),
-                  child: Image.asset("assets/images/madrid.png"),
+                  child: Image.network(
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team1[0].logo}"),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -118,9 +165,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(top: 10.h),
-                  child: Image.asset(
-                    "assets/images/barca.png",
-                  ),
+                  child: Image.network(
+                      "${_gamedetaile!.data.logopath}/${_gamedetaile!.data.teams.team2[0].logo}"),
                 ),
               ],
             ),
@@ -131,11 +177,11 @@ class _PredictionScreenState extends State<PredictionScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "Real Madrid",
+                  _gamedetaile!.data.teams.team1[0].name.toString(),
                   style: smallwhiteStyle,
                 ),
                 Text(
-                  "Barcalona",
+                  _gamedetaile!.data.teams.team2[0].name.toString(),
                   style: smallwhiteStyle,
                 )
               ],
@@ -355,9 +401,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                           child: IconButton(
                               alignment: Alignment.topCenter,
                               iconSize: 19.sp,
-                              onPressed: () {
-                               
-                              },
+                              onPressed: () {},
                               icon: Icon(
                                 Icons.add,
                                 color: AppColors.white,

@@ -277,7 +277,10 @@ class _MainScreen2State extends State<MainScreen2> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(notifications[index].image,
+                        child: Image.network(
+                            championshipModel.data.logopath +
+                                "/" +
+                                championshipModel.data.sports.logo,
                             fit: BoxFit.cover),
                       ),
                       ClipRRect(
@@ -308,7 +311,9 @@ class _MainScreen2State extends State<MainScreen2> {
                                   height: 30.h,
                                 ),
                                 Text(
-                                  notifications[index].time.toString(),
+                                  championshipModel.data.sports
+                                      .championships![index].createdAt
+                                      .toString(),
                                   style: GoogleFonts.openSans(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w400,
