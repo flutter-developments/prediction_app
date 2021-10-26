@@ -9,7 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
+  // InAppPurchaseConnection _iap = InAppPurchaseConnection.instance;
 
   @override
   void initState() {
@@ -18,10 +18,10 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
   }
 
-  void _buyProduct(ProductDetails prod) {
-    final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
-    _iap.buyNonConsumable(purchaseParam: purchaseParam);
-  }
+  // void _buyProduct(ProductDetails prod) {
+  //   final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
+  //   _iap.buyNonConsumable(purchaseParam: purchaseParam);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -99,7 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         // ignore: deprecated_member_use
                         FlatButton(
-                          onPressed: () => _buyProduct(prod),
+                          onPressed: () {}, //=> _buyProduct(prod),
                           child: Text('Pay'),
                           color: Colors.green,
                         ),

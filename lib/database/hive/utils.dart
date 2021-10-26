@@ -1,19 +1,19 @@
-import '../../main.dart';
+import 'hive_initilization.dart';
 
 class Utils {
   static String getAuthentication() {
-    return "Bearer ${res!.token}";
+    return "Bearer ${user!.token}";
   }
 
   static String getUserid() {
-    return res!.id;
+    return user!.id;
   }
 
   static String userName() {
-    return res!.name;
+    return user!.name;
   }
 
   static String email() {
-    return res!.email;
+    return user!.email;
   }
 }

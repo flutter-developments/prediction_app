@@ -371,7 +371,7 @@ class _PredictionScreenState extends State<PredictionScreen> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, HomeScreen());
+                        // AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),

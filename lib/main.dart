@@ -3,30 +3,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/provider/register_provider.dart';
-import 'package:prediction_app/ui/auth/login.dart';
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
-import 'database/hive/user_box.dart';
+import 'database/hive/hive_initilization.dart';
 import 'provider/sports_provider.dart';
 import 'ui/language/select_language.dart';
+import 'package:in_app_purchase_android/in_app_purchase_android.dart';
+import 'package:flutter/foundation.dart';
 
-UserBox? res;
-Box<dynamic>? boxUser;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init(appDocumentDir.path);
-  Hive.registerAdapter(UserBoxAdapter());
-  boxUser = await Hive.openBox("user");
-  print(
-      "Accounts exist in local db " + boxUser!.length.toString().toUpperCase());
-  if (boxUser!.length == 0) {
-    print('Accounts :  0'.toUpperCase());
-  } else {
-    res = boxUser!.get(0) as UserBox;
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    InAppPurchaseAndroidPlatformAddition.enablePendingPurchases();
   }
+  // ignore: unused_local_variable
+  bool _isExist = await HiveInitialization.hiveData();
+
   runApp(MyApp());
 }
 
