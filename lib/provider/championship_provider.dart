@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:prediction_app/model/champian_ship_byID.dart';
-import 'package:prediction_app/model/predect_question.dart';
+import 'package:prediction_app/model/response_model/champian_ship_byID.dart';
+import 'package:prediction_app/model/response_model/predect_question.dart';
 import 'package:prediction_app/model/response_model/get_championship.dart';
 import 'package:prediction_app/request/championship.dart';
 import 'package:prediction_app/utils/images.dart';
@@ -111,6 +111,6 @@ class ChampionShipProvider with ChangeNotifier {
 
   _waitingStata(value) {
     wait = value;
-    notifyListeners();
+    // notifyListeners();
   }
 }

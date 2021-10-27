@@ -2,13 +2,16 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
+import 'package:prediction_app/database/Cache.dart';
+import 'package:prediction_app/model/response_model/paymentModel.dart';
+import 'package:prediction_app/provider/paymnet_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/withdraw_email.dart';
-import 'package:prediction_app/ui/payment/payment.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:prediction_app/utils/routes.dart';
+import 'package:provider/provider.dart';
 
 class ExchangeScreen1 extends StatefulWidget {
   @override
@@ -17,9 +20,42 @@ class ExchangeScreen1 extends StatefulWidget {
 
 class _ExchangeScreen1State extends State<ExchangeScreen1> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
+
+  PaymentOffers? paymentOffers;
+  bool isSearchPayment = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _getPaymentOffers();
+  }
+
+  _getPaymentOffers() {
+    Provider.of<PaymnetProvider>(context, listen: false)
+        .paymnetOffersStatus()
+        .then((value) {
+      print(value!.message.toString());
+      if (value.success == true) {
+        _updateState(true);
+        setState(() {
+          paymentOffers = value;
+          Cache.logopath = paymentOffers!.data.logopath.toString();
+          print(paymentOffers!.data.paymentMethods.length);
+        });
+      }
+    });
+  }
+
+  // ignore: unused_element
+  _updateState(bool isValue) {
+    isSearchPayment = isValue;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final PaymnetProvider paymnetProvider =
+        Provider.of<PaymnetProvider>(context);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -30,46 +66,30 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                 SizedBox(
                   height: 50.h,
                 ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      buildColumn(size, "Google PlayStore", "\u0024 15.00 ",
-                          () {
-                        AppRoutes.push(context, WithDrawEmail());
-                      }, "assets/images/palystore.png"),
-                      buildColumn(size, "Apple App Store", "\u0024 15.00 ", () {
-                        AppRoutes.push(context, WithDrawEmail());
-                      }, "assets/images/apple.png")
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.w),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      buildColumn(size, "PayPal", "\u0024 15.00 ", () {
-                        AppRoutes.push(context, WithDrawEmail());
-                      }, "assets/images/paypal.png"),
-                      buildColumn(size, "MasterCard", "\u0024 15.00 ", () {
-                        AppRoutes.push(context, WithDrawEmail());
-                      }, "assets/images/master.png")
-                    ],
-                  ),
-                ),
-                SizedBox(height: 40.h)
+                isSearchPayment
+                    ? Container(
+                        child: new GridView.count(
+                        crossAxisCount: 2,
+                        childAspectRatio: 0.6,
+                        controller:
+                            new ScrollController(keepScrollOffset: false),
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        children: paymentOffers!.data.paymentMethods
+                            .map((PaymentMethod value) {
+                          return new Container(
+                              //  height: size.height*.3,
+                              child: buildColumn(size, value));
+                        }).toList(),
+                      ))
+                    : Center(child: CircularProgressIndicator()),
               ],
             )),
       ),
     );
   }
 
-  Column buildColumn(Size size, String title, String subtitle,
-      VoidCallback onPressed, String link) {
+  Column buildColumn(Size size, PaymentMethod paymentMethod) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
@@ -80,14 +100,16 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
             borderRadius: BorderRadius.circular(10),
             color: AppColors.background_color1,
           ),
-          child: Center(child: Image.asset(link)),
+          child: Center(
+              child: Image.network(
+                  paymentOffers!.data.logopath + "/" + paymentMethod.logo)),
         ),
         SizedBox(
           height: 10.h,
         ),
         Align(
-          alignment: Alignment.topLeft,
-          child: Text(title,
+          alignment: Alignment.center,
+          child: Text(paymentMethod.name,
               textAlign: TextAlign.start,
               style: GoogleFonts.openSans(
                   fontSize: 16.sp,
@@ -98,7 +120,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
           height: 10.h,
         ),
         Text(
-          subtitle,
+          "\u0024 ${paymentMethod.exchangeRate} ",
           style: TextStyle(
               fontSize: 16.sp,
               fontWeight: FontWeight.w500,
@@ -119,7 +141,11 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
               ],
             ),
             onPressed: () {
-              AppRoutes.push(context, WithDrawEmail());
+              AppRoutes.push(
+                  context,
+                  WithDrawEmail(
+                    selectedPyamentMethod: paymentMethod,
+                  ));
             }),
       ],
     );
@@ -206,7 +232,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, HomeScreen());
+                        //  AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),

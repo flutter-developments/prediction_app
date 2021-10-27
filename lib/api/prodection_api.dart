@@ -11,7 +11,7 @@ class API_URLS {
   static const CHAMPIANLEADTEAMIMAGE_API = "$WITHOUT_API_URL/uploads";
   static const PERDICTQUESTION_API = "$API_URL/games/1";
 
-  static const ALLCATAGORY_API = "$API_URL/category";
+  static const PAYEMNT_API = "$API_URL/payment_methods";
   static const GET_A_CATEGORY_API = "$API_URL/category/";
 
   static const UPLOAD_IMAGE_ADS_API = "$API_URL/images/ads";

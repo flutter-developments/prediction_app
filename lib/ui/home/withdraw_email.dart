@@ -6,11 +6,18 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
+import 'package:prediction_app/database/Cache.dart';
+import 'package:prediction_app/model/response_model/paymentModel.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:prediction_app/utils/images.dart';
 
 class WithDrawEmail extends StatefulWidget {
+  final PaymentMethod selectedPyamentMethod;
+
+  const WithDrawEmail({Key? key, required this.selectedPyamentMethod})
+      : super(key: key);
   @override
   _WithDrawEmailState createState() => _WithDrawEmailState();
 }
@@ -39,7 +46,8 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
                       () {
                     Navigator.of(context).pop();
                   }),
-                  buildWithdrawArea(size, context),
+                  buildWithdrawArea(
+                      size, context, widget.selectedPyamentMethod),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -50,21 +58,23 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
     );
   }
 
-  Container buildWithdrawArea(Size size, BuildContext context) {
+  Container buildWithdrawArea(
+      Size size, BuildContext context, PaymentMethod paymentMethod) {
     return Container(
       height: size.height,
       width: size.width,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            buildplayStoreIcon(
+            buildplayStoreIcon(size, paymentMethod),
+            buildSliderArea(
               size,
+              context,
             ),
-            buildSliderArea(size, context),
             SizedBox(
               height: 50.h,
             ),
-            buildtextfieldarea(size, context),
+            buildtextfieldarea(size, context, paymentMethod),
             SizedBox(
               height: 150.h,
             )
@@ -75,7 +85,7 @@ class _WithDrawEmailState extends State<WithDrawEmail> {
   }
 }
 
-Widget buildplayStoreIcon(Size size) {
+Widget buildplayStoreIcon(Size size, PaymentMethod paymentMethod) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 110.h, vertical: 30.h),
     child: Container(
@@ -92,16 +102,15 @@ Widget buildplayStoreIcon(Size size) {
           ],
           borderRadius: BorderRadius.circular(10),
           color: AppColors.background_color1),
-      child: Image.asset(
-        "assets/images/palystore.png",
-        // placeholderBuilder: (BuildContext context) =>
-        //     Container(child: const CircularProgressIndicator()),
-      ),
+      child: Image.network(Cache.logopath + "/" + paymentMethod.logo),
     ),
   );
 }
 
-Widget buildSliderArea(Size size, BuildContext context) {
+Widget buildSliderArea(
+  Size size,
+  BuildContext context,
+) {
   // ignore: unused_local_variable
   int _lowerValue = 0;
   // ignore: unused_local_variable
@@ -245,7 +254,8 @@ Widget buildSliderArea(Size size, BuildContext context) {
   );
 }
 
-Widget buildtextfieldarea(Size size, BuildContext context) {
+Widget buildtextfieldarea(
+    Size size, BuildContext context, PaymentMethod paymentMethod) {
   return Padding(
     padding: EdgeInsets.symmetric(horizontal: 15.w),
     child: SingleChildScrollView(
@@ -272,7 +282,7 @@ Widget buildtextfieldarea(Size size, BuildContext context) {
                   textAlign: TextAlign.center,
                   text: TextSpan(children: [
                     TextSpan(
-                      text: '\u0024 15.00',
+                      text: '\u0024 ${paymentMethod.exchangeRate}',
                       style: TextStyle(
                           color: AppColors.goldenColor,
                           fontSize: 25.sp,
@@ -323,7 +333,9 @@ Widget buildtextfieldarea(Size size, BuildContext context) {
                       Color(0XFF8787F2),
                     ],
                   ),
-                  onPressed: () {}),
+                  onPressed: () {
+                    showMessageError("WithDraw Api's remaining");
+                  }),
             ],
           ),
         ),

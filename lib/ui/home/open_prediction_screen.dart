@@ -483,7 +483,7 @@ class _OpenPredictionScreenState extends State<OpenPredictionScreen> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, HomeScreen());
+                      //  AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),

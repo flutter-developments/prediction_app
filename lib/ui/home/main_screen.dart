@@ -155,7 +155,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                        AppRoutes.push(context, HomeScreen());
+                       // AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),

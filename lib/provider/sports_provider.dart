@@ -48,6 +48,6 @@ class SportsProvider with ChangeNotifier {
 
   _waitingStata(value) {
     wait = value;
-    notifyListeners();
+    //notifyListeners();
   }
 }

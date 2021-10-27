@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:prediction_app/model/drawer_list_model.dart';
+import 'package:prediction_app/database/data/drawer_list_model.dart';
 import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/main_screen_2.dart';
 import 'package:prediction_app/ui/home/prediction_screen.dart';
@@ -35,7 +35,7 @@ List<DrawerListModel> drawerContent = [
   ),
   DrawerListModel(
     icon: Images.withdraw,
-    screen: WithDrawEmail(),
+    screen: UserGuide(),
     title: 'Cash Out',
   ),
   DrawerListModel(

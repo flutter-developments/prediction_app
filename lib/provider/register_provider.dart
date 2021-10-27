@@ -82,6 +82,6 @@ class RegisterProvider with ChangeNotifier {
 
   _waitingStata(value) {
     wait = value;
-    notifyListeners();
+    // notifyListeners();
   }
 }
