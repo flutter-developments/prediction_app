@@ -6,7 +6,7 @@ import 'package:outline_gradient_button/outline_gradient_button.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/Widgets/textField.dart';
-import 'package:prediction_app/model/response_model/predect_question.dart';
+import 'package:prediction_app/model/response_model/predect_question_model.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/open_prediction_screen.dart';

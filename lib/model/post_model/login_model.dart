@@ -1,11 +1,11 @@
 import 'dart:convert';
 
-LOGINMODEL welcomeFromJson(String str) => LOGINMODEL.fromJson(json.decode(str));
+LoginModel welcomeFromJson(String str) => LoginModel.fromJson(json.decode(str));
 
-String welcomeToJson(LOGINMODEL data) => json.encode(data.toJson());
+String welcomeToJson(LoginModel data) => json.encode(data.toJson());
 
-class LOGINMODEL {
-  LOGINMODEL({
+class LoginModel {
+  LoginModel({
     required this.success,
     required this.data,
     required this.message,
@@ -15,7 +15,7 @@ class LOGINMODEL {
   Data data;
   String message;
 
-  factory LOGINMODEL.fromJson(Map<String, dynamic> json) => LOGINMODEL(
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         success: json["success"],
         data: Data.fromJson(json["data"]),
         message: json["message"],

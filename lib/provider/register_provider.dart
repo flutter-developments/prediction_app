@@ -10,10 +10,10 @@ class RegisterProvider with ChangeNotifier {
   late bool action, wait = false;
   var _registerResult;
   // ignore: unused_field
-  REGISTERMODEL? _registermodel;
-  LOGINMODEL? loginmodel;
+  RegisterModel? _registermodel;
+  LoginModel? loginmodel;
   //CREATE REGISTER REQUEST
-  Future<REGISTERMODEL?> registerResponse(
+  Future<RegisterModel?> registerResponse(
       name, email, password, cpassword) async {
     _waitingStata(true);
     await AuthApi().createUser(name, email, password, cpassword).then((data) {
@@ -21,7 +21,7 @@ class RegisterProvider with ChangeNotifier {
       print("DATA => " + data.body.toString());
       if (data.statusCode == 200) {
         _registerResult = json.decode(data.body);
-        _setUserData(REGISTERMODEL.fromJson(_registerResult));
+        _setUserData(RegisterModel.fromJson(_registerResult));
       } else if (data.statusCode == 404) {
         showMessageError(data.statusCode);
       } else if (data.statusCode == 403) {
@@ -38,7 +38,7 @@ class RegisterProvider with ChangeNotifier {
 
   //CREATE LOGIN REQUEST
   // ignore: non_constant_identifier_names
-  Future<LOGINMODEL?> login_response(
+  Future<LoginModel?> login_response(
     email,
     password,
   ) async {
@@ -53,7 +53,7 @@ class RegisterProvider with ChangeNotifier {
       print("DATA  " + data.body.toString().toUpperCase());
       if (data.statusCode == 200) {
         _registerResult = json.decode(data.body);
-        _setLoginUser(LOGINMODEL.fromJson(_registerResult));
+        _setLoginUser(LoginModel.fromJson(_registerResult));
       } else if (data.statusCode == 404) {
         showMessageError(data.statusCode);
       } else if (data.statusCode == 403) {

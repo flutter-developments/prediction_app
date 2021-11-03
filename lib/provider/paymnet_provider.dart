@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:prediction_app/model/response_model/notification_model.dart';
-import 'package:prediction_app/model/response_model/paymentModel.dart';
-import 'package:prediction_app/model/response_model/withdraw_history.dart';
+import 'package:prediction_app/model/response_model/payment_model.dart';
+import 'package:prediction_app/model/response_model/withdraw_history_model.dart';
 import 'package:prediction_app/request/payment.dart';
 import 'package:prediction_app/utils/images.dart';
 

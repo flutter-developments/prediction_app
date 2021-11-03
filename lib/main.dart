@@ -8,6 +8,7 @@ import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/exchange_screen1.dart';
 import 'package:prediction_app/ui/home/main_screen.dart';
 import 'package:prediction_app/ui/home/notification.dart';
+import 'package:prediction_app/ui/language/select_language.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
@@ -15,9 +16,8 @@ import 'database/hive/hive_initilization.dart';
 import 'provider/sports_provider.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'package:flutter/foundation.dart';
-
-import 'ui/home/profile_screen.dart';
-import 'ui/language/select_language.dart';
+import 'provider/user_provider.dart';
+import 'ui/profile/contactus.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (_) => SportsProvider()),
         ChangeNotifierProvider(create: (_) => ChampionShipProvider()),
         ChangeNotifierProvider(create: (_) => PaymnetProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
       child: ScreenUtilInit(
         builder: () => MaterialApp(
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return Profile();
+                    return Language();
                 } else
                   return Scaffold();
               },

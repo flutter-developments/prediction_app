@@ -1,7 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'package:prediction_app/api/prodection_api.dart';
 
-class ChampioshipApi {
+class ChampionshipApi {
   Future<http.Response> requestChampionshipList() async {
     print("getChampionshipList this link = >${API_URLS.CHAMPIONSHIP_API}"
         .toUpperCase());

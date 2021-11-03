@@ -7,7 +7,7 @@ import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
 import 'package:prediction_app/Widgets/textField.dart';
 import 'package:prediction_app/database/Cache.dart';
-import 'package:prediction_app/model/response_model/paymentModel.dart';
+import 'package:prediction_app/model/response_model/payment_model.dart';
 import 'package:prediction_app/provider/paymnet_provider.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';

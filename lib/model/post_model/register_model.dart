@@ -4,13 +4,13 @@
 
 import 'dart:convert';
 
-REGISTERMODEL welcomeFromJson(String str) =>
-    REGISTERMODEL.fromJson(json.decode(str));
+RegisterModel welcomeFromJson(String str) =>
+    RegisterModel.fromJson(json.decode(str));
 
-String welcomeToJson(REGISTERMODEL data) => json.encode(data.toJson());
+String welcomeToJson(RegisterModel data) => json.encode(data.toJson());
 
-class REGISTERMODEL {
-  REGISTERMODEL({
+class RegisterModel {
+  RegisterModel({
     required this.success,
     required this.data,
     required this.message,
@@ -20,7 +20,7 @@ class REGISTERMODEL {
   Data data;
   String message;
 
-  factory REGISTERMODEL.fromJson(Map<String, dynamic> json) => REGISTERMODEL(
+  factory RegisterModel.fromJson(Map<String, dynamic> json) => RegisterModel(
         success: json["success"],
         data: Data.fromJson(json["data"]),
         message: json["message"],

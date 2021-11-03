@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/api/prodection_api.dart';
-import 'package:prediction_app/model/response_model/champian_ship_byID.dart';
+import 'package:prediction_app/model/response_model/champian_ship_model.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/prediction_screen.dart';

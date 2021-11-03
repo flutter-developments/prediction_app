@@ -17,12 +17,10 @@ class TextFields {
     bool readOnly = false,
     String? emptyValidationMessage,
     TextInputType? inputType,
-    int? lines,
     String? validaterMsg,
     Widget? suffixdata,
   }) {
     return TextFormField(
-      maxLines: lines,
       controller: controller,
       validator: (value) {
         Pattern pattern =
@@ -111,19 +109,22 @@ class TextFields {
     );
   }
 
-  static Widget normalTextField(
-    BuildContext context, {
-    IconData? icon,
-    bool? obsecuretext,
-    String? hintText,
-    TextEditingController? controller,
-    bool readOnly = false,
-    String? emptyValidationMessage,
-    TextInputType? inputType,
-    int? maxLength,
-    Color? color,
-  }) {
+  static Widget normalTextField(BuildContext context,
+      {IconData? icon,
+      bool? obsecuretext,
+      String? hintText,
+      TextEditingController? controller,
+      bool readOnly = false,
+      String? emptyValidationMessage,
+      TextInputType? inputType,
+      int? maxLength,
+      Color? color,
+      int? lines,
+      Widget? suffixdata,
+      bool? enable}) {
     return TextFormField(
+      enabled: enable,
+      maxLines: lines,
       controller: controller,
       validator: (value) {
         return (value!.isEmpty) ? emptyValidationMessage : null;
@@ -131,6 +132,7 @@ class TextFields {
       obscureText: false,
       style: mediumwhiteStyle,
       decoration: InputDecoration(
+          suffixIcon: suffixdata,
           labelText: hintText,
           labelStyle: GoogleFonts.raleway(
               color: AppColors.textColor,

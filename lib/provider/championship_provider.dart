@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:prediction_app/model/response_model/champian_ship_byID.dart';
-import 'package:prediction_app/model/response_model/predect_question.dart';
-import 'package:prediction_app/model/response_model/get_championship.dart';
-import 'package:prediction_app/request/championship.dart';
+import 'package:prediction_app/model/response_model/champian_ship_model.dart';
+import 'package:prediction_app/model/response_model/predect_question_model.dart';
+import 'package:prediction_app/model/response_model/get_championship_model.dart';
+import 'package:prediction_app/request/championship_request.dart';
 import 'package:prediction_app/utils/images.dart';
 
 class ChampionShipProvider with ChangeNotifier {
@@ -15,7 +15,7 @@ class ChampionShipProvider with ChangeNotifier {
 
   Future<ChampionshipModel> championshipProvider() async {
     _waitingStata(true);
-    await ChampioshipApi().requestChampionshipList().then((data) {
+    await ChampionshipApi().requestChampionshipList().then((data) {
       print("STATUS CODE Champian => " + data.statusCode.toString());
       print("DATA => " + data.body.toString());
       if (data.statusCode == 200) {
@@ -37,7 +37,7 @@ class ChampionShipProvider with ChangeNotifier {
   //GetGamesByChampianShipid
   Future<ChampionshipById?> getGamesByChampionshipID() async {
     _waitingStata(true);
-    await ChampioshipApi().requestgetGamesByChampionshipID().then((data) {
+    await ChampionshipApi().requestgetGamesByChampionshipID().then((data) {
       print("STATUS CODE getGamesByChampionshipID => " +
           data.statusCode.toString());
       print("DATA => " + data.body.toString());
@@ -65,7 +65,7 @@ class ChampionShipProvider with ChangeNotifier {
   //get Game Details By ID
   Future<GameDetailesModel?> getGameDetailsByID() async {
     _waitingStata(true);
-    await ChampioshipApi().requestGameDetailesByID().then((data) {
+    await ChampionshipApi().requestGameDetailesByID().then((data) {
       print("STATUS CODE getGameDetailsByID => " +
           data.statusCode.toString().toUpperCase());
       print("DATA => " + data.body.toString());

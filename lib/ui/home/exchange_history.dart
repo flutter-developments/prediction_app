@@ -4,7 +4,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:prediction_app/Widgets/appBar.dart';
-import 'package:prediction_app/model/response_model/withdraw_history.dart';
+import 'package:prediction_app/model/response_model/withdraw_history_model.dart';
 import 'package:prediction_app/provider/paymnet_provider.dart';
 import 'package:prediction_app/utils/app_colors.dart';
 import 'package:prediction_app/utils/app_text_styles.dart';

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/Gradient_btn.dart';
 import 'package:prediction_app/database/Cache.dart';
-import 'package:prediction_app/model/response_model/paymentModel.dart';
+import 'package:prediction_app/model/response_model/payment_model.dart';
 import 'package:prediction_app/provider/paymnet_provider.dart';
 import 'package:prediction_app/ui/home/notification.dart';
 import 'package:prediction_app/ui/home/withdraw_email.dart';

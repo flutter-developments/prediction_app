@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:prediction_app/Widgets/app_drawer.dart';
 import 'package:prediction_app/database/data/home_screen_data.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:prediction_app/model/response_model/get_championship.dart';
+import 'package:prediction_app/model/response_model/get_championship_model.dart';
 import 'package:prediction_app/provider/championship_provider.dart';
 import 'package:prediction_app/ui/home/event_screen.dart';
 import 'package:prediction_app/ui/payment/payment.dart';

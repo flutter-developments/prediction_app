@@ -26,7 +26,7 @@ class _AuthState extends State<Auth> {
   // ignore: unused_field
   final _formLoginKey = GlobalKey<FormState>();
   // ignore: non_constant_identifier_names
-  LOGINMODEL? login_model;
+  LoginModel? login_model;
   // ignore: unused_field
   late RegisterProvider _registerProvider;
   // ignore: unused_field
