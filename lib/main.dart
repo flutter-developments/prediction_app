@@ -6,6 +6,8 @@ import 'package:prediction_app/provider/paymnet_provider.dart';
 import 'package:prediction_app/provider/register_provider.dart';
 import 'package:prediction_app/ui/home/exchange_history.dart';
 import 'package:prediction_app/ui/home/exchange_screen1.dart';
+import 'package:prediction_app/ui/home/main_screen.dart';
+import 'package:prediction_app/ui/home/notification.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'dart:async';
@@ -14,6 +16,7 @@ import 'provider/sports_provider.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
 import 'package:flutter/foundation.dart';
 
+import 'ui/home/profile_screen.dart';
 import 'ui/language/select_language.dart';
 
 Future<void> main() async {
@@ -53,7 +56,7 @@ class _MyAppState extends State<MyApp> {
                   if (snapshot.hasError)
                     return Text(snapshot.error.toString());
                   else
-                    return ExchangeScreen1();
+                    return Profile();
                 } else
                   return Scaffold();
               },

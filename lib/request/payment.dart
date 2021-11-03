@@ -37,4 +37,13 @@ class PaymnetApi {
       body: body,
     );
   }
+
+  // Get Notifications
+  Future<http.Response> getNotifications() async {
+    print("getNotifications Url = >${API_URLS.GET_NOTIFICATION_API}"
+        .toUpperCase());
+    return http.get(
+      Uri.parse("${API_URLS.GET_NOTIFICATION_API}"),
+    );
+  }
 }

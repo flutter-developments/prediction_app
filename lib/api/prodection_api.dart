@@ -15,7 +15,7 @@ class API_URLS {
   static const PAYEMNT_HISTORY_API = "$API_URL/withdrawHistory/1";
   static const REQUEST_PAYEMNT_API = "$API_URL/requestForWithdraw";
 
-  static const GET_A_CATEGORY_API = "$API_URL/category/";
+  static const GET_NOTIFICATION_API = "$API_URL/getNotifications";
 
   static const UPLOAD_IMAGE_ADS_API = "$API_URL/images/ads";
   static const UPLOAD_VIDEO_ADS_API = "$API_URL/videos/ads";
