@@ -21,7 +21,6 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  late SportsProvider sportsProvider;
   SPORTSMODEL? sportsmodel;
   bool isFetched = false;
   void initState() {
@@ -53,7 +52,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    sportsProvider = Provider.of<SportsProvider>(context);
     return SafeArea(
         child: Scaffold(
       backgroundColor: AppColors.primery_color,
@@ -155,7 +153,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                       // AppRoutes.push(context, HomeScreen());
+                        // AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),

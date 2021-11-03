@@ -12,6 +12,9 @@ class API_URLS {
   static const PERDICTQUESTION_API = "$API_URL/games/1";
 
   static const PAYEMNT_API = "$API_URL/payment_methods";
+  static const PAYEMNT_HISTORY_API = "$API_URL/withdrawHistory/1";
+  static const REQUEST_PAYEMNT_API = "$API_URL/requestForWithdraw";
+
   static const GET_A_CATEGORY_API = "$API_URL/category/";
 
   static const UPLOAD_IMAGE_ADS_API = "$API_URL/images/ads";

@@ -54,8 +54,7 @@ class _ExchangeScreen1State extends State<ExchangeScreen1> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final PaymnetProvider paymnetProvider =
-        Provider.of<PaymnetProvider>(context);
+
     return Scaffold(
       body: SafeArea(
         child: Container(

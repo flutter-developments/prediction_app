@@ -23,7 +23,6 @@ class MainScreen2 extends StatefulWidget {
 
 class _MainScreen2State extends State<MainScreen2> {
   final GlobalKey<ScaffoldState> _key = GlobalKey();
-  late ChampionShipProvider championShipProvider;
   late ChampionshipModel championshipModel;
   bool isFetched = false;
 
@@ -55,7 +54,6 @@ class _MainScreen2State extends State<MainScreen2> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    championShipProvider = Provider.of<ChampionShipProvider>(context);
     return SafeArea(
         child: Scaffold(
       backgroundColor: AppColors.background_color,
@@ -161,7 +159,7 @@ class _MainScreen2State extends State<MainScreen2> {
                 children: [
                   GestureDetector(
                       onTap: () {
-                      //  AppRoutes.push(context, HomeScreen());
+                        //  AppRoutes.push(context, HomeScreen());
                       },
                       child: IconButton(
                         icon: Icon(Icons.arrow_back),
